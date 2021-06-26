@@ -14,4 +14,8 @@
     <!-- Main Menu Header -->
     <string name="menu_content">App Contents</string>
 
+    <!-- Main Activity Menu Description -->
+    <string name="menu_open">Open Drawer</string>
+    <string name="menu_close">Closed Drawer</string>
+
 </resources>
