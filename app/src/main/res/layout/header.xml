@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:gravity="bottom"
+    android:background="@drawable/menu_wallpaper"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/merienda_one"
+        android:padding="15dp"
+        android:text="@string/menu_content"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>

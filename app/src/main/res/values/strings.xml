@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Scheduler</string>
+
+    <!-- Main Menu -->
+    <string name="nav_home">Home</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_mental">Mindfulness</string>
+    <string name="nav_reminder">Reminders</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_login">Login</string>
+    <string name="nav_logout">Logout</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Main Menu Header -->
+    <string name="menu_content">App Contents</string>
+
+</resources>

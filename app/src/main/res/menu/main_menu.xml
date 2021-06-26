@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home"
+            android:icon="@drawable/home" />
+
+        <item
+            android:id="@+id/nav_schedule"
+            android:title="@string/nav_schedule"
+            android:icon="@drawable/schedule" />
+
+        <item
+            android:id="@+id/nav_reminder"
+            android:title="@string/nav_reminder"
+            android:icon="@drawable/reminder" />
+
+        <item
+            android:id="@+id/nav_mind"
+            android:title="@string/nav_mental"
+            android:icon="@drawable/mental" />
+    </group>
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="@string/nav_profile" >
+
+            <menu>
+                <item
+                    android:id="@+id/nav_login"
+                    android:title="@string/nav_login"
+                    android:icon="@drawable/profile" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="@string/nav_logout"
+                    android:icon="@drawable/logout" />
+
+                <item
+                    android:id="@+id/nav_settings"
+                    android:title="@string/nav_settings"
+                    android:icon="@drawable/settings" />
+
+            </menu>
+
+        </item>
+
+    </group>
+
+    <item android:title="Communicate">
+
+        <menu>
+
+        </menu>
+    </item>
+
+</menu>
