@@ -4,7 +4,9 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar">
+
+    </include>
 
     <FrameLayout
         android:id="@+id/settings"

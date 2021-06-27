@@ -33,7 +33,7 @@ public class Schedule_Second extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(Schedule_Second.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                        .navigate(R.id.schedule_second_to_schedule_first);
             }
         });
     }

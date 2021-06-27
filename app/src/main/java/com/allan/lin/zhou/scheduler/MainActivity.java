@@ -21,13 +21,16 @@ public class MainActivity extends AppCompatActivity
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    // View header = navigationView.getHeaderView(0);
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
