@@ -8,7 +8,8 @@
     android:background="@drawable/main_wallpaper"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    >
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -16,7 +17,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        app:menu="@menu/main_menu"
+        app:itemIconTint="@color/icon"
+        />
 
     <ScrollView
         android:layout_width="match_parent"

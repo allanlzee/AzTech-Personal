@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#81d8d0</color>
     <color name="blue_200">#7fe5f0</color>
+
+    <!-- Navigation Drawer -->
+    <color name="icon">#4ca3dd</color>
+
+    <!-- Floating Button -->
+    <color name="home_fab">#ffa500</color>
+
 </resources>

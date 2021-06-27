@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,6 +57,26 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        Intent intent;
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                break;
+
+            case R.id.nav_schedule:
+                intent = new Intent(MainActivity.this, Schedule.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Schedule", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_reminder:
+                intent = new Intent(MainActivity.this, Reminders.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Reminders", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
         return true;
     }
 }
