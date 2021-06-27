@@ -1,11 +1,13 @@
 package com.allan.lin.zhou.scheduler;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toolbar;
 
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -14,11 +16,14 @@ public class Reminders extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private RemindersActivityBinding binding;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reminders_activity);
+
+        // toolbar = (Toolbar) findViewById(R.id.toolbar); // TODO: app crashes here
 
         binding = RemindersActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

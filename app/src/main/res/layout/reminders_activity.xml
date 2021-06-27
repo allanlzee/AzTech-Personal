@@ -6,12 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Reminders">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Reminders"
+        android:text="@string/nav_reminder"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

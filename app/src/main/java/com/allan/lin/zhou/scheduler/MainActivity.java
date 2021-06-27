@@ -82,6 +82,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Mindfulness", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_settings:
+                intent = new Intent(MainActivity.this, Settings.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;
