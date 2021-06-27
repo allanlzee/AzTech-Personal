@@ -1,5 +1,6 @@
 package com.allan.lin.zhou.scheduler;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -33,11 +34,20 @@ public class Schedule extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Go", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Schedule.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setActionTextColor(getResources().getColor(R.color.home_action))
+                        .setTextColor(getResources().getColor(R.color.home_snack))
+                        .show();
             }
         });
     }
