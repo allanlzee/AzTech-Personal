@@ -67,14 +67,25 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_schedule:
                 intent = new Intent(MainActivity.this, Schedule.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Schedule", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Schedule", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.nav_reminder:
                 intent = new Intent(MainActivity.this, Reminders.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Reminders", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Reminders", Toast.LENGTH_LONG).show();
                 break;
+
+            case R.id.nav_mind:
+                intent = new Intent(MainActivity.this, Mindfulness.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Mindfulness", Toast.LENGTH_LONG).show();
+                break;
+
+            default:
+                Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
+                break;
+
         }
 
         return true;

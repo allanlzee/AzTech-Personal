@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler">
+        <activity android:name=".Mindfulness"></activity>
         <activity
             android:name=".Schedule"
             android:label="@string/title_activity_schedule"
-            android:theme="@style/Theme.Scheduler.NoActionBar"></activity>
+            android:theme="@style/Theme.Scheduler.NoActionBar" />
         <activity android:name=".Reminders" />
         <activity android:name=".MainActivity">
             <intent-filter>
