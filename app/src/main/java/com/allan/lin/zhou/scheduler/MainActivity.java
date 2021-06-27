@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         // Make the Menu Items Clickable
-        // navigationView.setNavigationItemSelectedListener(this); // TODO: this line crashes the app
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         return true;
     }
