@@ -4,56 +4,62 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="@string/nav_home"
-            android:icon="@drawable/home" />
+            android:icon="@drawable/home"
+            android:title="@string/nav_home" />
 
         <item
             android:id="@+id/nav_schedule"
-            android:title="@string/nav_schedule"
-            android:icon="@drawable/schedule" />
+            android:icon="@drawable/schedule"
+            android:title="@string/nav_schedule" />
 
         <item
             android:id="@+id/nav_reminder"
-            android:title="@string/nav_reminder"
-            android:icon="@drawable/reminder" />
+            android:icon="@drawable/reminder"
+            android:title="@string/nav_reminder" />
 
         <item
             android:id="@+id/nav_mind"
-            android:title="@string/nav_mental"
-            android:icon="@drawable/mental" />
+            android:icon="@drawable/mental"
+            android:title="@string/nav_mental" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <item android:title="@string/nav_profile">
 
-        <item
-            android:title="@string/nav_profile" >
-
-            <menu>
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_login"
-                    android:title="@string/nav_login"
-                    android:icon="@drawable/profile" />
+                    android:icon="@drawable/profile"
+                    android:title="@string/nav_login" />
 
                 <item
                     android:id="@+id/nav_logout"
-                    android:title="@string/nav_logout"
-                    android:icon="@drawable/logout" />
+                    android:icon="@drawable/logout"
+                    android:title="@string/nav_logout" />
 
                 <item
                     android:id="@+id/nav_settings"
-                    android:title="@string/nav_settings"
-                    android:icon="@drawable/settings" />
+                    android:icon="@drawable/settings"
+                    android:title="@string/nav_settings" />
+            </group>
+        </menu>
 
-            </menu>
+    </item>
 
-        </item>
 
-    </group>
-
-    <item android:title="Communicate">
-
+    <item android:title="@string/nav_com">
         <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_email"
+                android:icon="@drawable/email"
+                android:title="@string/nav_email" />
 
+            <item
+                android:id="@+id/nav_social"
+                android:icon="@drawable/social"
+                android:title="@string/nav_social" />
+            </group>
         </menu>
     </item>
 

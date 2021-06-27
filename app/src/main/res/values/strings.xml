@@ -10,6 +10,9 @@
     <string name="nav_login">Login</string>
     <string name="nav_logout">Logout</string>
     <string name="nav_settings">Settings</string>
+    <string name="nav_email">Email</string>
+    <string name="nav_social">Social</string>
+    <string name="nav_com">Communicate</string>
 
     <!-- Main Menu Header -->
     <string name="menu_content">App Contents</string>
