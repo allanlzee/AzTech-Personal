@@ -16,8 +16,12 @@
     <string name="nav_social">Social</string>
     <string name="nav_com">Communicate</string>
 
+    <!-- Quotes -->
+    <string name="quote">Inspire…</string>
+    <string name="inspire">Inspire</string>
+
     <!-- Main Menu Header -->
-    <string name="menu_content">App Contents</string>
+    <string name="menu_content">AzTech Scheduler</string>
 
     <!-- Main Activity Menu Description -->
     <string name="menu_open">Open Drawer</string>

@@ -20,17 +20,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_schedule"/>
+    <include layout="@layout/content_schedule" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="30dp"
-        android:contentDescription="@string/fab"
         android:backgroundTint="@color/home_fab"
+        android:contentDescription="@string/fab"
         android:src="@drawable/home" />
 
 </RelativeLayout>

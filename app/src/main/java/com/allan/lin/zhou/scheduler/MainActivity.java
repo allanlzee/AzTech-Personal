@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -23,18 +24,25 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar;
 
+    int prevQuote;
+    Button inspire;
+    TextView quote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Initialize Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         toolbar =  findViewById(R.id.toolbar);
+
+        inspire = findViewById(R.id.quoteGenerator);
+        quote = findViewById(R.id.quote);
 
         setSupportActionBar(toolbar); // Theme.AppCompat.NoActionBar
 
@@ -45,6 +53,9 @@ public class MainActivity extends AppCompatActivity
 
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Quote Generator
+        randomQuote();
     }
 
     @Override
@@ -53,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
+
         else {
             super.onBackPressed();
         }
@@ -98,5 +110,35 @@ public class MainActivity extends AppCompatActivity
         }
 
         return true;
+    }
+
+    // Quote Changing
+    private void randomQuote() {
+        final String[] quotes = {"Once you choose hope, anything is possible.",
+                "Failure is not the opposite of success. It is part of it.",
+                "Fall down 7 times, get up 8.",
+                "Wherever you go, go with all your heart.",
+                "It is during our darkest moments that we must focus on the light.",
+                "Be stronger than your excuses.",
+                "You get in life what you have the courage to ask for.",
+                "Who you are is defined by what you're willing to struggle for.",
+                "Don't just sit there. Do something. The answers will follow.",
+                "The more something threatens your identity, the more you will avoid it."
+        };
+
+        inspire.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                int random = (int) (Math.random() * quotes.length);
+                if (random == prevQuote) {
+                    while (random == prevQuote) {
+                        random = (int) (Math.random() * quotes.length);
+                    }
+                    quote.setText(quotes[random]);
+                    prevQuote = random;
+                }
+            }
+        });
     }
 }
