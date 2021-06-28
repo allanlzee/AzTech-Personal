@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.ui.login.Login;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -103,10 +106,15 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_login:
+                intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;
-
         }
 
         return true;
