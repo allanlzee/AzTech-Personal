@@ -24,8 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
-import com.allan.lin.zhou.scheduler.ui.login.LoginViewModel;
-import com.allan.lin.zhou.scheduler.ui.login.LoginViewModelFactory;
 import com.allan.lin.zhou.scheduler.databinding.LoginActivityBinding;
 
 public class Login extends AppCompatActivity {
@@ -47,6 +45,7 @@ public class Login extends AppCompatActivity {
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
+        final EditText emailEditText = binding.email;
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
@@ -62,6 +61,9 @@ public class Login extends AppCompatActivity {
                 }
                 if (loginFormState.getPasswordError() != null) {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
+                }
+                if (loginFormState.getEmailError() != null) {
+                    emailEditText.setError(getString(loginFormState.getEmailError()));
                 }
             }
         });
@@ -100,11 +102,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        passwordEditText.getText().toString(), emailEditText.getText().toString());
             }
         };
 
         usernameEditText.addTextChangedListener(afterTextChangedListener);
+        emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
@@ -112,7 +115,7 @@ public class Login extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                            passwordEditText.getText().toString(), emailEditText.getText().toString());
                 }
                 return false;
             }
@@ -123,7 +126,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        passwordEditText.getText().toString(),
+                        emailEditText.getText().toString());
             }
         });
     }

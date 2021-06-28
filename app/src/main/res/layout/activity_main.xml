@@ -70,47 +70,6 @@
             android:padding="5dp"
             android:text="@string/inspire" />
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:background="$11000000"
-            android:ems="10"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_above="@+id/quote"
-            android:layout_below="@+id/name"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="25dp"
-            android:background="$11000000"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="25dp"
-            android:src="@mipmap/ic_launcher" />
-
-
     </RelativeLayout>
 
 
