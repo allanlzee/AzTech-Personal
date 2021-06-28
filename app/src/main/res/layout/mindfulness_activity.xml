@@ -18,4 +18,15 @@
         android:text="@string/mind"
         android:textSize="30sp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/fab"
+        android:backgroundTint="@color/home_fab"
+        app:srcCompat="@drawable/home" />
+
 </RelativeLayout>
