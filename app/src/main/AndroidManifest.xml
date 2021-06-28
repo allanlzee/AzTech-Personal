@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Scheduler">
         <activity
             android:name=".ui.login.Login"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.Scheduler.NoActionBar" />
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"

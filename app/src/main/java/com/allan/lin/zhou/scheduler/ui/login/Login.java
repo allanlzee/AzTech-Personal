@@ -38,7 +38,9 @@ public class Login extends AppCompatActivity {
 
         binding = LoginActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -133,7 +135,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String welcome = getString(R.string.welcome) + model.getDisplayName() + getString(R.string.exclaim);
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
