@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.ui.login.Login;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity
 
         setSupportActionBar(toolbar); // Theme.AppCompat.NoActionBar
 
+        // Quote Generator
+        randomQuote();
+
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.menu_open, R.string.menu_close);
         drawerLayout.addDrawerListener(toggle);
@@ -55,9 +59,6 @@ public class MainActivity extends AppCompatActivity
 
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
-
-        // Quote Generator
-        randomQuote();
     }
 
     @Override
@@ -112,6 +113,13 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_logout:
+                /* View view = (View) menuItem;
+                logout(view);
+                TODO: menuItem cannot downcast to view without crashing */
+                Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;
@@ -148,5 +156,17 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+    }
+    
+    protected void logout(View view) {
+        Snackbar.make(view, "Logout?", Snackbar.LENGTH_INDEFINITE)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
+                    }
+                }).setActionTextColor(getResources().getColor(R.color.home_action))
+                .setTextColor(getResources().getColor(R.color.home_snack))
+                .show();
     }
 }
