@@ -15,6 +15,9 @@
     <string name="nav_email">Email</string>
     <string name="nav_social">Social</string>
     <string name="nav_com">Communicate</string>
+    <string name="nav_school">School</string>
+    <string name="nav_homework">Homework</string>
+    <string name="nav_extracurriculars">Extracurriculars</string>
 
     <!-- Quotes -->
     <string name="quote">Inspire…</string>

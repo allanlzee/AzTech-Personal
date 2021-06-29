@@ -46,6 +46,23 @@
 
     </item>
 
+    <item android:title="@string/nav_school">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_homework"
+                    android:icon="@drawable/school"
+                    android:title="@string/nav_homework" />
+
+                <item
+                    android:id="@+id/nav_extracurriculars"
+                    android:icon="@drawable/extracurriculars"
+                    android:title="@string/nav_extracurriculars" />
+
+            </group>
+        </menu>
+
+    </item>
 
     <item android:title="@string/nav_com">
         <menu>
@@ -62,5 +79,6 @@
             </group>
         </menu>
     </item>
+
 
 </menu>

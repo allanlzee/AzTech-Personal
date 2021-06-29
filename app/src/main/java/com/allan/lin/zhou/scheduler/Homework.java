@@ -8,21 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.allan.lin.zhou.scheduler.databinding.MindfulnessActivityBinding;
+import com.allan.lin.zhou.scheduler.databinding.HomeworkActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-public class Mindfulness extends AppCompatActivity {
+public class Homework extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private MindfulnessActivityBinding binding;
     private AppBarConfiguration appBarConfiguration;
+    private HomeworkActivityBinding binding;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mindfulness_activity);
+        setContentView(R.layout.homework_activity);
 
-        binding = MindfulnessActivityBinding.inflate(getLayoutInflater());
+        binding = HomeworkActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         toolbar = findViewById(R.id.toolbar);
@@ -36,7 +36,7 @@ public class Mindfulness extends AppCompatActivity {
                         .setAction("Go", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(Mindfulness.this, MainActivity.class);
+                                Intent intent = new Intent(Homework.this, MainActivity.class);
                                 startActivity(intent);
                             }
                         }).setActionTextColor(getResources().getColor(R.color.home_action))

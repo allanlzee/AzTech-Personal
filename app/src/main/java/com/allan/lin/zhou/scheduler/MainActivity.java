@@ -120,6 +120,18 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_homework:
+                intent = new Intent(MainActivity.this, Homework.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Homework", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.nav_extracurriculars:
+                intent = new Intent(MainActivity.this, Extracurriculars.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Extracurriculars", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;
