@@ -10,6 +10,14 @@
     <color name="blue">#81d8d0</color>
     <color name="blue_200">#7fe5f0</color>
 
+    <!-- Card Views -->
+    <color name="card1">#ff0000</color>
+    <color name="card2">#ffa500</color>
+    <color name="card3">#00ff00</color>
+    <color name="card4">#7fe5f0</color>
+    <color name="card5">#0000ff</color>
+    <color name="card6">#8a2be2</color>
+
     <!-- Main Activity -->
     <color name="button">#ffa500</color>
 

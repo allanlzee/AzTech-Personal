@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -27,9 +28,12 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar;
 
-    int prevQuote;
-    Button inspire;
-    TextView quote;
+    CardView schedule;
+    CardView reminders;
+    CardView mindfulness;
+    CardView homework;
+    CardView extracurriculars;
+    CardView inspire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +48,7 @@ public class MainActivity extends AppCompatActivity
         navigationView = findViewById(R.id.navigation_view);
         toolbar =  findViewById(R.id.toolbar);
 
-        inspire = findViewById(R.id.quoteGenerator);
-        quote = findViewById(R.id.quote);
-
         setSupportActionBar(toolbar); // Theme.AppCompat.NoActionBar
-
-        // Quote Generator
-        randomQuote();
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.menu_open, R.string.menu_close);
@@ -59,6 +57,63 @@ public class MainActivity extends AppCompatActivity
 
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
+
+        // CardViews
+        schedule = findViewById(R.id.schedule_card);
+        reminders = findViewById(R.id.reminders_card);
+        mindfulness = findViewById(R.id.mindfulness_card);
+        homework = findViewById(R.id.homework_card);
+        extracurriculars = findViewById(R.id.extracurriculars_card);
+        inspire = findViewById(R.id.inspire_card);
+
+        // Bring to Activity
+        schedule.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Schedule.class));
+            }
+        });
+
+        reminders.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Reminders.class));
+            }
+        });
+
+        mindfulness.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Mindfulness.class));
+            }
+        });
+
+        homework.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Homework.class));
+            }
+        });
+
+        extracurriculars.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Extracurriculars.class));
+            }
+        });
+
+        inspire.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Inspire.class));
+            }
+        });
     }
 
     @Override
@@ -132,42 +187,18 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Extracurriculars", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_inspire:
+                intent = new Intent(MainActivity.this, Inspire.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Inspire", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;
         }
 
         return true;
-    }
-
-    // Quote Changing
-    private void randomQuote() {
-        final String[] quotes = {"Once you choose hope, anything is possible.",
-                "Failure is not the opposite of success. It is part of it.",
-                "Fall down 7 times, get up 8.",
-                "Wherever you go, go with all your heart.",
-                "It is during our darkest moments that we must focus on the light.",
-                "Be stronger than your excuses.",
-                "You get in life what you have the courage to ask for.",
-                "Who you are is defined by what you're willing to struggle for.",
-                "Don't just sit there. Do something. The answers will follow.",
-                "The more something threatens your identity, the more you will avoid it."
-        };
-
-        inspire.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                int random = (int) (Math.random() * quotes.length);
-                if (random == prevQuote) {
-                    while (random == prevQuote) {
-                        random = (int) (Math.random() * quotes.length);
-                    }
-                    quote.setText(quotes[random]);
-                    prevQuote = random;
-                }
-            }
-        });
     }
     
     protected void logout(View view) {

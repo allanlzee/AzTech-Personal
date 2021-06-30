@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler">
-        <activity android:name=".Extracurriculars"></activity>
+        <activity android:name=".Inspire"></activity>
+        <activity android:name=".Extracurriculars" />
         <activity android:name=".Homework" />
         <activity
             android:name=".ui.login.Login"
