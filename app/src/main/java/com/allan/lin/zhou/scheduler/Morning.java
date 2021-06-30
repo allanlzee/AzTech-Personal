@@ -36,6 +36,14 @@ public class Morning extends Fragment {
                         .navigate(R.id.morning_to_afternoon);
             }
         });
+
+        binding.eveningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(Morning.this)
+                        .navigate(R.id.morning_to_evening);
+            }
+        });
     }
 
     @Override

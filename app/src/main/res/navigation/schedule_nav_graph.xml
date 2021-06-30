@@ -38,13 +38,13 @@
     <fragment
         android:id="@+id/Evening"
         android:name="com.allan.lin.zhou.scheduler.Evening"
-        android:label="evening"
+        android:label="Evening"
         tools:layout="@layout/evening" >
         <action
             android:id="@+id/evening_to_afternoon"
             app:destination="@id/Afternoon" />
         <action
-            android:id="@+id/action_evening_to_morning"
+            android:id="@+id/evening_to_morning"
             app:destination="@id/Morning" />
     </fragment>
 
