@@ -26,6 +26,7 @@
 
     <!-- Floating Button -->
     <color name="home_fab">#ffa500</color>
+    <color name="schedule_fab">#4ca3dd</color>
 
     <!-- Snack Bars -->
     <color name="home_action">#00ff00</color>

@@ -20,7 +20,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_schedule" />
+    <include
+        android:id="@+id/schedule_layout"
+        layout="@layout/content_schedule" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/home"

@@ -15,7 +15,7 @@
         android:text="@string/afternoon"
         android:textSize="30sp" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/buttonMorning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +33,29 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/blue"
-        android:text="@string/evening" />
+        android:text="@string/evening" /> -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/morning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/schedule_fab"
+        android:contentDescription="@string/fab"
+        android:src="@drawable/back" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/evening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/morning"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/schedule_fab"
+        android:contentDescription="@string/fab"
+        android:src="@drawable/next"
+        />
 
 </RelativeLayout>
