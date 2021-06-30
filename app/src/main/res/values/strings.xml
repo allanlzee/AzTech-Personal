@@ -18,6 +18,9 @@
     <string name="nav_school">School</string>
     <string name="nav_homework">Homework</string>
     <string name="nav_extracurriculars">Extracurriculars</string>
+    <string name="morning">Morning</string>
+    <string name="afternoon">Afternoon</string>
+    <string name="evening">Evening</string>
 
     <!-- Quotes -->
     <string name="quote">Inspire…</string>
@@ -31,8 +34,9 @@
     <string name="menu_close">Closed Drawer</string>
     <string name="title_activity_schedule">Schedule</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="schedule_first">First Schedule</string>
-    <string name="schedule_second">Second Schedule</string>
+    <string name="schedule_first">Morning</string>
+    <string name="schedule_second">Afternoon</string>
+    <string name="schedule_third">Evening</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -73,5 +77,7 @@
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

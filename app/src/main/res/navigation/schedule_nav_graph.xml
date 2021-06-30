@@ -3,26 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/Schedule_First">
+    app:startDestination="@id/Morning">
 
     <fragment
-        android:id="@+id/Schedule_First"
-        android:name="com.allan.lin.zhou.scheduler.Schedule_First"
+        android:id="@+id/Morning"
+        android:name="com.allan.lin.zhou.scheduler.Morning"
         android:label="@string/schedule_first"
-        tools:layout="@layout/schedule_first">
+        tools:layout="@layout/morning">
 
         <action
-            android:id="@+id/schedule_first_to_schedule_second"
-            app:destination="@id/Schedule_Second" />
+            android:id="@+id/morning_to_afternoon"
+            app:destination="@id/Afternoon" />
+
+        <action
+            android:id="@+id/morning_to_evening"
+            app:destination="@id/Evening" />
+
     </fragment>
     <fragment
-        android:id="@+id/Schedule_Second"
-        android:name="com.allan.lin.zhou.scheduler.Schedule_Second"
+        android:id="@+id/Afternoon"
+        android:name="com.allan.lin.zhou.scheduler.Afternoon"
         android:label="@string/schedule_second"
-        tools:layout="@layout/schedule_second">
+        tools:layout="@layout/afternoon">
 
         <action
-            android:id="@+id/schedule_second_to_schedule_first"
-            app:destination="@id/Schedule_First" />
+            android:id="@+id/afternoon_to_morning"
+            app:destination="@id/Morning" />
+        <action
+            android:id="@+id/afternoon_to_evening"
+            app:destination="@id/Evening" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/Evening"
+        android:name="com.allan.lin.zhou.scheduler.Evening"
+        android:label="evening"
+        tools:layout="@layout/evening" >
+        <action
+            android:id="@+id/evening_to_afternoon"
+            app:destination="@id/Afternoon" />
+        <action
+            android:id="@+id/action_evening_to_morning"
+            app:destination="@id/Morning" />
+    </fragment>
+
 </navigation>

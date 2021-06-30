@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.allan.lin.zhou.scheduler.databinding.ScheduleFirstBinding;
+import com.allan.lin.zhou.scheduler.databinding.MorningBinding;
 
-public class Schedule_First extends Fragment {
+public class Morning extends Fragment {
 
-    private ScheduleFirstBinding binding;
+    private MorningBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class Schedule_First extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = ScheduleFirstBinding.inflate(inflater, container, false);
+        binding = MorningBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,11 +29,11 @@ public class Schedule_First extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonNext.setOnClickListener(new View.OnClickListener() {
+        binding.afternoonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(Schedule_First.this)
-                        .navigate(R.id.schedule_first_to_schedule_second);
+                NavHostFragment.findNavController(Morning.this)
+                        .navigate(R.id.morning_to_afternoon);
             }
         });
     }
