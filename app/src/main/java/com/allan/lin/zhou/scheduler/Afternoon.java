@@ -1,5 +1,7 @@
 package com.allan.lin.zhou.scheduler;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +62,16 @@ public class Afternoon extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(Afternoon.this)
                         .navigate(R.id.afternoon_to_evening);
+            }
+        });
+
+        binding.calendar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Calendar.class);
+                startActivity(intent);
+                ((Activity) getActivity()).overridePendingTransition(0,0);
             }
         });
     }

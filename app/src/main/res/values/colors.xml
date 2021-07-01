@@ -32,4 +32,8 @@
     <color name="home_action">#00ff00</color>
     <color name="home_snack">#7fe5f0</color>
 
+    <!-- Calendar -->
+    <color name="calendar_gray">#888</color>
+    <color name="calendar_blue">#0000FF</color>
+
 </resources>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Morning">
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/morningText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:text="@string/morning"
         android:textSize="30sp" />
 
-    <!-- <Button
+    <Button
         android:id="@+id/afternoonButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,10 +52,23 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/evening"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/schedule_fab"
         android:contentDescription="@string/fab"
         android:src="@drawable/next"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/afternoon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/schedule_fab"
+        android:contentDescription="@string/fab"
+        android:src="@drawable/edit_calendar"
         />
 
 </RelativeLayout>
