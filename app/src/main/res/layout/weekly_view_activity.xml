@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".WeeklyView">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,44 +17,43 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/previousWeek"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
             android:backgroundTint="@color/schedule_fab"
             android:contentDescription="@string/fab"
-            android:layout_marginStart="20dp"
             android:onClick="previousWeekAction"
             android:src="@drawable/before_small" />
 
         <!-- TODO: set change text function -->
         <TextView
             android:id="@+id/calendarDate"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_weight="2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:background="@null"
             android:fontFamily="@font/merienda_one"
-            android:layout_marginStart="40dp"
             android:text="@string/calendar"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <!-- TODO: set onClickListener() -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/nextWeek"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/schedule_fab"
             android:contentDescription="@string/fab"
             android:onClick="nextWeekAction"
             android:src="@drawable/next" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/calendar"
@@ -134,8 +133,8 @@
         android:id="@+id/weeklyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="12dp" />
+        android:layout_margin="12dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/addEvent"
