@@ -70,6 +70,13 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
             }
         }
 
+        // Month starts on Sunday
+        if (daysInMonthArray.get(6) == "") {
+            for (int i = 0; i < 7; i++) {
+                daysInMonthArray.remove(i);
+            }
+        }
+
         return daysInMonthArray;
     }
 
@@ -83,7 +90,7 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
     @Override
     public void onItemClick(int position, String dayText) {
         if(!dayText.equals("")) {
-            String msg = "Selected Date " + dayText + " " + dateConversion(selected);
+            String msg = dayText + " " + dateConversion(selected);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         }
     }
