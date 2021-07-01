@@ -80,6 +80,8 @@
 
     <!-- Calendar -->
     <string name="calendar">Calendar</string>
+    <string name="weekly">Weekly</string>
+    <string name="add_event">Add Event</string>
 
 
 </resources>

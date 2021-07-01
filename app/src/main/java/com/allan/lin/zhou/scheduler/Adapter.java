@@ -1,23 +1,27 @@
 package com.allan.lin.zhou.scheduler;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private final ArrayList<String> daysOfMonth;
+    private final ArrayList<LocalDate> daysOfWeek;
     private final OnItemListener onItemListener;
 
-    public Adapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener) {
-        this.daysOfMonth = daysOfMonth;
+    public Adapter(ArrayList<LocalDate> days, OnItemListener onItemListener) {
+        this.daysOfWeek = days;
         this.onItemListener = onItemListener;
     }
 
@@ -27,22 +31,40 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
+
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = (int) (parent.getHeight() * 0.166666666);
-        return new ViewHolder(view, onItemListener);
+        if (daysOfWeek.size() > 15) {
+            // Monthly View
+            layoutParams.height = (int) (parent.getHeight() * 0.166666666);
+        } else {
+            layoutParams.height = (int) parent.getHeight();
+        }
+
+        return new ViewHolder(view, onItemListener, daysOfWeek);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
-        holder.dayOfMonth.setText(daysOfMonth.get(position));
+        final LocalDate date = daysOfWeek.get(position);
+
+        if (date == null) {
+            holder.dayOfMonth.setText("");
+        } else {
+            holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+
+            if (date.equals(CalendarUtilities.selected)) {
+                holder.parentView.setBackgroundColor(Color.GREEN);
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
-        return daysOfMonth.size();
+        return daysOfWeek.size();
     }
 
     public interface OnItemListener {
-        void onItemClick(int position, String dayText);
+        void onItemClick(int position, String dayText, LocalDate date);
     }
 }

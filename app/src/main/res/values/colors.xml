@@ -35,5 +35,6 @@
     <!-- Calendar -->
     <color name="calendar_gray">#888</color>
     <color name="calendar_blue">#0000FF</color>
+    <color name="weekly">#ff6666</color>
 
 </resources>

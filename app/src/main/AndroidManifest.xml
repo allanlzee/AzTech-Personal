@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler">
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".EventEdit"></activity>
+        <activity android:name=".WeeklyView" />
+        <activity android:name=".Calendar" />
         <activity android:name=".Inspire" />
         <activity android:name=".Extracurriculars" />
         <activity android:name=".Homework" />

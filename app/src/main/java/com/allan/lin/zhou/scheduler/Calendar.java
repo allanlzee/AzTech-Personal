@@ -5,23 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.databinding.CalendarActivityBinding;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Calendar extends AppCompatActivity implements Adapter.OnItemListener{
+import static com.allan.lin.zhou.scheduler.CalendarUtilities.dateConversion;
+import static com.allan.lin.zhou.scheduler.CalendarUtilities.daysInMonthArray;
+
+public class Calendar extends AppCompatActivity implements Adapter.OnItemListener {
 
     // Calendar
     private TextView monthYear;
     private RecyclerView calendarView;
-    private LocalDate selected;
+    // private LocalDate selected;
+
+    private CalendarActivityBinding binding;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -29,20 +38,40 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
 
+        binding = CalendarActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         initWidgets();
-        selected = LocalDate.now();
+        CalendarUtilities.selected = LocalDate.now();
         setMonthView();
+
+        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Go", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Calendar.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }).setActionTextColor(getResources().getColor(R.color.home_action))
+                        .setTextColor(getResources().getColor(R.color.home_snack))
+                        .show();
+            }
+        });
     }
 
     private void initWidgets() {
-        calendarView = findViewById(R.id.calendarRecyclerView); 
+        calendarView = findViewById(R.id.calendarRecyclerView);
         monthYear = findViewById(R.id.calendarDate);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setMonthView() {
-        monthYear.setText(dateConversion(selected));
-        ArrayList<String> daysInMonth = daysInMonthArray(selected);
+        monthYear.setText(dateConversion(CalendarUtilities.selected));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtilities.selected);
 
         Adapter adapter = new Adapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
@@ -51,59 +80,28 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<String> daysInMonthArray(LocalDate date) {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-
-        int monthLength = yearMonth.lengthOfMonth();
-
-        LocalDate firstDay = selected.withDayOfMonth(1);
-        int dayOfWeek = firstDay.getDayOfWeek().getValue();
-
-        for (int i = 1; i <= 42; i++) {
-            if (i <= dayOfWeek || i > monthLength + dayOfWeek) {
-                daysInMonthArray.add("");
-            }
-
-            else {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-            }
-        }
-
-        // Month starts on Sunday
-        if (daysInMonthArray.get(6) == "") {
-            while (daysInMonthArray.get(0) == "") {
-                daysInMonthArray.remove(0);
-            }
-        }
-
-        return daysInMonthArray;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private String dateConversion(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onItemClick(int position, String dayText) {
+    public void onItemClick(int position, String dayText, LocalDate date) {
         if(!dayText.equals("")) {
-            String msg = dayText + " " + dateConversion(selected);
+            String msg = dayText + " " + dateConversion(CalendarUtilities.selected);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view) {
-        selected = selected.minusMonths(1);
+        CalendarUtilities.selected = CalendarUtilities.selected.minusMonths(1);
         setMonthView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction(View view) {
-        selected = selected.plusMonths(1);
+        CalendarUtilities.selected = CalendarUtilities.selected.plusMonths(1);
         setMonthView();
+    }
+
+    // Weekly Views
+    public void weeklyAction(View view) {
+        startActivity(new Intent(this, WeeklyView.class));
     }
 }

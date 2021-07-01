@@ -31,7 +31,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@color/home_fab"
         android:contentDescription="@string/fab"
         android:src="@drawable/home" />
