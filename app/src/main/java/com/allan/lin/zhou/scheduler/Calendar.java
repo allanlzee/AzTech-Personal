@@ -72,8 +72,8 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
 
         // Month starts on Sunday
         if (daysInMonthArray.get(6) == "") {
-            for (int i = 0; i < 7; i++) {
-                daysInMonthArray.remove(i);
+            while (daysInMonthArray.get(0) == "") {
+                daysInMonthArray.remove(0);
             }
         }
 
