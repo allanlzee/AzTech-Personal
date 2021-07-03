@@ -82,12 +82,11 @@ public class EventEdit extends AppCompatActivity {
     public void saveEvent(View view) {
         String name = nameInput.getText().toString();
         Event newEvent = new Event(name, CalendarUtilities.selected, time);
-        if (name != null) {
+        if (!name.equals("")) {
             Event.events.add(newEvent);
+            finish();
         } else {
             Toast.makeText(this, "Enter an Event Name", Toast.LENGTH_LONG).show();
         }
-
-        finish();
     }
 }
