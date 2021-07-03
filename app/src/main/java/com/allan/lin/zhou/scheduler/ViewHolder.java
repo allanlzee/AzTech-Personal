@@ -18,7 +18,8 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public final TextView dayOfMonth;
     private final Adapter.OnItemListener onItemListener;
 
-    public ViewHolder(@NonNull @NotNull View itemView, Adapter.OnItemListener onItemListener, ArrayList<LocalDate> daysInWeek) {
+    public ViewHolder(@NonNull @NotNull View itemView,
+                      Adapter.OnItemListener onItemListener, ArrayList<LocalDate> daysInWeek) {
         super(itemView);
         dayOfMonth = itemView.findViewById(R.id.day);
         parentView = itemView.findViewById(R.id.parentView);
@@ -29,6 +30,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        onItemListener.onItemClick(getAdapterPosition(), (String) dayOfMonth.getText(), daysInWeek.get(getAdapterPosition()));
+        onItemListener.onItemClick(getAdapterPosition(),
+                (String) dayOfMonth.getText(), daysInWeek.get(getAdapterPosition()));
     }
 }

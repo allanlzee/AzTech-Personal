@@ -28,7 +28,6 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
     // Calendar
     private TextView monthYear;
     private RecyclerView calendarView;
-    // private LocalDate selected;
 
     private CalendarActivityBinding binding;
 
@@ -82,9 +81,11 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onItemClick(int position, String dayText, LocalDate date) {
-        if(!dayText.equals("")) {
+        if(date != null) {
+            CalendarUtilities.selected = date;
             String msg = dayText + " " + dateConversion(CalendarUtilities.selected);
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+            setMonthView();
         }
     }
 

@@ -26,7 +26,6 @@
             android:onClick="previousWeekAction"
             android:src="@drawable/before_small" />
 
-        <!-- TODO: set change text function -->
         <TextView
             android:id="@+id/calendarDate"
             android:layout_width="wrap_content"
@@ -41,7 +40,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- TODO: set onClickListener() -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/nextWeek"
             android:layout_width="wrap_content"
@@ -133,7 +131,9 @@
         android:id="@+id/weeklyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:layout_weight="1" />
 
     <Button
@@ -141,24 +141,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/weekly"
         android:onClick="newEventAction"
+        android:layout_marginTop="6dp"
         android:padding="12dp"
         android:text="@string/add_event"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        />
 
     <ListView
         android:id="@+id/eventListView"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_below="@id/addEvent"
-
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:textAlignment="center"
         />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -166,7 +167,6 @@
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/home_fab"
         android:contentDescription="@string/fab"
-        app:srcCompat="@drawable/home" />
-
+        app:srcCompat="@drawable/home" /> -->
 
 </LinearLayout>
