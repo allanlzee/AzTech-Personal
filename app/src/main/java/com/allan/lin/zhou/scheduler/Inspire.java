@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.allan.lin.zhou.scheduler.databinding.InspireActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
+
 public class Inspire extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -38,16 +40,7 @@ public class Inspire extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Go", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Inspire.this, MainActivity.class);
-                                startActivity(intent);
-                            }
-                        }).setActionTextColor(getResources().getColor(R.color.home_action))
-                        .setTextColor(getResources().getColor(R.color.home_snack))
-                        .show();
+                backToHome(view, Inspire.this);
             }
         });
 

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import static com.allan.lin.zhou.scheduler.CalendarUtilities.dateConversion;
 import static com.allan.lin.zhou.scheduler.CalendarUtilities.daysInMonthArray;
+import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
 public class Calendar extends AppCompatActivity implements Adapter.OnItemListener {
 
@@ -46,16 +47,7 @@ public class Calendar extends AppCompatActivity implements Adapter.OnItemListene
 
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Go", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Calendar.this, MainActivity.class);
-                                startActivity(intent);
-                            }
-                        }).setActionTextColor(getResources().getColor(R.color.home_action))
-                        .setTextColor(getResources().getColor(R.color.home_snack))
-                        .show();
+                backToHome(view, Calendar.this);
             }
         });
     }

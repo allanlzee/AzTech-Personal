@@ -30,23 +30,6 @@ public class Afternoon extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /* binding.buttonMorning.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(Afternoon.this)
-                        .navigate(R.id.afternoon_to_morning);
-            }
-        });
-
-        binding.buttonEvening.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(Afternoon.this)
-                        .navigate(R.id.afternoon_to_evening);
-            }
-        }); */
-
         binding.morning.setOnClickListener(new View.OnClickListener() {
 
             @Override

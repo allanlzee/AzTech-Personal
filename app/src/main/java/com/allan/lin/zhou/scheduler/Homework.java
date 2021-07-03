@@ -11,6 +11,8 @@ import android.view.View;
 import com.allan.lin.zhou.scheduler.databinding.HomeworkActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
+
 public class Homework extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -32,16 +34,7 @@ public class Homework extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Go", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(Homework.this, MainActivity.class);
-                                startActivity(intent);
-                            }
-                        }).setActionTextColor(getResources().getColor(R.color.home_action))
-                        .setTextColor(getResources().getColor(R.color.home_snack))
-                        .show();
+                backToHome(view, Homework.this);
             }
         });
     }

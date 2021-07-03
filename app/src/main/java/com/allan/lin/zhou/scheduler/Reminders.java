@@ -11,6 +11,8 @@ import android.view.View;
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
+
 public class Reminders extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -29,19 +31,9 @@ public class Reminders extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
-
-        @Override
-        public void onClick(View view) {
-            Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
-                .setAction("Go", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Reminders.this, MainActivity.class);
-                    startActivity(intent);
-                }
-            }).setActionTextColor(getResources().getColor(R.color.home_action))
-              .setTextColor(getResources().getColor(R.color.home_snack))
-              .show();
+            @Override
+            public void onClick(View view) {
+                backToHome(view, Reminders.this);
             }
         });
     }
