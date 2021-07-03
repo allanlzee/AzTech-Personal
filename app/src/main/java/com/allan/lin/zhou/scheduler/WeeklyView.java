@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.allan.lin.zhou.scheduler.databinding.WeeklyViewActivityBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,13 +32,29 @@ public class WeeklyView extends AppCompatActivity implements Adapter.OnItemListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.weekly_view_activity);
 
         binding = WeeklyViewActivityBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.weekly_view_activity);
 
         initWidgets();
         setWeekView();
+
+        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Go", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(WeeklyView.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }).setActionTextColor(getResources().getColor(R.color.home_action))
+                        .setTextColor(getResources().getColor(R.color.home_snack))
+                        .show();
+            }
+        });
     }
 
     private void initWidgets() {

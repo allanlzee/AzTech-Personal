@@ -13,15 +13,15 @@ public class Event {
     public static ArrayList<Event> events = new ArrayList<>();
 
     public static ArrayList<Event> eventsToday(LocalDate date) {
-        ArrayList<Event> events = new ArrayList<>();
+        ArrayList<Event> eventsNow = new ArrayList<>();
 
         for (Event event : events) {
             if (event.getEventDate().equals(date)) {
-                events.add(event);
+                eventsNow.add(event);
             }
         }
 
-        return events;
+        return eventsNow;
     }
 
     public Event(String name, LocalDate date, LocalTime time) {

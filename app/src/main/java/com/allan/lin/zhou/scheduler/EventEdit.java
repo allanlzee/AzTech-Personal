@@ -2,6 +2,7 @@ package com.allan.lin.zhou.scheduler;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.databinding.EventEditActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -23,6 +25,8 @@ public class EventEdit extends AppCompatActivity {
 
     private LocalTime time;
 
+    private Toolbar toolbar;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,9 @@ public class EventEdit extends AppCompatActivity {
 
         binding = EventEditActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         initWidgets();
 
@@ -56,6 +63,14 @@ public class EventEdit extends AppCompatActivity {
                         .show();
             }
         });
+
+        binding.saveButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                saveEvent(view);
+            }
+        });
     }
 
     private void initWidgets() {
@@ -67,7 +82,12 @@ public class EventEdit extends AppCompatActivity {
     public void saveEvent(View view) {
         String name = nameInput.getText().toString();
         Event newEvent = new Event(name, CalendarUtilities.selected, time);
-        Event.events.add(newEvent);
+        if (name != null) {
+            Event.events.add(newEvent);
+        } else {
+            Toast.makeText(this, "Enter an Event Name", Toast.LENGTH_LONG).show();
+        }
+
         finish();
     }
 }

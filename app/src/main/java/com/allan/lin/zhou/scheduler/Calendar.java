@@ -16,8 +16,6 @@ import com.allan.lin.zhou.scheduler.databinding.CalendarActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.allan.lin.zhou.scheduler.CalendarUtilities.dateConversion;
