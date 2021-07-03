@@ -86,7 +86,7 @@ public class EventEdit extends AppCompatActivity {
             Event.events.add(newEvent);
             finish();
         } else {
-            Toast.makeText(this, "Enter an Event Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Enter Event Name", Toast.LENGTH_LONG).show();
         }
     }
 }
