@@ -41,7 +41,7 @@ public class NotificationHelper extends ContextWrapper {
     // TODO: add parameter String name for the reminder name
     public NotificationCompat.Builder getChannelNotification() {
         return new NotificationCompat.Builder(getApplicationContext(), channelId)
-                .setContentTitle("Reminder!")
+                .setContentTitle("AzTech Scheduler Reminder")
                 .setContentText("Reminder: ~~~~")
                 .setSmallIcon(R.drawable.notification);
     }
