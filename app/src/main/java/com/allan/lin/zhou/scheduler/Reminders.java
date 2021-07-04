@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
-import com.google.android.material.snackbar.Snackbar;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
@@ -22,7 +21,6 @@ public class Reminders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reminders_activity);
 
         binding = RemindersActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -30,10 +28,18 @@ public class Reminders extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backToHome(view, Reminders.this);
+            }
+        });
+
+        binding.addEvent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Reminders.this, ReminderEdit.class));
             }
         });
     }
