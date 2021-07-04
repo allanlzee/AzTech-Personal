@@ -19,7 +19,7 @@ public class TimePicker extends DialogFragment {
         int minute = calendar.get(Calendar.MINUTE);
 
         return new TimePickerDialog(getActivity(),
-                (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, android.text.format.DateFormat.is24HourFormat(getActivity()));
+                (TimePickerDialog.OnTimeSetListener) getActivity(), hour, minute, false);
     }
 
 }

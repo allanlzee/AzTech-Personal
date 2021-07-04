@@ -31,6 +31,7 @@
         android:layout_margin="50dp"
         android:fontFamily="@font/merienda_one"
         android:text="Current Time: N/A"
+        android:textAlignment="center"
         android:textSize="25sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
