@@ -11,6 +11,8 @@ import java.util.Calendar;
 
 public class TimePicker extends DialogFragment {
 
+    private int currentHours, currentMinutes;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
