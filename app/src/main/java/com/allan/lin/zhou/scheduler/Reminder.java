@@ -12,12 +12,15 @@ public class Reminder {
 
     public static ArrayList<Reminder> allReminders = new ArrayList<>();
 
-    public static ArrayList<Reminder> remindersToday(Calendar calendar) {
+    public static ArrayList<Reminder> remindersToday(LocalDate date) {
         ArrayList<Reminder> reminders = new ArrayList<>();
 
         for (Reminder r : allReminders) {
-            // if (r.getReminderDate().equals(date))
+            if (r.getReminderDate().equals(date)) {
+                reminders.add(r);
+            }
         }
+
         return reminders;
     }
 

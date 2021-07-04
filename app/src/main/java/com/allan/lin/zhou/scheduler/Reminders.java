@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
 
@@ -17,6 +18,8 @@ public class Reminders extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private RemindersActivityBinding binding;
     private Toolbar toolbar;
+
+    private ListView reminderList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,11 @@ public class Reminders extends AppCompatActivity {
                 startActivity(new Intent(Reminders.this, ReminderEdit.class));
             }
         });
+
+        initWidgets();
+    }
+
+    private void initWidgets() {
+        reminderList = findViewById(R.id.todoList);
     }
 }
