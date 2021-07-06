@@ -13,7 +13,7 @@ public class Navigation {
     // Brings user back to main activity
     // Used for action on floating buttons
     public static void backToHome(View view, Activity activity) {
-        Snackbar.make(view, "Back to Home", Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(view, "Back to Home", Snackbar.LENGTH_SHORT)
                 .setAction("Go", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
