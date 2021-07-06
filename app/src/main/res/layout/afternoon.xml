@@ -50,26 +50,24 @@
         android:id="@+id/evening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/morning"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="30dp"
+        android:layout_toEndOf="@+id/morning"
         android:backgroundTint="@color/schedule_fab"
         android:contentDescription="@string/fab"
-        android:src="@drawable/next"
-        />
+        android:src="@drawable/next" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/evening"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
+        android:layout_toEndOf="@+id/evening"
         android:backgroundTint="@color/schedule_fab"
         android:contentDescription="@string/fab"
-        android:src="@drawable/edit_calendar"
-        />
+        android:src="@drawable/edit_calendar" />
 
 
 </RelativeLayout>

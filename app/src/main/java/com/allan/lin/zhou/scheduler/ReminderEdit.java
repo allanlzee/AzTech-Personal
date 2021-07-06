@@ -37,6 +37,10 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     private TextView alarmTextView;
     private String alarmTime;
 
+    private Calendar calendar;
+
+    private Boolean onTimeClick = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         binding.editTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onTimeClick = true;
                 timePicker = new TimePicker();
                 timePicker.show(getSupportFragmentManager(), "Time Picker");
             }
@@ -86,7 +91,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         TextView text = findViewById(R.id.currentTime);
         text.setText("Hour: " + hourOfDay + " Minute: " + minute);
 
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
@@ -98,12 +103,17 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void saveReminder(View view) {
         String reminderName = binding.reminderName.getText().toString();
+
+        CalendarUtilities.notificationName = reminderName;
+
         Toast.makeText(this, reminderName, Toast.LENGTH_LONG).show();
 
         Reminder reminder = new Reminder(reminderName, alarmTime, LocalDate.now());
         if (!reminderName.equals("")) {
             Reminder.allReminders.add(reminder);
             finish();
+        } else if (!onTimeClick) {
+            Toast.makeText(this, "Enter Reminder Time", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Enter Reminder Name", Toast.LENGTH_LONG).show();
         }

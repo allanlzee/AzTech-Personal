@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     android:orientation="horizontal"
-    tools:context=".Calendar"
-    android:background="@color/blue">
+    tools:context=".Calendar">
 
     <LinearLayout
         android:id="@+id/header"
@@ -24,8 +24,8 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/schedule_fab"
             android:contentDescription="@string/fab"
-            android:src="@drawable/before_small"
-            android:onClick="previousMonthAction"/>
+            android:onClick="previousMonthAction"
+            android:src="@drawable/before_small" />
 
         <!-- TODO: set change text function -->
         <TextView
@@ -51,8 +51,8 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/schedule_fab"
             android:contentDescription="@string/fab"
-            android:src="@drawable/next"
-            android:onClick="nextMonthAction"/>
+            android:onClick="nextMonthAction"
+            android:src="@drawable/next" />
 
     </LinearLayout>
 
@@ -60,8 +60,8 @@
         android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal">
 
@@ -140,24 +140,24 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="@color/weekly"
+        android:onClick="weeklyAction"
         android:text="@string/weekly"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:onClick="weeklyAction"/>
+        android:textStyle="bold" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="@string/fab"
         android:backgroundTint="@color/home_fab"
+        android:contentDescription="@string/fab"
         app:srcCompat="@drawable/home" />
 
 </RelativeLayout>

@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
-        android:text="Select a Time"
+        android:text="@string/selectTime"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -30,7 +30,7 @@
         android:layout_below="@id/reminderTextview"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:text="Current Time: N/A"
+        android:text="@string/currentTime"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp" />
@@ -42,9 +42,9 @@
         android:layout_below="@id/currentTime"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="Alarm Time: "
-        android:textSize="20sp"
-        android:textColor="@color/white"/>
+        android:text="@string/alarmTime"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/alarmSet"
@@ -53,9 +53,8 @@
         android:layout_below="@id/alarmTime"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
-        android:text="No Alarm Set"
-        android:textSize="18sp"
-        />
+        android:text="@string/alarmSet"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/cancelAlarmButton"
@@ -66,7 +65,7 @@
         android:layout_marginBottom="50dp"
         android:background="@color/blue"
         android:padding="5dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textSize="12sp" />
 
     <TextView
@@ -76,7 +75,7 @@
         android:layout_below="@+id/cancelAlarmButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="Reminder Name"
+        android:text="@string/reminderName"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp" />
@@ -88,7 +87,7 @@
         android:layout_below="@+id/nameText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
-        android:hint="Enter Reminder"
+        android:hint="@string/enterReminder"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -101,7 +100,7 @@
         android:layout_below="@id/reminderName"
         android:layout_centerHorizontal="true"
         android:background="@color/blue"
-        android:text="Save"
+        android:text="@string/save"
         android:textSize="12sp" />
 
 

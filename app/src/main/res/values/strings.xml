@@ -82,8 +82,16 @@
     <string name="calendar">Calendar</string>
     <string name="weekly">Weekly</string>
     <string name="add_event">Add Event</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Notification Reminders -->
+    <string name="selectTime">Select a Time</string>
+    <string name="currentTime">Current Time: N/A</string>
+    <string name="alarmTime">Alarm Time: </string>
+    <string name="alarmSet">No Alarm Set</string>
+    <string name="cancel">Cancel</string>
+    <string name="reminderName">Reminder Name:</string>
+    <string name="enterReminder">Enter Reminder</string>
+    <string name="save">Save</string>
 
 
 </resources>

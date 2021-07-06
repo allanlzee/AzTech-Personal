@@ -12,7 +12,7 @@ public class AlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Shows Notification when Fired
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification();
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(CalendarUtilities.notificationName);
         notificationHelper.getManager().notify(1, notificationBuilder.build());
     }
 }

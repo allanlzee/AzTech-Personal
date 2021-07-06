@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class CalendarUtilities {
     public static LocalDate selected;
 
+    // Stores temporary values for notification names
+    // Allows for notification to have custom name
+    public static String notificationName;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String dateConversion(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");

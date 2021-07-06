@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inspire"
-    android:background="@drawable/main_wallpaper" >
+    android:background="@drawable/main_wallpaper"
+    tools:context=".Inspire">
 
     <include
         android:id="@+id/toolbar"
@@ -43,11 +43,11 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/fab_margin"
-            android:contentDescription="@string/fab"
             android:backgroundTint="@color/home_fab"
+            android:contentDescription="@string/fab"
             app:srcCompat="@drawable/home" />
 
     </RelativeLayout>

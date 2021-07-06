@@ -8,9 +8,9 @@
         android:id="@+id/reminderCellText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="Reminder"
-        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
