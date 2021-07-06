@@ -32,8 +32,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     private Toolbar toolbar;
     private ReminderEditActivityBinding binding;
 
-    private LocalTime time;
-    private int hourTime, minuteTime, secondTime;
     private DialogFragment timePicker;
 
     private TextView alarmTextView;
@@ -52,7 +50,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         alarmTextView = findViewById(R.id.alarmSet);
 
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 backToHome(view, ReminderEdit.this);
@@ -60,7 +57,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         });
 
         binding.editTime.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 timePicker = new TimePicker();
@@ -69,7 +65,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         });
 
         binding.cancelAlarmButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 cancelAlarm();
@@ -90,8 +85,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
         TextView text = findViewById(R.id.currentTime);
         text.setText("Hour: " + hourOfDay + " Minute: " + minute);
-        hourTime = hourOfDay;
-        minuteTime = minute;
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -106,9 +99,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     public void saveReminder(View view) {
         String reminderName = binding.reminderName.getText().toString();
         Toast.makeText(this, reminderName, Toast.LENGTH_LONG).show();
-        // TODO: finish functionality
-        // Display to the Reminders.java ListView
-        // Use custom Reminder object to use on ListView
 
         Reminder reminder = new Reminder(reminderName, alarmTime, LocalDate.now());
         if (!reminderName.equals("")) {
@@ -121,7 +111,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     private void updateTimeText(Calendar calendar) {
         // Update Textview for Alarm Notification
-        String timeText = "Alarm set for: ";
+        String timeText = "";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
 
         alarmTextView.setText(timeText);

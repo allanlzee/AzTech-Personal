@@ -20,8 +20,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="25dp"
         android:text="Select a Time"
-        android:textSize="20sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/currentTime"
@@ -32,35 +32,67 @@
         android:layout_marginBottom="50dp"
         android:text="Current Time: N/A"
         android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/alarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Alarm Time: "
         android:textSize="20sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/alarmSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alarmTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:text="No Alarm Set"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/cancelAlarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarmSet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@color/blue"
+        android:padding="5dp"
+        android:text="Cancel"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/cancelAlarmButton"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:text="Reminder Name"
-        android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/reminderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/nameText"
-        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
         android:hint="Enter Reminder"
-        android:textSize="20sp"
+        android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:inputType="text"
-        />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/saveReminder"
@@ -70,30 +102,8 @@
         android:layout_centerHorizontal="true"
         android:background="@color/blue"
         android:text="Save"
-        android:textSize="20sp"
-        android:padding="5dp"/>
+        android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/alarmSet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Alarm Set"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/currentTime"
-        android:layout_marginBottom="25dp"
-        android:textSize="20sp"/>
-
-    <Button
-        android:id="@+id/cancelAlarmButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/alarmSet"
-        android:layout_marginBottom="50dp"
-        android:background="@color/blue"
-        android:text="Cancel"
-        android:textSize="20sp"
-        android:padding="10dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"

@@ -37,6 +37,9 @@ public class Reminders extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initWidgets();
+        setReminderAdapter();
+
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,9 +54,6 @@ public class Reminders extends AppCompatActivity {
                 startActivity(new Intent(Reminders.this, ReminderEdit.class));
             }
         });
-
-        initWidgets();
-        setReminderAdapter();
     }
 
     private void initWidgets() {
@@ -65,7 +65,12 @@ public class Reminders extends AppCompatActivity {
         ArrayList<Reminder> daily = Reminder.remindersToday(LocalDate.now());
         ReminderAdapter reminderAdapter = new ReminderAdapter(getApplicationContext(), daily);
         reminderList.setAdapter(reminderAdapter);
+    }
 
-        // TODO: ListView does not appear on the layout
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setReminderAdapter();
     }
 }
