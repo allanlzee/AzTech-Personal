@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="25dp"
         android:text="Select a Time"
         android:textColor="@color/white"
@@ -55,7 +55,7 @@
         android:layout_marginBottom="25dp"
         android:text="No Alarm Set"
         android:textSize="18sp"
-        android:textColor="@color/white"/>
+        />
 
     <Button
         android:id="@+id/cancelAlarmButton"
@@ -67,7 +67,7 @@
         android:background="@color/blue"
         android:padding="5dp"
         android:text="Cancel"
-        android:textSize="15sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/nameText"
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cancelAlarmButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="20dp"
         android:text="Reminder Name"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -102,7 +102,7 @@
         android:layout_centerHorizontal="true"
         android:background="@color/blue"
         android:text="Save"
-        android:textSize="15sp" />
+        android:textSize="12sp" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

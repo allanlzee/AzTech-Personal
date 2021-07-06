@@ -111,10 +111,10 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     private void updateTimeText(Calendar calendar) {
         // Update Textview for Alarm Notification
-        String timeText = "";
-        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+        String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
 
         alarmTextView.setText(timeText);
+        alarmTextView.setTextColor(getResources().getColor(R.color.white));
         alarmTime = timeText;
     }
 
