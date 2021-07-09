@@ -104,13 +104,15 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     public void saveReminder(View view) {
         String reminderName = binding.reminderName.getText().toString();
 
-        CalendarUtilities.notificationName = reminderName;
+        // CalendarUtilities.notificationNames.add(reminderName);
+        CalendarUtilities.name = reminderName;
 
         Toast.makeText(this, reminderName, Toast.LENGTH_LONG).show();
 
         Reminder reminder = new Reminder(reminderName, alarmTime, LocalDate.now());
         if (!reminderName.equals("")) {
             Reminder.allReminders.add(reminder);
+            CalendarUtilities.notificationID++;
             finish();
         } else if (!onTimeClick) {
             Toast.makeText(this, "Enter Reminder Time", Toast.LENGTH_LONG).show();
@@ -148,5 +150,8 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
         alarmManager.cancel(pendingIntent);
         alarmTextView.setText("Alarm Canceled");
+
+        // Subtract 1 from Notification ID in CalendarUtilities
+        CalendarUtilities.notificationID--;
     }
 }

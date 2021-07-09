@@ -16,26 +16,33 @@ public class CalendarUtilities {
 
     // Stores temporary values for notification names
     // Allows for notification to have custom name
-    public static String notificationName;
+    public static ArrayList<String> notificationNames = new ArrayList<>();
+    public static String name;
 
+    public static int notificationID = 1;
+
+    // Converts date into String
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String dateConversion(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
         return date.format(formatter);
     }
 
+    // Converts time into String
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String timeConversion(LocalTime time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         return time.format(formatter);
     }
 
+    // Converts date into full date String
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String dateFormat(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         return date.format(formatter);
     }
 
+    // Sets up the calendar view
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date) {
 
@@ -81,6 +88,7 @@ public class CalendarUtilities {
         return days;
     }
 
+    // Move between consecutive weeks
     @RequiresApi(api = Build.VERSION_CODES.O)
     private static LocalDate sundayForDate(LocalDate currentDate) {
         LocalDate oneWeekBefore = currentDate.minusWeeks(1);

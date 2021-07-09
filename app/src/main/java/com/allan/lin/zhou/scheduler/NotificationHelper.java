@@ -11,8 +11,12 @@ import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
 
-    public static final String channelId = "Channel ID";
-    public static final String channelName = "Channel Name";
+    public static final String channelId = "Channel ID 1";
+    public static final String channelName = "Channel Name 1";
+    public static final String channelId2 = "Channel ID 2";
+    public static final String channelName2 = "Channel Name 2";
+    public static final String channelId3 = "Channel ID 3";
+    public static final String channelName3 = "Channel Name 3";
 
     private NotificationManager notificationManager;
 
@@ -25,9 +29,16 @@ public class NotificationHelper extends ContextWrapper {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannel() {
+        // 3 Notifications are able to be set off at the same time
         NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
-
         getManager().createNotificationChannel(channel);
+
+        /*
+        NotificationChannel channel2 = new NotificationChannel(channelId2, channelName2, NotificationManager.IMPORTANCE_HIGH);
+        getManager().createNotificationChannel(channel2);
+
+        NotificationChannel channel3 = new NotificationChannel(channelId3, channelName3, NotificationManager.IMPORTANCE_HIGH);
+        getManager().createNotificationChannel(channel3); */
     }
 
     public NotificationManager getManager() {
