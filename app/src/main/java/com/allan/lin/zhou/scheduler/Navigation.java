@@ -19,6 +19,7 @@ public class Navigation {
                     public void onClick(View v) {
                         Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
+                        activity.overridePendingTransition(R.anim.nav_default_pop_enter_anim, R.anim.nav_default_pop_exit_anim);
                     }
                 }).setActionTextColor(activity.getResources().getColor(R.color.home_action))
                 .setTextColor(activity.getResources().getColor(R.color.home_snack))
