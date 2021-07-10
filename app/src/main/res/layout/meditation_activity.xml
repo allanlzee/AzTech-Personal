@@ -4,12 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Meditation"
-    android:background="@drawable/meditation_wallpaper">
+    android:background="@drawable/meditation_wallpaper"
+    tools:context=".Meditation">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+
+    <ImageView
+        android:id="@+id/animationIcon"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="60dp"
+        android:src="@drawable/exhalation" />
+
+    <ImageView
+        android:id="@+id/breathIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="245dp"
+        android:layout_marginEnd="100dp"
+        android:src="@drawable/breathe" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/inhaleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/exhalation" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/exhaleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_toEndOf="@+id/inhaleButton"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/exhalation" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"
@@ -21,7 +61,6 @@
         android:backgroundTint="@color/home_fab"
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/home" />
-
 
 
 </RelativeLayout>

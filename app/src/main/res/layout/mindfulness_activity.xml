@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Mindfulness"
-    android:background="@drawable/mindfulness_wallpaper">
+    android:background="@drawable/mindfulness_wallpaper"
+    tools:context=".Mindfulness">
 
     <include
         android:id="@+id/toolbar"
@@ -17,30 +17,30 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp"
         android:text="@string/mind"
+        android:textColor="@color/white"
         android:textSize="30sp" />
 
     <Button
         android:id="@+id/vibrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/mindfulness"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Vibrate"
         android:backgroundTint="@color/blue"
-        />
+        android:text="Vibrate" />
 
     <Button
         android:id="@+id/startMeditation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/vibrate"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Meditation"
         android:backgroundTint="@color/blue"
-        />
+        android:text="Meditation" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
