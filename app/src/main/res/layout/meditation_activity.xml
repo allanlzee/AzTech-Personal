@@ -38,7 +38,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/add_event"
         android:contentDescription="@string/fab"
-        app:srcCompat="@drawable/exhalation" />
+        app:srcCompat="@drawable/breathe" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/exhaleButton"
@@ -52,6 +52,17 @@
         app:srcCompat="@drawable/exhalation" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/exhaleButton"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/reset" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +72,5 @@
         android:backgroundTint="@color/home_fab"
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/home" />
-
 
 </RelativeLayout>
