@@ -23,6 +23,7 @@ import com.allan.lin.zhou.scheduler.databinding.ReminderEditActivityBinding;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
@@ -50,6 +51,9 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        CalendarUtilities.notificationNames = new ArrayList<>();
+        CalendarUtilities.notificationID = 0;
 
         alarmTextView = findViewById(R.id.alarmSet);
 
@@ -104,7 +108,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     public void saveReminder(View view) {
         String reminderName = binding.reminderName.getText().toString();
 
-        // CalendarUtilities.notificationNames.add(reminderName);
+        CalendarUtilities.notificationNames.add(reminderName);
         CalendarUtilities.name = reminderName;
 
         Toast.makeText(this, reminderName, Toast.LENGTH_LONG).show();
@@ -133,7 +137,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
     private void startAlarm(Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, CalendarUtilities.notificationID + 1, intent, 0);
 
         if (calendar.before(Calendar.getInstance())) {
             calendar.add(Calendar.DATE, 1);
@@ -141,6 +145,19 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
         // Turn on device at specific calendar time and fire pending intent containing AlertReceiver
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+        /* AlarmManager [] alarmManagers = new AlarmManager[24];
+        ArrayList <PendingIntent> intents = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            Intent intent = new Intent(this, AlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, 0);
+
+            alarmManagers[i] = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManagers[i].set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+            intents.add(pendingIntent);
+        } */
     }
 
     private void cancelAlarm() {

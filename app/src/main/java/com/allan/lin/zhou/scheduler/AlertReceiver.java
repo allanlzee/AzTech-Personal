@@ -12,11 +12,15 @@ public class AlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Shows Notification when Fired
         NotificationHelper notificationHelper = new NotificationHelper(context);
-        // NotificationCompat.Builder notificationBuilder = notificationHelper.
-        //        getChannelNotification(CalendarUtilities.notificationNames.get(CalendarUtilities.notificationID - 1));
+        int index = CalendarUtilities.notificationID - 1;
+        String notificationName = CalendarUtilities.notificationNames.get(index);
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName);
 
-        NotificationCompat.Builder notificationBuilder = notificationHelper.
-                getChannelNotification(CalendarUtilities.name);
+        /* NotificationCompat.Builder notificationBuilder = notificationHelper.
+               getChannelNotification(CalendarUtilities.name); */
+
+        // TODO: figure out how to send multiple notifications simultaneously
+
         notificationHelper.getManager().notify(CalendarUtilities.notificationID, notificationBuilder.build());
     }
 }

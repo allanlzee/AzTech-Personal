@@ -16,10 +16,10 @@ public class CalendarUtilities {
 
     // Stores temporary values for notification names
     // Allows for notification to have custom name
-    public static ArrayList<String> notificationNames = new ArrayList<>();
+    public static ArrayList<String> notificationNames;
     public static String name;
 
-    public static int notificationID = 1;
+    public static int notificationID;
 
     // Converts date into String
     @RequiresApi(api = Build.VERSION_CODES.O)
