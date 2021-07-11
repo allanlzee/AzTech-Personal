@@ -12,16 +12,12 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.allan.lin.zhou.scheduler.databinding.MeditationActivityBinding;
-import com.allan.lin.zhou.scheduler.databinding.MindfulnessActivityBinding;
 
-import java.util.concurrent.TimeUnit;
+import android.os.Handler;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
-import static com.allan.lin.zhou.scheduler.Utilities.scheduler;
 
 public class Meditation extends AppCompatActivity {
 
@@ -31,6 +27,13 @@ public class Meditation extends AppCompatActivity {
 
     // Logger
     private static final String LOGGER = "MAIN";
+
+    // Periodic Handlers
+    Handler handlerInhale;
+    Handler handlerExhale;
+    Handler meditation;
+    Runnable runnable;
+    boolean isInhale = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +81,24 @@ public class Meditation extends AppCompatActivity {
             }
         });
 
-        binding.resetButton.setOnClickListener(new View.OnClickListener() {
+        binding.startButton.setOnClickListener(new View.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                meditation(); // TODO: meditation function is very buggy
-                // startThread(view);
+                /* meditationInhale();
+                meditationExhale(); */
+                meditation();
             }
         });
 
+        binding.stopButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                cancelHandler();
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -139,9 +150,49 @@ public class Meditation extends AppCompatActivity {
         vibrator.vibrate(VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void meditation() {
-        for (int i = 0; i < 10; i++) {
+        meditation = new Handler();
+
+        runnable = new Runnable() {
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                if (isInhale) {
+                    inhale();
+                    isInhale = false;
+                    Log.d("Handler", "Inhale");
+                } else {
+                    exhale();
+                    isInhale = true;
+                    Log.d("Handler", "Exhale");
+                }
+
+                meditation.postDelayed(this, 3000);
+            }
+        };
+
+        meditation.post(runnable);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void meditationInhale() {
+        handlerInhale = new Handler();
+
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+                inhale();
+                Log.d("Handler", "Periodic Inhale");
+
+                handlerInhale.postDelayed(this, 4000);
+            }
+        };
+
+        handlerInhale.post(runnable);
+
+        /* for (int i = 0; i < 10; i++) {
 
             try {
                 inhale();
@@ -156,74 +207,28 @@ public class Meditation extends AppCompatActivity {
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-        }
-
-        /* for (int n = 0; n < 10; n++) {
-            /* inhale();
-            exhale();
-
-            // scheduler(Meditation.this);
         } */
     }
 
-    /* public void startThread(View view) {
-        for (int i = 0; i < 10; i++) {
-            Log.d(LOGGER, "Start Thread: " + 1);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-               e.printStackTrace();
+    private void meditationExhale() {
+        handlerExhale = new Handler();
+
+        Runnable runnable = new Runnable() {
+
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                handlerExhale.postDelayed(this, 4000);
+
+                exhale();
+                Log.d("Handler", "Periodic Inhale");
             }
-        }
+        };
+
+        handlerExhale.post(runnable);
     }
 
-    public void stopThread(View view) {
-        /*MeditationThread thread = new MeditationThread(10);
-        thread.start();
-
-        MeditationRunnable runnable = new MeditationRunnable(10);
-        new Thread(runnable).start();
+    private void cancelHandler() {
+        meditation.removeCallbacks(runnable);
     }
-
-    class MeditationThread extends Thread {
-
-        int length;
-
-        MeditationThread(int length) {
-            this.length = length;
-        }
-
-        @Override
-        public void run() {
-            for (int i = 0; i < 10; i++) {
-                Log.d(LOGGER, "Start Thread: " + 1);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    class MeditationRunnable implements Runnable {
-
-        int length;
-
-        MeditationRunnable(int length) {
-            this.length = length;
-        }
-
-        @Override
-        public void run() {
-            for (int i = 0; i < 10; i++) {
-                Log.d(LOGGER, "Start Thread: " + 1);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    } */
 }
