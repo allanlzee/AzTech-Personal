@@ -43,7 +43,7 @@ public class Mindfulness extends AppCompatActivity {
 
         });
 
-        binding.vibrate.setOnClickListener(new View.OnClickListener() {
+        /* binding.vibrate.setOnClickListener(new View.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -52,9 +52,17 @@ public class Mindfulness extends AppCompatActivity {
 
                 vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE));
             }
-        });
+        }); */
 
         binding.startMeditation.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Mindfulness.this, Meditation.class));
+            }
+        });
+
+        binding.meditationButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

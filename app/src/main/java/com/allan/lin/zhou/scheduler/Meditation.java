@@ -23,7 +23,7 @@ public class Meditation extends AppCompatActivity {
 
     private MeditationActivityBinding binding;
     private Toolbar toolbar;
-    private long duration = 1500;
+    private long duration = 2000;
 
     // Logger
     private static final String LOGGER = "MAIN";
