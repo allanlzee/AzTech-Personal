@@ -3,17 +3,20 @@
     package="com.allan.lin.zhou.scheduler">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Scheduler">
-        <activity android:name=".Meditation"/>
+        android:theme="@style/Theme.Scheduler"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Music"></activity>
+        <activity android:name=".Meditation" />
         <activity android:name=".ReminderEdit" />
         <activity android:name=".EventEdit" />
         <activity android:name=".WeeklyView" />
