@@ -148,7 +148,8 @@
         android:padding="12dp"
         android:text="@string/add_event"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/eventListView"
@@ -166,6 +167,8 @@
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/home_fab"
         android:contentDescription="@string/fab"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/home"
+        android:translationZ="90dp"
+        />
 
 </LinearLayout>

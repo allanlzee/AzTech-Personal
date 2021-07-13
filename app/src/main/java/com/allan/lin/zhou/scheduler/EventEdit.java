@@ -3,7 +3,9 @@ package com.allan.lin.zhou.scheduler;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +13,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 import com.allan.lin.zhou.scheduler.databinding.EventEditActivityBinding;
 
 import java.time.LocalTime;
 
+import static com.allan.lin.zhou.scheduler.CalendarUtilities.cancelAlarm;
+import static com.allan.lin.zhou.scheduler.CalendarUtilities.startAlarm;
+import static com.allan.lin.zhou.scheduler.CalendarUtilities.updateTimeTextView;
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
-public class EventEdit extends AppCompatActivity {
+public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     private EventEditActivityBinding binding;
     private TextView eventDate, eventTime;
@@ -26,6 +33,11 @@ public class EventEdit extends AppCompatActivity {
     private LocalTime time;
 
     private Toolbar toolbar;
+
+    private DialogFragment timePicker;
+
+    private Calendar calendar;
+    private String alarmTime;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -54,11 +66,27 @@ public class EventEdit extends AppCompatActivity {
             }
         });
 
-        binding.saveButton.setOnClickListener(new View.OnClickListener() {
+        binding.editTime.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                timePicker = new TimePicker();
+                timePicker.show(getSupportFragmentManager(), "Time Picker");
+            }
+        });
+
+        binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveEvent(view);
+            }
+        });
+
+        binding.cancelAlarm.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                cancelAlarm(EventEdit.this, eventTime);
             }
         });
     }
@@ -71,6 +99,7 @@ public class EventEdit extends AppCompatActivity {
 
     public void saveEvent(View view) {
         String name = nameInput.getText().toString();
+        // TODO: convert alarmTime to LocalTime for ListView
         Event newEvent = new Event(name, CalendarUtilities.selected, time);
         if (!name.equals("")) {
             Event.events.add(newEvent);
@@ -78,5 +107,18 @@ public class EventEdit extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Enter Event Name", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
+        binding.timeText.setText("Hour: " + hourOfDay + " Minute: " + minute);
+
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+
+        updateTimeTextView(calendar, binding.timeText, alarmTime);
+        startAlarm(calendar, EventEdit.this);
     }
 }

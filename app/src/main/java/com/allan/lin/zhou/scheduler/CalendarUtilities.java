@@ -1,15 +1,24 @@
 package com.allan.lin.zhou.scheduler;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.widget.TextView;
+import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 
+import java.text.DateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CalendarUtilities {
     public static LocalDate selected;
@@ -102,5 +111,37 @@ public class CalendarUtilities {
         }
 
         return null;
+    }
+
+    public static void updateTimeTextView(Calendar calendar, TextView textView, String alarmTime) {
+        String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+
+        textView.setText(timeText);
+        alarmTime = timeText;
+    }
+
+    public static void startAlarm(Calendar calendar, Activity activity) {
+        AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(activity, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, CalendarUtilities.notificationID + 1, intent, 0);
+
+        if (calendar.before(Calendar.getInstance())) {
+            calendar.add(Calendar.DATE, 1);
+        }
+
+        // Turn on device at specific calendar time and fire pending intent containing AlertReceiver
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
+
+    public static void cancelAlarm(Activity activity, TextView alarmTime) {
+        AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(activity, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, 1, intent, 0);
+
+        alarmManager.cancel(pendingIntent);
+        alarmTime.setText("Alarm Canceled");
+
+        // Subtract 1 from Notification ID in CalendarUtilities
+        CalendarUtilities.notificationID--;
     }
 }

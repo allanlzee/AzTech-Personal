@@ -36,9 +36,6 @@ public class WeeklyView extends AppCompatActivity implements Adapter.OnItemListe
         binding = WeeklyViewActivityBinding.inflate(getLayoutInflater());
         setContentView(R.layout.weekly_view_activity);
 
-        initWidgets();
-        setWeekView();
-
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -46,6 +43,9 @@ public class WeeklyView extends AppCompatActivity implements Adapter.OnItemListe
                 backToHome(view, WeeklyView.this);
             }
         });
+
+        initWidgets();
+        setWeekView();
     }
 
     private void initWidgets() {
