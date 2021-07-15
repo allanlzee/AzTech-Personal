@@ -193,6 +193,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Inspire", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_email:
+                intent = new Intent(MainActivity.this, Email.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Email", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;

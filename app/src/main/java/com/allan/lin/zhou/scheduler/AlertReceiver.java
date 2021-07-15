@@ -1,5 +1,7 @@
 package com.allan.lin.zhou.scheduler;
 
+import android.app.Notification;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,15 +17,14 @@ public class AlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // Shows Notification when Fired
         NotificationHelper notificationHelper = new NotificationHelper(context);
+
         int index = CalendarUtilities.notificationID - 1;
         String notificationName = CalendarUtilities.notificationNames.get(index);
+
         NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName);
 
-        /* NotificationCompat.Builder notificationBuilder = notificationHelper.
-               getChannelNotification(CalendarUtilities.name); */
-
         // Vibration on Notification
-        notificationBuilder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000});
+        notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
 
         // Lights
         notificationBuilder.setLights(Color.BLUE, 3000, 3000);
@@ -33,6 +34,6 @@ public class AlertReceiver extends BroadcastReceiver {
 
         // TODO: figure out how to send multiple notifications simultaneously
 
-        notificationHelper.getManager().notify(CalendarUtilities.notificationID, notificationBuilder.build());
+        notificationHelper.getManager().notify(1, notificationBuilder.build());
     }
 }

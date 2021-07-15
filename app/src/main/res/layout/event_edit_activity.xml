@@ -63,7 +63,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
-        android:text="Time"
+        android:text="Alarm Time"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:background="@color/card6"
         android:text="Save"
         android:textColor="@color/white" />

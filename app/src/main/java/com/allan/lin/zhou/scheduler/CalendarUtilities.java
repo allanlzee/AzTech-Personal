@@ -30,6 +30,9 @@ public class CalendarUtilities {
 
     public static int notificationID;
 
+    // TextViews for the event
+    public static String eventTimeTextView;
+
     // Converts date into String
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String dateConversion(LocalDate date) {
@@ -116,7 +119,7 @@ public class CalendarUtilities {
     public static void updateTimeTextView(Calendar calendar, TextView textView, String alarmTime) {
         String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
 
-        textView.setText(timeText);
+        textView.setText("Alarm Time: " + timeText);
         alarmTime = timeText;
     }
 

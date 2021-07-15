@@ -15,7 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Music"></activity>
+
+        <activity android:name=".EmailNotification">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Email" />
+        </activity>
+
+        <activity android:name=".Email" />
+        <activity android:name=".Music" />
         <activity android:name=".Meditation" />
         <activity android:name=".ReminderEdit" />
         <activity android:name=".EventEdit" />

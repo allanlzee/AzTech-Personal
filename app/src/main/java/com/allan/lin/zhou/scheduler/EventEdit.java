@@ -99,7 +99,6 @@ public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnT
 
     public void saveEvent(View view) {
         String name = nameInput.getText().toString();
-        // TODO: convert alarmTime to LocalTime for ListView
         Event newEvent = new Event(name, CalendarUtilities.selected, time);
         if (!name.equals("")) {
             Event.events.add(newEvent);
@@ -111,7 +110,6 @@ public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnT
 
     @Override
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
-        binding.timeText.setText("Hour: " + hourOfDay + " Minute: " + minute);
 
         calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -120,5 +118,19 @@ public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnT
 
         updateTimeTextView(calendar, binding.timeText, alarmTime);
         startAlarm(calendar, EventEdit.this);
+
+        CalendarUtilities.eventTimeTextView = hourOfDay + ":" + minute + " a.m.";
+
+        if (hourOfDay > 12) {
+            hourOfDay -= 12;
+            CalendarUtilities.eventTimeTextView = hourOfDay + ":" + minute + " p.m.";
+        }
+
+        if (minute == 0 && hourOfDay <= 12) {
+            CalendarUtilities.eventTimeTextView = hourOfDay + ":00" + " p.m.";
+        } else if (minute == 0) {
+            hourOfDay -= 12;
+            CalendarUtilities.eventTimeTextView = hourOfDay + ":00" + " a.m.";
+        }
     }
 }
