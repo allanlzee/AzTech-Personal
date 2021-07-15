@@ -21,6 +21,8 @@ public class AlertReceiver extends BroadcastReceiver {
         int index = CalendarUtilities.notificationID - 1;
         String notificationName = CalendarUtilities.notificationNames.get(index);
 
+        // TODO FIX THIS
+
         NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName);
 
         // Vibration on Notification
