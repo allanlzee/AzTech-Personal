@@ -36,13 +36,13 @@ public class NotificationHelper extends ContextWrapper {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannel() {
         // 3 Notifications are able to be set off at the same time
-        NotificationChannel channel = new NotificationChannel(reminderID, reminderName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel reminderChannel = new NotificationChannel(reminderID, reminderName, NotificationManager.IMPORTANCE_HIGH);
         getManager().createNotificationChannel(channel);
 
-        NotificationChannel channel2 = new NotificationChannel(emailID, emailName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel emailChannel = new NotificationChannel(emailID, emailName, NotificationManager.IMPORTANCE_HIGH);
         getManager().createNotificationChannel(channel2);
 
-        NotificationChannel channel3 = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
+        NotificationChannel miscellaneousChannel = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
         getManager().createNotificationChannel(channel3);
     }
 
