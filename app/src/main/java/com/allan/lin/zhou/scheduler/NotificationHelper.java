@@ -54,6 +54,8 @@ public class NotificationHelper extends ContextWrapper {
         return notificationManager;
     }
 
+    // TODO: add notification channel parameter
+
     public NotificationCompat.Builder getChannelNotification(String name) {
         String notification = "Reminder: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), reminderID)
