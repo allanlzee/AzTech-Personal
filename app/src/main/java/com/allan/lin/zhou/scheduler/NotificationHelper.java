@@ -2,8 +2,10 @@ package com.allan.lin.zhou.scheduler;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -11,12 +13,16 @@ import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
 
-    public static final String channelId = "Channel ID 1";
-    public static final String channelName = "Channel Name 1";
-    public static final String channelId2 = "Channel ID 2";
-    public static final String channelName2 = "Channel Name 2";
-    public static final String channelId3 = "Channel ID 3";
-    public static final String channelName3 = "Channel Name 3";
+    public static final String reminderID = "Reminders";
+    public static final String reminderName = "RemindersChannel";
+    public static final String emailID = "Email";
+    public static final String emailName = "EmailChannel";
+    public static final String miscellaneousID = "Miscellaneous";
+    public static final String miscellaneousName = "MiscellaneousChannel";
+
+    Intent intent = new Intent(this, Reminders.class);
+    // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
     private NotificationManager notificationManager;
 
@@ -30,13 +36,13 @@ public class NotificationHelper extends ContextWrapper {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannel() {
         // 3 Notifications are able to be set off at the same time
-        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel(reminderID, reminderName, NotificationManager.IMPORTANCE_HIGH);
         getManager().createNotificationChannel(channel);
 
-        NotificationChannel channel2 = new NotificationChannel(channelId2, channelName2, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel2 = new NotificationChannel(emailID, emailName, NotificationManager.IMPORTANCE_HIGH);
         getManager().createNotificationChannel(channel2);
 
-        NotificationChannel channel3 = new NotificationChannel(channelId3, channelName3, NotificationManager.IMPORTANCE_LOW);
+        NotificationChannel channel3 = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
         getManager().createNotificationChannel(channel3);
     }
 
@@ -50,9 +56,11 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getChannelNotification(String name) {
         String notification = "Reminder: " + name;
-        return new NotificationCompat.Builder(getApplicationContext(), channelId)
+        return new NotificationCompat.Builder(getApplicationContext(), reminderID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
-                .setSmallIcon(R.drawable.notification);
+                .setSmallIcon(R.drawable.notification)
+                .setContentIntent(pendingIntent) // goes to Reminders.class on click
+                .setAutoCancel(true);
     }
 }
