@@ -55,10 +55,11 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     // TODO: add notification channel parameter
+    // TODO: change parameters for reminder activities subsequently
 
-    public NotificationCompat.Builder getChannelNotification(String name) {
+    public NotificationCompat.Builder getChannelNotification(String name, String notificationID) {
         String notification = "Reminder: " + name;
-        return new NotificationCompat.Builder(getApplicationContext(), reminderID)
+        return new NotificationCompat.Builder(getApplicationContext(), notificationID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.notification)
