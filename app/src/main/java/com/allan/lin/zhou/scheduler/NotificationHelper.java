@@ -20,6 +20,11 @@ public class NotificationHelper extends ContextWrapper {
     public static final String miscellaneousID = "Miscellaneous";
     public static final String miscellaneousName = "MiscellaneousChannel";
 
+    // Group Notifications
+    public static final String reminderGroup = "RemindersGroup";
+    public static final String emailGroup = "EmailsGroup";
+    public static final String miscellaneousGroup = "MiscellaneousGroup";
+
     Intent intent = new Intent(this, Reminders.class);
     // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
@@ -37,13 +42,13 @@ public class NotificationHelper extends ContextWrapper {
     public void createChannel() {
         // 3 Notifications are able to be set off at the same time
         NotificationChannel reminderChannel = new NotificationChannel(reminderID, reminderName, NotificationManager.IMPORTANCE_HIGH);
-        getManager().createNotificationChannel(channel);
+        getManager().createNotificationChannel(reminderChannel);
 
         NotificationChannel emailChannel = new NotificationChannel(emailID, emailName, NotificationManager.IMPORTANCE_HIGH);
-        getManager().createNotificationChannel(channel2);
+        getManager().createNotificationChannel(emailChannel);
 
         NotificationChannel miscellaneousChannel = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
-        getManager().createNotificationChannel(channel3);
+        getManager().createNotificationChannel(miscellaneousChannel);
     }
 
     public NotificationManager getManager() {
@@ -64,6 +69,7 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.notification)
                 .setContentIntent(pendingIntent) // goes to Reminders.class on click
+                .setGroup(reminderGroup)
                 .setAutoCancel(true);
     }
 }

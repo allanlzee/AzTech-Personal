@@ -1,17 +1,16 @@
 package com.allan.lin.zhou.scheduler;
 
-import android.app.Notification;
-import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
-import android.net.Uri;
 
 import androidx.core.app.NotificationCompat;
 
 public class AlertReceiver extends BroadcastReceiver {
+
+    // public AlertReceiver();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -21,9 +20,7 @@ public class AlertReceiver extends BroadcastReceiver {
         int index = CalendarUtilities.notificationID - 1;
         String notificationName = CalendarUtilities.notificationNames.get(index);
 
-        // TODO FIX THIS
-
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName);
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName, "Reminders");
 
         // Vibration on Notification
         notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
