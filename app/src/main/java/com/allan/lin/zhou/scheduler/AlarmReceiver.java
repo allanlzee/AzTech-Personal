@@ -27,6 +27,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         // notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
         notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
 
-        notificationHelper.getManager().notify(69, notificationBuilder.build());
+        notificationHelper.getManager().notify(10, notificationBuilder.build());
     }
 }

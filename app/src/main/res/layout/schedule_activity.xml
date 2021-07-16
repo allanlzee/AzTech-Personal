@@ -36,4 +36,26 @@
         android:contentDescription="@string/fab"
         android:src="@drawable/home" />
 
+    <Button
+        android:id="@+id/setAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/blue"
+        android:padding="10dp"
+        android:text="Set Alarm" />
+
+    <TextView
+        android:id="@+id/alarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setAlarm"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:text="Time"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

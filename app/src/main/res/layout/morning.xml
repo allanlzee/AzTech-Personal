@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Morning">
 
-    <Button
-        android:id="@+id/setAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Set Alarm"
-        android:background="@color/blue"
-        android:padding="10dp"/>
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/evening"
         android:layout_width="wrap_content"

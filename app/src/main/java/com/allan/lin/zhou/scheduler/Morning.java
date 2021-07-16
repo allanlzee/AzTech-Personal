@@ -1,21 +1,27 @@
 package com.allan.lin.zhou.scheduler;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.allan.lin.zhou.scheduler.databinding.MorningBinding;
 
-public class Morning extends Fragment {
+public class Morning extends Fragment implements TimePickerDialog.OnTimeSetListener {
 
     private MorningBinding binding;
+
+    private DialogFragment timePicker;
+    private Calendar calendar;
 
     @Override
     public View onCreateView(
@@ -57,8 +63,6 @@ public class Morning extends Fragment {
                 ((Activity) getActivity()).overridePendingTransition(0,0);
             }
         });
-
-
     }
 
     @Override
@@ -67,4 +71,8 @@ public class Morning extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+    }
 }

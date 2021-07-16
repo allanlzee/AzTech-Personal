@@ -67,7 +67,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         binding.editTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onTimeClick = true;
                 timePicker = new TimePicker();
                 timePicker.show(getSupportFragmentManager(), "Time Picker");
             }

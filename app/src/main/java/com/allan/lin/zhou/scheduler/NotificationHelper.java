@@ -110,7 +110,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getMorningNotification(String name) {
-        String notification = "Schedule (Morning): " + name;
+        String notification = "Schedule: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), morningAlarmID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
