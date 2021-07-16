@@ -21,11 +21,6 @@ import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
 public class Email extends AppCompatActivity {
 
-    private int messageCount = 0;
-    private static Uri sound;
-    private final long[] vibration = {500, 500, 500};
-    private NotificationManager notificationManager;
-
     private EmailActivityBinding binding;
     private Toolbar toolbar;
 
@@ -47,45 +42,12 @@ public class Email extends AppCompatActivity {
             }
         });
 
-        sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
         binding.notification.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                showNotification();
+
             }
         });
-    }
-
-    private void showNotification() {
-        Log.i("Start", "Notification");
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(Email.this);
-
-        builder.setContentTitle("AzTech Emails");
-        builder.setContentText("Email Notification with Vibration");
-        builder.setTicker("Alert");
-        builder.setSmallIcon(R.drawable.notification);
-
-        builder.setNumber(++messageCount);
-        builder.setSound(sound);
-        builder.setVibrate(vibration);
-
-        Intent intent = new Intent(Email.this, EmailNotification.class);
-        intent.putExtra("NotificationID", 111);
-        intent.putExtra("Message", "AzTech Scheduler");
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(EmailNotification.class);
-
-        stackBuilder.addNextIntent(intent);
-
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingIntent);
-
-        notificationManager.notify(111, builder.build());
     }
 }

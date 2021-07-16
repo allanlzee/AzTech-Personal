@@ -136,7 +136,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     private void startAlarm(Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
+        Intent intent = new Intent(this, ReminderReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, CalendarUtilities.notificationID + 1, intent, 0);
 
         if (calendar.before(Calendar.getInstance())) {
@@ -162,7 +162,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     private void cancelAlarm() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
+        Intent intent = new Intent(this, ReminderReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);

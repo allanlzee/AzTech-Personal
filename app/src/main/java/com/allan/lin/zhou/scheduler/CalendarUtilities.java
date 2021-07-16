@@ -125,7 +125,7 @@ public class CalendarUtilities {
 
     public static void startAlarm(Calendar calendar, Activity activity) {
         AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(activity, AlertReceiver.class);
+        Intent intent = new Intent(activity, ReminderReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, CalendarUtilities.notificationID + 1, intent, 0);
 
         if (calendar.before(Calendar.getInstance())) {
@@ -138,7 +138,7 @@ public class CalendarUtilities {
 
     public static void cancelAlarm(Activity activity, TextView alarmTime) {
         AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(activity, AlertReceiver.class);
+        Intent intent = new Intent(activity, ReminderReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, 1, intent, 0);
 
         alarmManager.cancel(pendingIntent);

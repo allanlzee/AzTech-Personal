@@ -8,9 +8,7 @@ import android.media.RingtoneManager;
 
 import androidx.core.app.NotificationCompat;
 
-public class AlertReceiver extends BroadcastReceiver {
-
-    // public AlertReceiver();
+public class ReminderReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -20,7 +18,7 @@ public class AlertReceiver extends BroadcastReceiver {
         int index = CalendarUtilities.notificationID - 1;
         String notificationName = CalendarUtilities.notificationNames.get(index);
 
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getChannelNotification(notificationName, "Reminders");
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getReminderNotification(notificationName);
 
         // Vibration on Notification
         notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
@@ -29,7 +27,8 @@ public class AlertReceiver extends BroadcastReceiver {
         notificationBuilder.setLights(Color.BLUE, 3000, 3000);
 
         // Sound
-        notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+        // notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+        notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
 
         // TODO: figure out how to send multiple notifications simultaneously
 

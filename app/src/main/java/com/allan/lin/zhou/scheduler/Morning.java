@@ -25,7 +25,6 @@ public class Morning extends Fragment {
 
         binding = MorningBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -58,6 +57,8 @@ public class Morning extends Fragment {
                 ((Activity) getActivity()).overridePendingTransition(0,0);
             }
         });
+
+
     }
 
     @Override

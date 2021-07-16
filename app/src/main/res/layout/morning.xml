@@ -6,34 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Morning">
 
-    <!-- <TextView
-        android:id="@+id/morningText"
+    <Button
+        android:id="@+id/setAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/morning"
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/afternoonButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/morningText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="@color/blue"
-        android:text="@string/afternoon" />
-
-    <Button
-        android:id="@+id/eveningButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/afternoonButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:backgroundTint="@color/blue"
-        android:text="@string/evening" /> -->
+        android:text="Set Alarm"
+        android:background="@color/blue"
+        android:padding="10dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/evening"

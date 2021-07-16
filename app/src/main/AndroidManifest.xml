@@ -59,7 +59,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <receiver android:name=".AlertReceiver" />
+        <!-- Notification Receivers -->
+        <receiver android:name=".ReminderReceiver" />
+        <receiver android:name=".AlarmReceiver" />
+
     </application>
 
 </manifest>
