@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,6 +51,8 @@ public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnT
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         initWidgets();
 
@@ -132,5 +135,14 @@ public class EventEdit extends AppCompatActivity implements TimePickerDialog.OnT
             hourOfDay -= 12;
             CalendarUtilities.eventTimeTextView = hourOfDay + ":00" + " a.m.";
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

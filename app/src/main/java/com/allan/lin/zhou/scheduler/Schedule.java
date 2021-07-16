@@ -7,13 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TimePicker;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,6 +34,7 @@ public class Schedule extends AppCompatActivity implements TimePickerDialog.OnTi
 
     private DialogFragment timePicker;
     private Calendar calendar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,10 @@ public class Schedule extends AppCompatActivity implements TimePickerDialog.OnTi
         binding = ScheduleActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_schedule);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -62,6 +66,15 @@ public class Schedule extends AppCompatActivity implements TimePickerDialog.OnTi
                 timePicker.show(getSupportFragmentManager(), "Time Picker");
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

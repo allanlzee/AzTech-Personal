@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.allan.lin.zhou.scheduler.databinding.MindfulnessActivityBinding;
@@ -26,6 +27,8 @@ public class Mindfulness extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
 
@@ -78,5 +81,14 @@ public class Mindfulness extends AppCompatActivity {
                 startActivity(new Intent(Mindfulness.this, Music.class));
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

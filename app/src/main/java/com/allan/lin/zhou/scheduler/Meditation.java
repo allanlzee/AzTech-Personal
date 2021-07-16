@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.allan.lin.zhou.scheduler.databinding.MeditationActivityBinding;
@@ -24,9 +25,6 @@ public class Meditation extends AppCompatActivity {
     private MeditationActivityBinding binding;
     private Toolbar toolbar;
     private long duration = 2000;
-
-    // Logger
-    private static final String LOGGER = "MAIN";
 
     // Periodic Handlers
     Handler handlerInhale;
@@ -45,6 +43,8 @@ public class Meditation extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
 
@@ -99,6 +99,15 @@ public class Meditation extends AppCompatActivity {
                 cancelHandler();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -191,23 +200,6 @@ public class Meditation extends AppCompatActivity {
         };
 
         handlerInhale.post(runnable);
-
-        /* for (int i = 0; i < 10; i++) {
-
-            try {
-                inhale();
-                Thread.sleep(3000);
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
-
-            try {
-                exhale();
-                Thread.sleep(3000);
-            } catch(InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
-        } */
     }
 
     private void meditationExhale() {

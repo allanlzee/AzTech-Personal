@@ -16,9 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:fontFamily="@font/merienda_one"
-        android:text="@string/nav_reminder"
+        android:text="To Do List"
         android:textColor="@color/white"
         android:textSize="30sp" />
 

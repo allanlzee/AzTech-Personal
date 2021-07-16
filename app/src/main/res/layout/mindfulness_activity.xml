@@ -86,4 +86,15 @@
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/music" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/alarmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/musicButton"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/add_time" />
+
 </RelativeLayout>

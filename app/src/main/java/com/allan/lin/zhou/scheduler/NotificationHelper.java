@@ -19,8 +19,8 @@ public class NotificationHelper extends ContextWrapper {
     public static final String emailName = "EmailChannel";
     public static final String miscellaneousID = "Miscellaneous";
     public static final String miscellaneousName = "MiscellaneousChannel";
-    public static final String morningAlarmID = "MorningAlarm";
-    public static final String morningAlarmName = "MorningAlarmChannel";
+    public static final String scheduleAlarmID = "ScheduleAlarm";
+    public static final String scheduleAlarmName = "ScheduleAlarmChannel";
 
     // Group Notifications
     public static final String reminderGroup = "RemindersGroup";
@@ -37,8 +37,8 @@ public class NotificationHelper extends ContextWrapper {
     Intent miscellaneousIntent = new Intent(this, MainActivity.class);
     PendingIntent miscellaneousPendingIntent = PendingIntent.getActivity(this, 2, miscellaneousIntent, 0);
 
-    Intent morningIntent = new Intent(this, Schedule.class);
-    PendingIntent morningPendingIntent = PendingIntent.getActivity(this, 3, morningIntent, 0);
+    Intent scheduleIntent = new Intent(this, Schedule.class);
+    PendingIntent schedulePendingIntent = PendingIntent.getActivity(this, 3, scheduleIntent, 0);
 
     private NotificationManager notificationManager;
 
@@ -61,7 +61,7 @@ public class NotificationHelper extends ContextWrapper {
         NotificationChannel miscellaneousChannel = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
         getManager().createNotificationChannel(miscellaneousChannel);
 
-        NotificationChannel morningAlarmChannel = new NotificationChannel(morningAlarmID, morningAlarmName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel morningAlarmChannel = new NotificationChannel(scheduleAlarmID, scheduleAlarmName, NotificationManager.IMPORTANCE_HIGH);
         getManager().createNotificationChannel(morningAlarmChannel);
     }
 
@@ -73,7 +73,6 @@ public class NotificationHelper extends ContextWrapper {
         return notificationManager;
     }
 
-    // TODO: add notification channel parameter
     // TODO: change parameters for reminder activities subsequently
 
     public NotificationCompat.Builder getReminderNotification(String name) {
@@ -111,11 +110,11 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getMorningNotification(String name) {
         String notification = "Schedule: " + name;
-        return new NotificationCompat.Builder(getApplicationContext(), morningAlarmID)
+        return new NotificationCompat.Builder(getApplicationContext(), scheduleAlarmID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.edit_calendar)
-                .setContentIntent(morningPendingIntent) // goes to Reminders.class on click
+                .setContentIntent(schedulePendingIntent) // goes to Reminders.class on click
                 .setAutoCancel(true);
     }
 

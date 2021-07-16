@@ -6,6 +6,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.allan.lin.zhou.scheduler.databinding.ExtracurricularsActivityBinding;
@@ -29,6 +30,8 @@ public class Extracurriculars extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
 
@@ -37,5 +40,14 @@ public class Extracurriculars extends AppCompatActivity {
                 backToHome(view, Extracurriculars.this);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

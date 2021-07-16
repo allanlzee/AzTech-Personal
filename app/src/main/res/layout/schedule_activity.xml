@@ -53,9 +53,10 @@
         android:layout_below="@+id/setAlarm"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
+        android:fontFamily="@font/merienda_one"
         android:text="Time"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
