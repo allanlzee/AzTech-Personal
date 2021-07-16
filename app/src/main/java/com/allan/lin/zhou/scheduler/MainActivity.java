@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -169,9 +168,6 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_logout:
-                /* View view = (View) menuItem;
-                logout(view);
-                TODO: menuItem cannot downcast to view without crashing */
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
                 break;
 
