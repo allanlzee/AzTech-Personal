@@ -17,15 +17,15 @@ public class NotificationHelper extends ContextWrapper {
     public static final String reminderName = "RemindersChannel";
     public static final String emailID = "Email";
     public static final String emailName = "EmailChannel";
-    public static final String miscellaneousID = "Miscellaneous";
-    public static final String miscellaneousName = "MiscellaneousChannel";
+    public static final String mindfulnessID = "Mindfulness";
+    public static final String mindfulnessName = "MindfulnessChannel";
     public static final String scheduleAlarmID = "ScheduleAlarm";
     public static final String scheduleAlarmName = "ScheduleAlarmChannel";
 
     // Group Notifications
     public static final String reminderGroup = "RemindersGroup";
     public static final String emailGroup = "EmailsGroup";
-    public static final String miscellaneousGroup = "MiscellaneousGroup";
+    public static final String mindfulnessGroup = "MindfulnessGroup";
 
     Intent reminderIntent = new Intent(this, Reminders.class);
     // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -34,8 +34,8 @@ public class NotificationHelper extends ContextWrapper {
     Intent emailIntent = new Intent(this, Email.class);
     PendingIntent emailPendingIntent = PendingIntent.getActivity(this, 1, emailIntent, 0);
 
-    Intent miscellaneousIntent = new Intent(this, MainActivity.class);
-    PendingIntent miscellaneousPendingIntent = PendingIntent.getActivity(this, 2, miscellaneousIntent, 0);
+    Intent mindfulnessIntent = new Intent(this, MainActivity.class);
+    PendingIntent mindfulnessPendingIntent = PendingIntent.getActivity(this, 2, mindfulnessIntent, 0);
 
     Intent scheduleIntent = new Intent(this, Schedule.class);
     PendingIntent schedulePendingIntent = PendingIntent.getActivity(this, 3, scheduleIntent, 0);
@@ -58,7 +58,7 @@ public class NotificationHelper extends ContextWrapper {
         NotificationChannel emailChannel = new NotificationChannel(emailID, emailName, NotificationManager.IMPORTANCE_LOW);
         getManager().createNotificationChannel(emailChannel);
 
-        NotificationChannel miscellaneousChannel = new NotificationChannel(miscellaneousID, miscellaneousName, NotificationManager.IMPORTANCE_LOW);
+        NotificationChannel miscellaneousChannel = new NotificationChannel(mindfulnessID, mindfulnessName, NotificationManager.IMPORTANCE_LOW);
         getManager().createNotificationChannel(miscellaneousChannel);
 
         NotificationChannel morningAlarmChannel = new NotificationChannel(scheduleAlarmID, scheduleAlarmName, NotificationManager.IMPORTANCE_HIGH);
@@ -97,18 +97,18 @@ public class NotificationHelper extends ContextWrapper {
                 .setAutoCancel(true);
     }
 
-    public NotificationCompat.Builder getMiscellaneousNotification(String name) {
+    public NotificationCompat.Builder getMindfulnessNotification(String name) {
         String notification = "AzTech: " + name;
-        return new NotificationCompat.Builder(getApplicationContext(), miscellaneousID)
+        return new NotificationCompat.Builder(getApplicationContext(), mindfulnessID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.notification)
-                .setContentIntent(miscellaneousPendingIntent) // goes to Reminders.class on click
-                .setGroup(miscellaneousGroup)
+                .setContentIntent(mindfulnessPendingIntent) // goes to Reminders.class on click
+                .setGroup(mindfulnessGroup)
                 .setAutoCancel(true);
     }
 
-    public NotificationCompat.Builder getMorningNotification(String name) {
+    public NotificationCompat.Builder getScheduleNotification(String name) {
         String notification = "Schedule: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), scheduleAlarmID)
                 .setContentTitle("AzTech Scheduler")

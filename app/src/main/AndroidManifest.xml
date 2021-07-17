@@ -87,6 +87,7 @@
         <!-- Notification Receivers -->
         <receiver android:name=".ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
+        <receiver android:name=".MindfulnessReceiver"/>
 
     </application>
 

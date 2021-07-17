@@ -8,14 +8,14 @@ import android.media.RingtoneManager;
 
 import androidx.core.app.NotificationCompat;
 
-public class AlarmReceiver extends BroadcastReceiver {
+public class MindfulnessReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // Shows Notification when Fired
         NotificationHelper notificationHelper = new NotificationHelper(context);
 
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getScheduleNotification("Alarm");
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getMindfulnessNotification("Mindfulness");
 
         // Vibration on Notification
         notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
