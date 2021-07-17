@@ -31,6 +31,7 @@ public class Email extends AppCompatActivity {
         setContentView(R.layout.email_activity);
 
         binding = EmailActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

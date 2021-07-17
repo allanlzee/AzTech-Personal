@@ -85,5 +85,16 @@
         </menu>
     </item>
 
+    <item android:title="AzTech Vision">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_camera"
+                    android:icon="@drawable/camera"
+                    android:title="Camera" />
+            </group>
+        </menu>
+    </item>
+
 
 </menu>
