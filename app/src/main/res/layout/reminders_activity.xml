@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/reminders_activity_wallpaper"
+    android:background="@drawable/wallpaper_1"
     tools:context=".Reminders">
 
     <include
@@ -20,7 +20,7 @@
         android:fontFamily="@font/merienda_one"
         android:text="To Do List"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homeButton"

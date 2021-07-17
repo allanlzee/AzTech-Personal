@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@drawable/reminders_activity_wallpaper"
     android:orientation="horizontal"
     tools:context=".Calendar">
 
@@ -15,7 +15,6 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <!-- TODO: set onClickListener() -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/previousMonth"
             android:layout_width="wrap_content"
