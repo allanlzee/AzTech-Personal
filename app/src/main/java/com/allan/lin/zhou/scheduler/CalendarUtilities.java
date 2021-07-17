@@ -33,6 +33,9 @@ public class CalendarUtilities {
     // TextViews for the event
     public static String eventTimeTextView;
 
+    // Keep Track of Morning, Afternoon, Evening Alarm
+    public static String scheduleAlarm = "";
+
     // Converts date into String
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static String dateConversion(LocalDate date) {

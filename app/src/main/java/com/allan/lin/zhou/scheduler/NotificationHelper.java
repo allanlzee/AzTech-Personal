@@ -96,7 +96,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getMindfulnessNotification(String name) {
-        String notification = "AzTech: " + name;
+        String notification = "AzTech Mindfulness: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), mindfulnessID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)

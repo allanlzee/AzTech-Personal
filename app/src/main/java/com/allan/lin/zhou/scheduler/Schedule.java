@@ -91,6 +91,19 @@ public class Schedule extends AppCompatActivity implements TimePickerDialog.OnTi
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
 
+        /* Morning: 6 a.m. <-> 12 p.m.
+           Afternoon: 12 p.m. <-> 6 p.m.
+           Evening: 6 p.m. <-> 12 a.m.
+         */
+
+        if (hourOfDay >= 6 && hourOfDay < 12) {
+            CalendarUtilities.scheduleAlarm = "Morning";
+        } else if (hourOfDay < 18) {
+            CalendarUtilities.scheduleAlarm = "Afternoon";
+        } else {
+            CalendarUtilities.scheduleAlarm = "Evening";
+        }
+
         String time = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
         binding.alarmTime.setText(time);
         binding.alarmTime.setTextColor(getResources().getColor(R.color.white));
