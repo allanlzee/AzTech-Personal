@@ -108,6 +108,7 @@ public class NotificationHelper extends ContextWrapper {
 
     public NotificationCompat.Builder getScheduleNotification(String name) {
         String notification = "Schedule: " + name;
+
         return new NotificationCompat.Builder(getApplicationContext(), scheduleAlarmID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
