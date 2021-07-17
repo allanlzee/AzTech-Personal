@@ -34,7 +34,7 @@ public class NotificationHelper extends ContextWrapper {
     Intent emailIntent = new Intent(this, Email.class);
     PendingIntent emailPendingIntent = PendingIntent.getActivity(this, 1, emailIntent, 0);
 
-    Intent mindfulnessIntent = new Intent(this, MainActivity.class);
+    Intent mindfulnessIntent = new Intent(this, Mindfulness.class);
     PendingIntent mindfulnessPendingIntent = PendingIntent.getActivity(this, 2, mindfulnessIntent, 0);
 
     Intent scheduleIntent = new Intent(this, Schedule.class);
@@ -73,15 +73,13 @@ public class NotificationHelper extends ContextWrapper {
         return notificationManager;
     }
 
-    // TODO: change parameters for reminder activities subsequently
-
     public NotificationCompat.Builder getReminderNotification(String name) {
         String notification = "Reminder: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), reminderID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.notification)
-                .setContentIntent(reminderPendingIntent) // goes to Reminders.class on click
+                .setContentIntent(reminderPendingIntent)
                 .setGroup(reminderGroup)
                 .setAutoCancel(true);
     }
@@ -92,7 +90,7 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.email)
-                .setContentIntent(emailPendingIntent) // goes to Reminders.class on click
+                .setContentIntent(emailPendingIntent)
                 .setGroup(emailGroup)
                 .setAutoCancel(true);
     }
@@ -102,8 +100,8 @@ public class NotificationHelper extends ContextWrapper {
         return new NotificationCompat.Builder(getApplicationContext(), mindfulnessID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
-                .setSmallIcon(R.drawable.notification)
-                .setContentIntent(mindfulnessPendingIntent) // goes to Reminders.class on click
+                .setSmallIcon(R.drawable.exhalation)
+                .setContentIntent(mindfulnessPendingIntent)
                 .setGroup(mindfulnessGroup)
                 .setAutoCancel(true);
     }
@@ -114,7 +112,7 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)
                 .setSmallIcon(R.drawable.edit_calendar)
-                .setContentIntent(schedulePendingIntent) // goes to Reminders.class on click
+                .setContentIntent(schedulePendingIntent)
                 .setAutoCancel(true);
     }
 
