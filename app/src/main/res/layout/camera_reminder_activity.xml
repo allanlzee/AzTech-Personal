@@ -44,12 +44,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
+        android:padding="20dp"
         >
 
         <ImageView
             android:id="@+id/image1"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
             android:layout_column="0"
             android:layout_row="0"
             android:src="@drawable/wallpaper3"
@@ -58,8 +59,8 @@
 
         <ImageView
             android:id="@+id/image2"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
             android:layout_column="1"
             android:layout_row="0"
             android:src="@drawable/wallpaper3"
@@ -68,18 +69,8 @@
 
         <ImageView
             android:id="@+id/image3"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            android:layout_column="2"
-            android:layout_row="0"
-            android:src="@drawable/wallpaper3"
-            android:layout_margin="20dp"
-            />
-
-        <ImageView
-            android:id="@+id/image4"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
             android:layout_column="0"
             android:layout_row="1"
             android:src="@drawable/wallpaper3"
@@ -87,20 +78,10 @@
             />
 
         <ImageView
-            android:id="@+id/image5"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:id="@+id/image4"
+            android:layout_width="125dp"
+            android:layout_height="175dp"
             android:layout_column="1"
-            android:layout_row="1"
-            android:src="@drawable/wallpaper3"
-            android:layout_margin="20dp"
-            />
-
-        <ImageView
-            android:id="@+id/image6"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            android:layout_column="2"
             android:layout_row="1"
             android:src="@drawable/wallpaper3"
             android:layout_margin="20dp"
