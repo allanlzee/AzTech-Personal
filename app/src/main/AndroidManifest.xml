@@ -9,7 +9,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -23,17 +25,20 @@
         android:usesCleartextTraffic="true">
 
         <activity
+            android:name=".CameraReminder"
+            android:label="Camera Reminders" />
+        <activity
             android:name=".CameraView"
             android:label="Camera" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.allan.lin.zhou.scheduler"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
 
         <activity android:name=".EmailNotification">
@@ -102,7 +107,9 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" /> <!-- Notification Receivers -->
+            android:resource="@array/preloaded_fonts" />
+
+        <!-- Notification Receivers -->
         <receiver android:name=".ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
         <receiver android:name=".MindfulnessReceiver" />

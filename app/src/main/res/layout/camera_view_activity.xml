@@ -24,7 +24,6 @@
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/home" />
 
-
     <ImageView
         android:id="@+id/cameraView"
         android:layout_width="match_parent"
@@ -43,5 +42,15 @@
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/camera_open" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/openCameraRevised"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/openCamera"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/camera_revised" />
 
 </RelativeLayout>
