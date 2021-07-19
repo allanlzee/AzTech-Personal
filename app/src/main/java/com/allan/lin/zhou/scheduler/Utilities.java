@@ -18,6 +18,8 @@ import static androidx.core.content.ContextCompat.getSystemService;
 
 public class Utilities {
 
+    public static int picReminders = 0;
+
     // Freezes the app's thread for a specified amount of time
     public static void wait(int length) {
         try {

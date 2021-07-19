@@ -34,7 +34,7 @@ public class CameraReminder extends AppCompatActivity {
     private Toolbar toolbar;
     private CameraReminderActivityBinding binding;
 
-    private final int CAMERA_REMINDER_ID = 104;
+    private final int CAMERA_REMINDER_ID = 20;
     private String currentPhotoPath = "";
 
     private File output = null;
@@ -98,7 +98,13 @@ public class CameraReminder extends AppCompatActivity {
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                try {
+                    startActivityForResult(cameraIntent, CAMERA_REMINDER_ID);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(CameraReminder.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+                /* File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
 
                 output = new File(dir, "AzTechReminders.jpeg");
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
@@ -124,8 +130,8 @@ public class CameraReminder extends AppCompatActivity {
                             Toast.makeText(CameraReminder.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
-                }
-                startActivityForResult(cameraIntent, CAMERA_REMINDER_ID);
+                } */
+
             }
         });
     }
@@ -145,15 +151,36 @@ public class CameraReminder extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REMINDER_ID) {
             if (resultCode == RESULT_OK) {
-                Intent action = new Intent(Intent.ACTION_VIEW);
+                /* Intent action = new Intent(Intent.ACTION_VIEW);
                 action.setDataAndType(Uri.fromFile(output), "image/jpeg");
-                startActivity(action);
+                startActivity(action); */
 
                 Bundle extras = data.getExtras();
                 Bitmap capture = (Bitmap) extras.get("data");
 
-                binding.cameraPhoto.setImageBitmap(capture);
-                finish();
+                Utilities.picReminders++;
+
+                switch (Utilities.picReminders) {
+                    case 1:
+                        binding.image1.setImageBitmap(capture);
+                        break;
+
+                    case 2:
+                        binding.image2.setImageBitmap(capture);
+                        break;
+
+                    case 3:
+                        binding.image3.setImageBitmap(capture);
+                        break;
+
+                    case 4:
+                        binding.image4.setImageBitmap(capture);
+                        break;
+
+                    default:
+                        Toast.makeText(CameraReminder.this, "Too Many Reminders", Toast.LENGTH_LONG).show();
+                        break;
+                }
             }
         }
     }

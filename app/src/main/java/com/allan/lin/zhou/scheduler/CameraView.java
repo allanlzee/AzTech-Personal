@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class CameraView extends AppCompatActivity {
     private File output = null;
 
     // Camera IDs
-    private int cameraRequestCode = 100;
+    private final int cameraRequestCode = 100;
     private String currentPhotoPath = "";
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -71,7 +72,7 @@ public class CameraView extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(CameraView.this, new String[] {
                     Manifest.permission.CAMERA
-            }, 100);
+            }, cameraRequestCode);
         }
 
         if (ContextCompat.checkSelfPermission(CameraView.this,
@@ -79,7 +80,7 @@ public class CameraView extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(CameraView.this, new String[] {
                     Manifest.permission.READ_EXTERNAL_STORAGE
-            }, 101);
+            }, cameraRequestCode);
         }
 
         if (ContextCompat.checkSelfPermission(CameraView.this,
@@ -87,46 +88,22 @@ public class CameraView extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(CameraView.this, new String[] {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
-            }, 102);
+            }, cameraRequestCode);
         }
 
-        if (ContextCompat.checkSelfPermission(CameraView.this,
+        /* if (ContextCompat.checkSelfPermission(CameraView.this,
                 Manifest.permission.MANAGE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(CameraView.this, new String[] {
                     Manifest.permission.MANAGE_EXTERNAL_STORAGE
             }, 103);
-        }
+        } */
 
         binding.openCamera.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                // TODO: debug following code
-                if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                    File photoFile = null;
-
-                    try {
-                        photoFile = createImageFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Toast.makeText(CameraView.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    if (photoFile != null) {
-                        Uri photoURI = FileProvider.getUriForFile(CameraView.this, "com.allan.lin.zhou.scheduler", photoFile);
-                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-
-                        try {
-                            startActivityForResult(cameraIntent, cameraRequestCode);
-                        } catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
-                            Toast.makeText(CameraView.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }
+            public void onClick(View view) {
+                takePictureIntent();
             }
         });
 
@@ -159,7 +136,7 @@ public class CameraView extends AppCompatActivity {
 
             // Set to ImageView
             binding.cameraView.setImageBitmap(capture);
-            // galleryAddPic();
+            galleryAddPic();
         }
     }
 
@@ -191,5 +168,29 @@ public class CameraView extends AppCompatActivity {
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+    }
+
+    private void takePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                Toast.makeText(CameraView.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+                Log.e("Camera View", ex.getMessage());
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.allan.lin.zhou.scheduler",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, cameraRequestCode);
+            }
+        }
     }
 }
