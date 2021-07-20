@@ -32,9 +32,10 @@ public class WeeklyView extends AppCompatActivity implements Adapter.OnItemListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.weekly_view_activity);
 
         binding = WeeklyViewActivityBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.weekly_view_activity);
+        setContentView(binding.getRoot());
 
         binding.homeButton.setOnClickListener(new View.OnClickListener() {
 
