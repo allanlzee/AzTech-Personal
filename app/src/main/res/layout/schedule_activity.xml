@@ -33,7 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/home_fab"
+        android:backgroundTint="@color/add_event"
         android:contentDescription="@string/fab"
         android:src="@drawable/home" />
 

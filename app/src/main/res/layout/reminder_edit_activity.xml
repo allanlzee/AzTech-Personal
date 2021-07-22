@@ -13,29 +13,16 @@
 
     <TextView
         android:id="@+id/reminderTextview"
-        android:fontFamily="@font/merienda_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/merienda_one"
         android:text="Set An Alarm"
         android:textColor="@color/white"
         android:textSize="20sp" />
-
-    <!--
-    <TextView
-        android:id="@+id/currentTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/reminderTextview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:text="@string/currentTime"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp" /> -->
 
     <TextView
         android:id="@+id/alarmTime"
@@ -43,8 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/reminderTextview"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/alarmTime"
         android:textColor="@color/white"
         android:textSize="20sp" />
@@ -114,7 +101,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/home_fab"
+        android:backgroundTint="@color/add_event"
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/home" />
 

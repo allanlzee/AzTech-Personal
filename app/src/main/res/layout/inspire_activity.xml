@@ -46,7 +46,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/fab_margin"
-            android:backgroundTint="@color/home_fab"
+            android:backgroundTint="@color/add_event"
             android:contentDescription="@string/fab"
             app:srcCompat="@drawable/home" />
 
