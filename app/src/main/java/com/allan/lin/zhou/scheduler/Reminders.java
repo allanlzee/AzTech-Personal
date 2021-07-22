@@ -32,6 +32,8 @@ public class Reminders extends AppCompatActivity {
 
     private ArrayList<Reminder> daily;
 
+    private ReminderAdapter reminderAdapter;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +68,8 @@ public class Reminders extends AppCompatActivity {
         binding.removeReminders.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                removeReminders();
+            public void onClick(View view) {
+                removeReminders(view);
             }
         });
     }
@@ -88,7 +90,7 @@ public class Reminders extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setReminderAdapter() {
         daily = Reminder.remindersToday(LocalDate.now());
-        ReminderAdapter reminderAdapter = new ReminderAdapter(getApplicationContext(), daily);
+        reminderAdapter = new ReminderAdapter(getApplicationContext(), daily);
         reminderList.setAdapter(reminderAdapter);
         reminderList.setClickable(true);
 
@@ -96,7 +98,7 @@ public class Reminders extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(view, "Delete Reminder?", Snackbar.LENGTH_SHORT)
+                Snackbar.make(view, "Delete Reminder?", Snackbar.LENGTH_INDEFINITE)
                         .setAction("OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -122,10 +124,22 @@ public class Reminders extends AppCompatActivity {
     }
 
     // Remove all notifications
-    private void removeReminders() {
-        daily.clear();
-        Reminder.allReminders.clear();
-        binding.todoList.setAdapter(null);
-        Toast.makeText(Reminders.this, "Reminders Cleared", Toast.LENGTH_LONG).show();
+    private void removeReminders(View view) {
+        if (daily.isEmpty() || Reminder.allReminders.isEmpty()) {
+            Toast.makeText(Reminders.this, "No Reminders to Clear!", Toast.LENGTH_SHORT).show();
+        } else {
+            Snackbar.make(view, "Delete All Reminders?", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            daily.clear();
+                            Reminder.allReminders.clear();
+                            reminderAdapter.notifyDataSetChanged();
+                            Toast.makeText(Reminders.this, "Reminders Cleared", Toast.LENGTH_LONG).show();
+                        }
+                    }).setActionTextColor(Reminders.this.getResources().getColor(R.color.home_action))
+                    .setTextColor(Reminders.this.getResources().getColor(R.color.home_snack))
+                    .show();
+        }
     }
 }
