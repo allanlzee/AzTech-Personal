@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
 
@@ -26,6 +27,8 @@ public class Reminders extends AppCompatActivity {
     private Toolbar toolbar;
 
     private ListView reminderList;
+
+    private ArrayList<Reminder> daily;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -57,6 +60,14 @@ public class Reminders extends AppCompatActivity {
                 startActivity(new Intent(Reminders.this, ReminderEdit.class));
             }
         });
+
+        binding.removeReminders.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                removeReminders();
+            }
+        });
     }
 
     @Override
@@ -74,9 +85,10 @@ public class Reminders extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setReminderAdapter() {
-        ArrayList<Reminder> daily = Reminder.remindersToday(LocalDate.now());
+        daily = Reminder.remindersToday(LocalDate.now());
         ReminderAdapter reminderAdapter = new ReminderAdapter(getApplicationContext(), daily);
         reminderList.setAdapter(reminderAdapter);
+        reminderList.setClickable(true);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -84,5 +96,13 @@ public class Reminders extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setReminderAdapter();
+    }
+
+    // Remove all notifications
+    private void removeReminders() {
+        daily.clear();
+        Reminder.allReminders.clear();
+        binding.todoList.setAdapter(null);
+        Toast.makeText(Reminders.this, "Reminders Cleared", Toast.LENGTH_LONG).show();
     }
 }

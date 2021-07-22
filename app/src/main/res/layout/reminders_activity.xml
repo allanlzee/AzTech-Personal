@@ -44,6 +44,17 @@
         android:contentDescription="@string/fab"
         app:srcCompat="@drawable/add" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/removeReminders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/addEvent"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/cancel" />
+
     <ListView
         android:id="@+id/todoList"
         android:layout_width="wrap_content"
