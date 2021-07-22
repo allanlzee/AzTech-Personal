@@ -75,7 +75,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
         binding.cancelAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 cancelAlarm();
             }
         });
@@ -101,9 +101,6 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     @Override
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
-        TextView text = findViewById(R.id.currentTime);
-        text.setText("Hour: " + hourOfDay + " Minute: " + minute);
-
         calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);

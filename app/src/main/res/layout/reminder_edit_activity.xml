@@ -13,16 +13,18 @@
 
     <TextView
         android:id="@+id/reminderTextview"
+        android:fontFamily="@font/merienda_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="@string/selectTime"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="15dp"
+        android:text="Set An Alarm"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
+    <!--
     <TextView
         android:id="@+id/currentTime"
         android:layout_width="wrap_content"
@@ -33,15 +35,16 @@
         android:text="@string/currentTime"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp" /> -->
 
     <TextView
         android:id="@+id/alarmTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/currentTime"
+        android:layout_below="@id/reminderTextview"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="25dp"
         android:text="@string/alarmTime"
         android:textColor="@color/white"
         android:textSize="20sp" />
