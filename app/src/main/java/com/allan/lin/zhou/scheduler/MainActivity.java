@@ -201,6 +201,12 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Camera", Toast.LENGTH_LONG).show();
                 break;
 
+            case R.id.nav_social:
+                intent = new Intent(MainActivity.this, Social.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Chat Bot", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 Toast.makeText(MainActivity.this, "Unimplemented", Toast.LENGTH_LONG).show();
                 break;

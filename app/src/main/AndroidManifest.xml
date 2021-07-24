@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".Social"
+            android:label="Chat Bot"/>
         <activity
             android:name=".CameraReminder"
             android:label="Camera Reminders" />
@@ -114,7 +116,6 @@
         <receiver android:name=".ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
         <receiver android:name=".MindfulnessReceiver" />
-
     </application>
 
 </manifest>

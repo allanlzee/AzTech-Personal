@@ -38,4 +38,8 @@
     <color name="calendar_blue">#0000FF</color>
     <color name="weekly">#ff6666</color>
 
+    <!-- Chat Bot -->
+    <color name="user_msg">#7fe5f0</color>
+    <color name="bot_msg">#0ff1ce</color>
+
 </resources>
