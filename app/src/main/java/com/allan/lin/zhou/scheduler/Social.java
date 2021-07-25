@@ -64,30 +64,37 @@ public class Social extends AppCompatActivity {
                 } else {
                     switch(textMessage) {
                         case "home":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, MainActivity.class));
                             break;
 
                         case "schedule":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, Schedule.class));
                             break;
 
                         case "camera":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, CameraView.class));
                             break;
 
                         case "reminders":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, Reminders.class));
                             break;
 
                         case "homework":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, Homework.class));
                             break;
 
                         case "inspire":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, Inspire.class));
                             break;
 
                         case "mindfulness":
+                            shortResponse(textMessage);
                             startActivity(new Intent(Social.this, Mindfulness.class));
                             break;
 
@@ -140,6 +147,12 @@ public class Social extends AppCompatActivity {
                 textChatAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void shortResponse(String message) {
+        textChatsList.add(new Chats(message, USER_KEY));
+        textChatAdapter.notifyDataSetChanged();
+        binding.textEdit.setText("");
     }
 }
 
