@@ -123,8 +123,8 @@ public class Social extends AppCompatActivity {
     private void getResponse(String message) {
         textChatsList.add(new Chats(message, USER_KEY));
         textChatAdapter.notifyDataSetChanged();
-        String url = "https://api.brainshop.ai/get?bid=158067&key=9AOrAxbhob5jN7Kq&uid=[uid]&msg=" + message;
-        String BASE_URL = "https://brainshop.ai/";
+        String url = "http://api.brainshop.ai/get?bid=158067&key=9AOrAxbhob5jN7Kq&uid=[uid]&msg=" + message;
+        String BASE_URL = "http://brainshop.ai/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
