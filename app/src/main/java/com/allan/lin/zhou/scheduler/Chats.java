@@ -2,29 +2,28 @@ package com.allan.lin.zhou.scheduler;
 
 public class Chats {
 
-    private String message;
-    private String sender;
-
+    private String chatMessage;
+    private String chatSender;
 
     public Chats(String message, String sender) {
-        this.message = message;
-        this.sender = sender;
+        this.chatMessage = message;
+        this.chatSender = sender;
     }
 
     public String getMessage() {
-        return message;
+        return chatMessage;
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.chatMessage = message;
     }
 
     public String getSender() {
-        return sender;
+        return chatSender;
     }
 
     public void setSender(String sender) {
-        this.sender = sender;
+        this.chatSender = sender;
     }
 
 }
