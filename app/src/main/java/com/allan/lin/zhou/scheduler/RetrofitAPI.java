@@ -7,5 +7,5 @@ import retrofit2.http.Url;
 public interface RetrofitAPI {
 
     @GET
-    Call<Message> getMessage(@Url String url);
+    Call<MessageModel> getMessage(@Url String url);
 }

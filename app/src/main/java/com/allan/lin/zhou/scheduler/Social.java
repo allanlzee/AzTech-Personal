@@ -1,5 +1,6 @@
 package com.allan.lin.zhou.scheduler;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.databinding.SocialActivityBinding;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -120,29 +123,37 @@ public class Social extends AppCompatActivity {
     private void getResponse(String message) {
         textChatsList.add(new Chats(message, USER_KEY));
         textChatAdapter.notifyDataSetChanged();
-        String url = "http://api.brainshop.ai/get?bid=158067&key=9AOrAxbhob5jN7Kq&uid=[uid]&msg=" + message;
-        String BASE_URL = "http://api.brainshop.ai/";
+        String url = "https://api.brainshop.ai/get?bid=158067&key=9AOrAxbhob5jN7Kq&uid=[uid]&msg=" + message;
+        String BASE_URL = "https://brainshop.ai/";
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        Call<Message> call = retrofitAPI.getMessage(url);
+        Call<MessageModel> call = retrofitAPI.getMessage(url);
 
-        call.enqueue(new Callback<Message>() {
+        call.enqueue(new Callback<MessageModel>() {
 
             @Override
-            public void onResponse(Call<Message> call, Response<Message> response) {
+            public void onResponse(Call<MessageModel> call, @NotNull @NonNull Response<MessageModel> response)
+                    throws NullPointerException {
+
                 if (response.isSuccessful()) {
-                    Message text = response.body();
-                    textChatsList.add(new Chats(text.getMsg(), BOT_KEY));
+                    MessageModel text = response.body();
+                    if (text.getMsg() != null) {
+                        textChatsList.add(new Chats(text.getMsg(), BOT_KEY));
+                    } else {
+                        textChatsList.add(new Chats("Could not find API", BOT_KEY));
+                    }
+
                     textChatAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<Message> call, Throwable t) {
+            public void onFailure(Call<MessageModel> call, Throwable t) {
                 textChatsList.add(new Chats("Please Ask Again!", BOT_KEY));
                 textChatAdapter.notifyDataSetChanged();
             }

@@ -1,10 +1,10 @@
 package com.allan.lin.zhou.scheduler;
 
-public class Message {
+public class MessageModel {
 
     private String msg;
 
-    public Message(String msg) {
+    public MessageModel(String msg) {
         this.msg = msg;
     }
 
