@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.reminder.list;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,14 +8,20 @@ import android.media.RingtoneManager;
 
 import androidx.core.app.NotificationCompat;
 
-public class MindfulnessReceiver extends BroadcastReceiver {
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.notification.NotificationHelper;
+
+public class ReminderReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // Shows Notification when Fired
         NotificationHelper notificationHelper = new NotificationHelper(context);
 
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getMindfulnessNotification("Mindfulness");
+        int index = CalendarUtilities.notificationID - 1;
+        String notificationName = CalendarUtilities.notificationNames.get(index);
+
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getReminderNotification(notificationName);
 
         // Vibration on Notification
         notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
@@ -27,6 +33,8 @@ public class MindfulnessReceiver extends BroadcastReceiver {
         // notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
         notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
 
-        notificationHelper.getManager().notify(10, notificationBuilder.build());
+        // TODO: figure out how to send multiple notifications simultaneously
+
+        notificationHelper.getManager().notify(1, notificationBuilder.build());
     }
 }

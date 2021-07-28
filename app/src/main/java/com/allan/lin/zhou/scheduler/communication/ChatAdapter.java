@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.communication;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.communication.Chats;
 
 import org.jetbrains.annotations.NotNull;
 

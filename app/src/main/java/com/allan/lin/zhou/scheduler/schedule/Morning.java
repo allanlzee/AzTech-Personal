@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.schedule;
 
 import android.app.Activity;
 import android.app.TimePickerDialog;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MorningBinding;
 
 public class Morning extends Fragment implements TimePickerDialog.OnTimeSetListener {

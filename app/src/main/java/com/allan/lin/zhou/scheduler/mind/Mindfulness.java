@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.mind;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MindfulnessActivityBinding;
+import com.allan.lin.zhou.scheduler.notification.TimePicker;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -98,7 +100,7 @@ public class Mindfulness extends AppCompatActivity implements TimePickerDialog.O
 
             @Override
             public void onClick(View v) {
-                timePicker = new com.allan.lin.zhou.scheduler.TimePicker();
+                timePicker = new TimePicker();
                 timePicker.show(getSupportFragmentManager(), "Time Picker");
             }
         });

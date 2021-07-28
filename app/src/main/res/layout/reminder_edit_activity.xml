@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/reminders_activity_wallpaper"
-    tools:context=".ReminderEdit">
+    tools:context=".reminder.list.ReminderEdit">
 
     <include
         android:id="@+id/toolbar"

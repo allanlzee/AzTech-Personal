@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper24"
-    tools:context=".Meditation">
+    tools:context=".mind.Meditation">
 
     <include
         android:id="@+id/toolbar"

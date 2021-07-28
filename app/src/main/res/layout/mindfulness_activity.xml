@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper20"
     android:orientation="vertical"
-    tools:context=".Mindfulness">
+    tools:context=".mind.Mindfulness">
 
     <include
         android:id="@+id/toolbar"

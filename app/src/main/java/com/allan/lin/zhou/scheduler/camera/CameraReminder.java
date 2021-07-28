@@ -1,18 +1,16 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.camera;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -20,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.CameraReminderActivityBinding;
 
 import java.io.File;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/event_edit_wallpaper"
     android:orientation="vertical"
-    tools:context=".EventEdit">
+    tools:context=".schedule.EventEdit">
 
     <include
         android:id="@+id/toolbar"

@@ -1,9 +1,7 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.reminder.list;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Reminder {
     private String name;

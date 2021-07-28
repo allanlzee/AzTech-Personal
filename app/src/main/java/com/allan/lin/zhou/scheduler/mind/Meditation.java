@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.mind;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MeditationActivityBinding;
 
 import android.os.Handler;

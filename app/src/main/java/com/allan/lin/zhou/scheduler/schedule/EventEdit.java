@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.schedule;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.notification.TimePicker;
 import com.allan.lin.zhou.scheduler.databinding.EventEditActivityBinding;
 
 import java.time.LocalTime;

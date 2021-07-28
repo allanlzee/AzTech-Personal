@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.notification;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;

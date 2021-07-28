@@ -7,7 +7,7 @@
     android:background="@drawable/login_gradient"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CameraReminder">
+    tools:context=".camera.CameraReminder">
 
     <include
         android:id="@+id/toolbar"

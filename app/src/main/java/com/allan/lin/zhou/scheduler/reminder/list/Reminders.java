@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.reminder.list;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
 import com.google.android.material.snackbar.Snackbar;
 

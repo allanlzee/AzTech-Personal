@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.reminder.list;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.notification.TimePicker;
 import com.allan.lin.zhou.scheduler.databinding.ReminderEditActivityBinding;
 
 import java.text.DateFormat;

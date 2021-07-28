@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.notification;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -10,6 +10,12 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+
+import com.allan.lin.zhou.scheduler.Email;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.mind.Mindfulness;
+import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
+import com.allan.lin.zhou.scheduler.schedule.Schedule;
 
 public class NotificationHelper extends ContextWrapper {
 

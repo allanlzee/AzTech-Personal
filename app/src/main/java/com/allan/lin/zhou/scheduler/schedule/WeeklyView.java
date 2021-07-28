@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.schedule;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.WeeklyViewActivityBinding;
 
 import java.time.LocalDate;

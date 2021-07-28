@@ -7,9 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.widget.TextView;
-import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+
+import com.allan.lin.zhou.scheduler.reminder.list.ReminderReceiver;
 
 import java.text.DateFormat;
 import java.time.DayOfWeek;

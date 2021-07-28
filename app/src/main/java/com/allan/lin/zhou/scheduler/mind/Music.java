@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.mind;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MusicActivityBinding;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;

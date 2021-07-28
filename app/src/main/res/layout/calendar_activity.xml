@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/reminders_activity_wallpaper"
     android:orientation="horizontal"
-    tools:context=".Calendar">
+    tools:context=".schedule.Calendar">
 
     <LinearLayout
         android:id="@+id/header"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CameraView"
+    tools:context=".camera.CameraView"
     android:background="@drawable/wallpaper21">
 
     <include

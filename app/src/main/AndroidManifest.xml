@@ -31,13 +31,13 @@
             android:label="@string/title_activity_chat_bot_loading_screen"
             android:theme="@style/Theme.Scheduler.Fullscreen"></activity>
         <activity
-            android:name=".Social"
+            android:name=".communication.Social"
             android:label="Chat Bot" />
         <activity
-            android:name=".CameraReminder"
+            android:name=".camera.CameraReminder"
             android:label="Camera Reminders" />
         <activity
-            android:name=".CameraView"
+            android:name=".camera.CameraView"
             android:label="Camera" />
 
         <provider
@@ -59,22 +59,22 @@
             android:name=".Email"
             android:label="@string/email" />
         <activity
-            android:name=".Music"
+            android:name=".mind.Music"
             android:label="Music" />
         <activity
-            android:name=".Meditation"
+            android:name=".mind.Meditation"
             android:label="@string/nav_mental" />
         <activity
-            android:name=".ReminderEdit"
+            android:name=".reminder.list.ReminderEdit"
             android:label="@string/nav_reminder" />
         <activity
-            android:name=".EventEdit"
+            android:name=".schedule.EventEdit"
             android:label="@string/nav_schedule" />
         <activity
-            android:name=".WeeklyView"
+            android:name=".schedule.WeeklyView"
             android:label="@string/nav_schedule" />
         <activity
-            android:name=".Calendar"
+            android:name=".schedule.Calendar"
             android:label="Calendar" />
         <activity
             android:name=".Inspire"
@@ -95,14 +95,14 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.Scheduler.NoActionBar" />
         <activity
-            android:name=".Mindfulness"
+            android:name=".mind.Mindfulness"
             android:label="@string/nav_mental" />
         <activity
-            android:name=".Schedule"
+            android:name=".schedule.Schedule"
             android:label="@string/title_activity_schedule"
             android:theme="@style/Theme.Scheduler.NoActionBar" />
         <activity
-            android:name=".Reminders"
+            android:name=".reminder.list.Reminders"
             android:label="@string/nav_reminder" />
         <activity
             android:name=".MainActivity"
@@ -117,9 +117,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" /> <!-- Notification Receivers -->
-        <receiver android:name=".ReminderReceiver" />
+        <receiver android:name=".reminder.list.ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
-        <receiver android:name=".MindfulnessReceiver" />
+        <receiver android:name=".mind.MindfulnessReceiver" />
     </application>
 
 </manifest>

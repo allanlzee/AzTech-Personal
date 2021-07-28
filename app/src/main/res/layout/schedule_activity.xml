@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper21"
-    tools:context=".Schedule">
+    tools:context=".schedule.Schedule">
 
     <include
         android:id="@+id/toolbar"

@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.schedule;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.ViewHolder;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.communication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.camera.CameraView;
+import com.allan.lin.zhou.scheduler.Homework;
+import com.allan.lin.zhou.scheduler.Inspire;
+import com.allan.lin.zhou.scheduler.MainActivity;
+import com.allan.lin.zhou.scheduler.mind.Mindfulness;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
+import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.databinding.SocialActivityBinding;
 
 import org.jetbrains.annotations.NotNull;
@@ -54,6 +62,8 @@ public class Social extends AppCompatActivity {
         binding.textHistory.setLayoutManager(manager);
         binding.textHistory.setAdapter(textChatAdapter);
 
+        introMessage();
+
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -66,37 +76,37 @@ public class Social extends AppCompatActivity {
                 } else {
                     switch(textMessage) {
                         case "home":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, MainActivity.class));
                             break;
 
                         case "schedule":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, Schedule.class));
                             break;
 
                         case "camera":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, CameraView.class));
                             break;
 
                         case "reminders":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, Reminders.class));
                             break;
 
                         case "homework":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, Homework.class));
                             break;
 
                         case "inspire":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, Inspire.class));
                             break;
 
                         case "mindfulness":
-                            shortResponse(textMessage);
+                            shortResponse(text);
                             startActivity(new Intent(Social.this, Mindfulness.class));
                             break;
 
@@ -157,6 +167,7 @@ public class Social extends AppCompatActivity {
             @Override
             public void onFailure(Call<MessageModel> call, Throwable t) {
                 textChatsList.add(new Chats("Check Internet Connection!", BOT_KEY));
+                binding.textHistory.scrollToPosition(textChatsList.size() - 1);
                 textChatAdapter.notifyDataSetChanged();
             }
         });
@@ -166,6 +177,13 @@ public class Social extends AppCompatActivity {
         textChatsList.add(new Chats(message, USER_KEY));
         textChatAdapter.notifyDataSetChanged();
         binding.textEdit.setText("");
+    }
+
+    private void introMessage() {
+        String message = "Welcome! I am a bot from BrainShop's API that runs using machine learning! Use me to translate, " +
+                "tell jokes, and anything else!";
+        textChatsList.add(new Chats(message, BOT_KEY));
+        textChatAdapter.notifyDataSetChanged();
     }
 }
 

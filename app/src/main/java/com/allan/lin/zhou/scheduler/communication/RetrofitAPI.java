@@ -1,4 +1,6 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.communication;
+
+import com.allan.lin.zhou.scheduler.communication.MessageModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.schedule;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -23,6 +23,9 @@ import androidx.navigation.ui.NavigationUI;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+import com.allan.lin.zhou.scheduler.AlarmReceiver;
+import com.allan.lin.zhou.scheduler.CalendarUtilities;
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.ScheduleActivityBinding;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
@@ -62,7 +65,7 @@ public class Schedule extends AppCompatActivity implements TimePickerDialog.OnTi
         binding.setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timePicker = new com.allan.lin.zhou.scheduler.TimePicker();
+                timePicker = new com.allan.lin.zhou.scheduler.notification.TimePicker();
                 timePicker.show(getSupportFragmentManager(), "Time Picker");
             }
         });

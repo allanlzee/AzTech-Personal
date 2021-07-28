@@ -13,10 +13,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.camera.CameraView;
+import com.allan.lin.zhou.scheduler.communication.Social;
+import com.allan.lin.zhou.scheduler.mind.Mindfulness;
+import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
+import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.ui.login.Login;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;

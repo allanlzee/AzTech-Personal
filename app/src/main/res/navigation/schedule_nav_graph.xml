@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Morning"
-        android:name="com.allan.lin.zhou.scheduler.Morning"
+        android:name="com.allan.lin.zhou.scheduler.schedule.Morning"
         android:label="@string/schedule_first"
         tools:layout="@layout/morning">
 
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/Afternoon"
-        android:name="com.allan.lin.zhou.scheduler.Afternoon"
+        android:name="com.allan.lin.zhou.scheduler.schedule.Afternoon"
         android:label="@string/schedule_second"
         tools:layout="@layout/afternoon">
 
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/Evening"
-        android:name="com.allan.lin.zhou.scheduler.Evening"
+        android:name="com.allan.lin.zhou.scheduler.schedule.Evening"
         android:label="Evening"
         tools:layout="@layout/evening" >
         <action
