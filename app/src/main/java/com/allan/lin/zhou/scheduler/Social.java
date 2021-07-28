@@ -60,7 +60,8 @@ public class Social extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String textMessage = binding.textEdit.getText().toString().toLowerCase();
+                String text = binding.textEdit.getText().toString();
+                String textMessage = text.toLowerCase();
 
                 if (textMessage.isEmpty()) {
                     Toast.makeText(Social.this, "Enter a Message!", Toast.LENGTH_SHORT).show();
@@ -102,10 +103,12 @@ public class Social extends AppCompatActivity {
                             break;
 
                         default:
-                            getResponse(textMessage);
+                            getResponse(text);
                             binding.textEdit.setText("");
                             break;
                     }
+
+                    binding.textHistory.smoothScrollToPosition(textChatsList.size() - 1);
                 }
             }
         });
@@ -142,12 +145,13 @@ public class Social extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     MessageModel text = response.body();
-                    if (text.getMsg() != null) {
-                        textChatsList.add(new Chats(text.getMsg(), BOT_KEY));
+                    if (text.getCnt() != null) {
+                        textChatsList.add(new Chats(text.getCnt(), BOT_KEY));
                     } else {
                         textChatsList.add(new Chats("Could not find API", BOT_KEY));
                     }
 
+                    binding.textHistory.scrollToPosition(textChatsList.size() - 1);
                     textChatAdapter.notifyDataSetChanged();
                 }
             }

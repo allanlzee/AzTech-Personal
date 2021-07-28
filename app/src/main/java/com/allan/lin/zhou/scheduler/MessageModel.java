@@ -2,17 +2,17 @@ package com.allan.lin.zhou.scheduler;
 
 public class MessageModel {
 
-    private String msg;
+    private String cnt;
 
     public MessageModel(String msg) {
-        this.msg = msg;
+        this.cnt = msg;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getCnt() {
+        return cnt;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.cnt = msg;
     }
 }
