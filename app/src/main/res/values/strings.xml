@@ -92,6 +92,9 @@
     <string name="reminderName">Reminder Name:</string>
     <string name="enterReminder">Enter Reminder</string>
     <string name="save">Save</string>
+    <string name="title_activity_chat_bot_loading_screen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
 </resources>

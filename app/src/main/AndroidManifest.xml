@@ -26,8 +26,13 @@
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ChatBotLoadingScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_chat_bot_loading_screen"
+            android:theme="@style/Theme.Scheduler.Fullscreen"></activity>
+        <activity
             android:name=".Social"
-            android:label="Chat Bot"/>
+            android:label="Chat Bot" />
         <activity
             android:name=".CameraReminder"
             android:label="Camera Reminders" />
@@ -111,9 +116,7 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <!-- Notification Receivers -->
+            android:resource="@array/preloaded_fonts" /> <!-- Notification Receivers -->
         <receiver android:name=".ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
         <receiver android:name=".MindfulnessReceiver" />

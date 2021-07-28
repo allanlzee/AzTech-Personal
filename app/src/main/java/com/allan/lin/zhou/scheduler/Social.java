@@ -23,8 +23,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
-
 public class Social extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -158,7 +156,7 @@ public class Social extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MessageModel> call, Throwable t) {
-                textChatsList.add(new Chats("Please Ask Again!", BOT_KEY));
+                textChatsList.add(new Chats("Check Internet Connection!", BOT_KEY));
                 textChatAdapter.notifyDataSetChanged();
             }
         });
