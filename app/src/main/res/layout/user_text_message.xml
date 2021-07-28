@@ -3,19 +3,18 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="end"
     android:layout_margin="5dp"
-    app:cardBackgroundColor="@color/user_msg"
     android:elevation="8dp"
     app:cardCornerRadius="8dp">
-    
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/user_msg">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User Message"
             android:id="@+id/userTextMessage"
@@ -23,15 +22,19 @@
             android:layout_margin="5dp"
             android:padding="4dp"
             android:layout_gravity="center"
+            android:layout_toStartOf="@+id/person"
+            android:layout_centerVertical="true"
             />
 
         <ImageView
+            android:id="@+id/person"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/user_messager"
-            android:layout_margin="8dp"/>
+            android:layout_margin="8dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
 
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

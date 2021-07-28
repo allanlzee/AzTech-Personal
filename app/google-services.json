@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939751933724",
+    "project_id": "aztech-scheduler",
+    "storage_bucket": "aztech-scheduler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939751933724:android:b4d0ebd52de94f6f00dcd9",
+        "android_client_info": {
+          "package_name": "com.allan.lin.zhou.scheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939751933724-orruffjpjscrn8ng43kij665k96bjer6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACNlmLSD-d0JhN1BDqTukcaYsCNQPOZRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939751933724-orruffjpjscrn8ng43kij665k96bjer6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

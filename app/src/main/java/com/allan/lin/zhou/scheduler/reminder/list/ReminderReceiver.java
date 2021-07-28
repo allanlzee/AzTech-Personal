@@ -34,7 +34,6 @@ public class ReminderReceiver extends BroadcastReceiver {
         notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
 
         // TODO: figure out how to send multiple notifications simultaneously
-
         notificationHelper.getManager().notify(1, notificationBuilder.build());
     }
 }

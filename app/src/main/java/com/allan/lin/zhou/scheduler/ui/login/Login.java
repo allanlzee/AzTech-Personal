@@ -26,12 +26,17 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.LoginActivityBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private LoginActivityBinding binding;
     private Toolbar toolbar;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,6 +138,13 @@ public class Login extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString(),
                         emailEditText.getText().toString());
+
+                // TODO: set up FireBase
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("Login");
+
+                reference.setValue("First Data Storage");
+
             }
         });
     }
