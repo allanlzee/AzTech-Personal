@@ -26,10 +26,8 @@
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ChatBotLoadingScreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_chat_bot_loading_screen"
-            android:theme="@style/Theme.Scheduler.Fullscreen"></activity>
+            android:name=".LoginMainActivity"
+            android:label="Login"/>
         <activity
             android:name=".communication.Social"
             android:label="Chat Bot" />

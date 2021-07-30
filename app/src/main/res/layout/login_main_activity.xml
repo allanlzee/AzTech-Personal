@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_gradient"
-    tools:context=".ui.login.Login">
+    tools:context=".LoginMainActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -93,5 +93,16 @@
         android:text="@string/action_sign_in"
         android:textColor="@color/white"
         app:layout_constraintVertical_bias="0.2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/add_event"
+        android:contentDescription="@string/fab"
+        app:srcCompat="@drawable/home" />
 
 </RelativeLayout>

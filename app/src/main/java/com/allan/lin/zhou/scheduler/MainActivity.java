@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
 
+        /*
         // CardViews
         schedule = findViewById(R.id.schedule_card);
         reminders = findViewById(R.id.reminders_card);
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Inspire.class));
             }
-        });
+        }); */
     }
 
     @Override
@@ -165,7 +166,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_login:
-                intent = new Intent(MainActivity.this, Login.class);
+                intent = new Intent(MainActivity.this, LoginMainActivity.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
                 break;

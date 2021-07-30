@@ -144,7 +144,6 @@ public class Login extends AppCompatActivity {
                 reference = rootNode.getReference("Login");
 
                 reference.setValue("First Data Storage");
-
             }
         });
     }
