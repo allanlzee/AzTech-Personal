@@ -20,6 +20,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
@@ -73,6 +75,14 @@ public class Reminders extends AppCompatActivity {
                 removeReminders(view);
             }
         });
+
+        /* binding.sortReminders.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                sortReminders();
+            }
+        }); */
     }
 
     @Override
@@ -122,6 +132,7 @@ public class Reminders extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setReminderAdapter();
+        sortReminders();
     }
 
     // Remove all notifications
@@ -142,5 +153,20 @@ public class Reminders extends AppCompatActivity {
                     .setTextColor(Reminders.this.getResources().getColor(R.color.home_snack))
                     .show();
         }
+    }
+
+    public void sortReminders() {
+        Collections.sort(daily, new Comparator<Reminder>() {
+
+            @Override
+            public int compare(Reminder r1, Reminder r2) {
+                if (r1.getReminderCalendar().before(r2.getReminderCalendar())) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
+        });
+        reminderAdapter.notifyDataSetChanged();
     }
 }

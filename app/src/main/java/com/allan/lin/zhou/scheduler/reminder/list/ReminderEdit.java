@@ -122,7 +122,7 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
         Toast.makeText(this, reminderName, Toast.LENGTH_LONG).show();
 
-        Reminder reminder = new Reminder(reminderName, alarmTime, LocalDate.now());
+        Reminder reminder = new Reminder(reminderName, alarmTime, LocalDate.now(), calendar);
         if (!reminderName.equals("")) {
             Reminder.allReminders.add(reminder);
             CalendarUtilities.notificationID++;

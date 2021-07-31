@@ -2,11 +2,13 @@ package com.allan.lin.zhou.scheduler.reminder.list;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class Reminder {
+public class Reminder implements Comparable<Reminder> {
     private String name;
     private String time;
     private LocalDate date;
+    private Calendar calendar;
 
     public static ArrayList<Reminder> allReminders = new ArrayList<>();
 
@@ -22,10 +24,11 @@ public class Reminder {
         return reminders;
     }
 
-    public Reminder(String name, String time, LocalDate date) {
+    public Reminder(String name, String time, LocalDate date, Calendar calendar) {
         this.name = name;
         this.time = time;
         this.date = date;
+        this.calendar = calendar;
     }
 
     public String getReminderName() {
@@ -50,5 +53,22 @@ public class Reminder {
 
     public void setReminderDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Calendar getReminderCalendar() {
+        return calendar;
+    }
+
+    public void setCalendarDate(Calendar calendar) {
+        this.calendar = calendar;
+    }
+
+    @Override
+    public int compareTo(Reminder reminder) {
+        if (this.calendar.before(reminder.calendar)) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }
