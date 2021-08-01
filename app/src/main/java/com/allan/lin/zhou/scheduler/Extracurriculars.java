@@ -31,13 +31,13 @@ public class Extracurriculars extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        /* binding.fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 backToHome(view, Extracurriculars.this);
             }
-        });
+        }); */
     }
 
     @Override

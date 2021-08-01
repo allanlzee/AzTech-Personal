@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,12 +30,13 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar;
 
+    /*
     CardView schedule;
     CardView reminders;
     CardView mindfulness;
     CardView homework;
     CardView extracurriculars;
-    CardView inspire;
+    CardView inspire; */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         toolbar =  findViewById(R.id.toolbar);
-
-        setSupportActionBar(toolbar); // Theme.AppCompat.NoActionBar
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.menu_open, R.string.menu_close);
@@ -117,6 +115,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, Inspire.class));
             }
         }); */
+
+
     }
 
     @Override
@@ -166,10 +166,16 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_login:
-                intent = new Intent(MainActivity.this, LoginMainActivity.class);
+                intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
                 break;
+
+            /* case R.id.nav_login:
+                intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
+                break; */
 
             case R.id.nav_logout:
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
@@ -231,3 +237,115 @@ public class MainActivity extends AppCompatActivity
                 .show();
     }
 }
+
+/* <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.Login">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/login_gradient"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Welcome!"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/login_to_continue"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="350dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/input_background"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:hint="@string/emailText"
+                android:textColorHint="@color/hintText"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="350dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/input_background"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:hint="@string/passwordText"
+                android:textColorHint="@color/hintText"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signInButton"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textAlignment="center"
+                app:cornerRadius="40dp" />
+
+            <TextView
+                android:id="@+id/newAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/create_new_account"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout> */

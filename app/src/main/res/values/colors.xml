@@ -47,4 +47,11 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
 
+    <!-- Login -->
+    <color name="input_background">#ECECEC</color>
+    <color name="icon_background">#20FFFFFF</color>
+    <color name="error">#B00020</color>
+    <color name="success">#090D16</color>
+    <color name="hintText">#A9A9A9</color>
+
 </resources>

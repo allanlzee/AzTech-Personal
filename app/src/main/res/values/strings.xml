@@ -95,6 +95,11 @@
     <string name="title_activity_chat_bot_loading_screen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="login_to_continue">Login to Continue</string>
+    <string name="emailText">Email</string>
+    <string name="passwordText">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_new_account">Create New Account</string>
 
 
 </resources>
