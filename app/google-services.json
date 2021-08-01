@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "939751933724",
+    "firebase_url": "https://aztech-scheduler-default-rtdb.firebaseio.com",
     "project_id": "aztech-scheduler",
     "storage_bucket": "aztech-scheduler.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:939751933724:android:b4d0ebd52de94f6f00dcd9",
+        "mobilesdk_app_id": "1:939751933724:android:3b75e1ac17fa8a0300dcd9",
         "android_client_info": {
           "package_name": "com.allan.lin.zhou.scheduler"
         }

@@ -117,6 +117,14 @@
         <receiver android:name=".reminder.list.ReminderReceiver" />
         <receiver android:name=".AlarmReceiver" />
         <receiver android:name=".mind.MindfulnessReceiver" />
+
+        <service
+            android:name=".ui.login.firebase.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

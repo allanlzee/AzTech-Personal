@@ -104,6 +104,8 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="login_to_existing_account">Login to Existing Account</string>
 
 
 </resources>
