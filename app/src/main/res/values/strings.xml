@@ -100,6 +100,10 @@
     <string name="passwordText">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="sign_up">Sign Up</string>
 
 
 </resources>

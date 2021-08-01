@@ -25,10 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".ui.login.SignUp"
+            android:label="Sign Up"/>
         <activity
             android:name=".ui.login.Login"
-            android:label="Login"/>
+            android:label="Login" />
         <activity
             android:name=".communication.Social"
             android:label="Chat Bot" />
