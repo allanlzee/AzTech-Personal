@@ -12,6 +12,9 @@ import android.widget.Toast;
 import com.allan.lin.zhou.scheduler.MainActivity;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.LoginActivityBinding;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class Login extends AppCompatActivity {
 
@@ -44,6 +47,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                addDataToFirestore();
                 Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
             }
@@ -57,5 +61,20 @@ public class Login extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void addDataToFirestore() {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("First-Name", "Allan");
+        data.put("Last-Name", "Zhou");
+        database.collection("users")
+                .add(data)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(exception -> {
+                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }

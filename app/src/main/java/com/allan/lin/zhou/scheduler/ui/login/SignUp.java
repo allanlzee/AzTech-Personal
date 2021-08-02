@@ -20,6 +20,9 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
 
+        binding = SignUpActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
