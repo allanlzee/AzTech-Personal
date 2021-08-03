@@ -60,7 +60,6 @@ public class Login extends AppCompatActivity {
                 // addDataToFirestore();
                 if (isValidLogin()) {
                     signIn();
-                    Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -94,6 +93,7 @@ public class Login extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     } else {
                         loadingProgressBar(false);
                         showToast("Unable to Login!");
