@@ -15,124 +15,117 @@
         android:id="@+id/profilePicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
-        app:riv_oval="true"
-        />
+        android:src="@mipmap/ic_launcher_round"
+        app:riv_oval="true" />
 
     <TextView
         android:id="@+id/addProfileImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/profilePicture"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/add_profile_image"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/addProfileImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/name"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionNext"
         android:importantForAutofill="yes"
         android:inputType="textPersonName"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/emailText"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionNext"
         android:importantForAutofill="yes"
         android:inputType="textEmailAddress"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/passwordText"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionDone"
         android:importantForAutofill="yes"
         android:inputType="textPassword"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/confirm_password"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/confirm_password"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionNext"
         android:importantForAutofill="yes"
         android:inputType="textPassword"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <FrameLayout
         android:id="@+id/signInFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
         android:layout_below="@id/confirm_password"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:animateLayoutChanges="true">
 
         <Button
             android:id="@+id/signUpButton"
             android:layout_width="300dp"
             android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:background="@drawable/login_button_background"
             android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -148,13 +141,12 @@
         android:id="@+id/loginExisting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@+id/signInFrame"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/login_to_existing_account"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
 </RelativeLayout>

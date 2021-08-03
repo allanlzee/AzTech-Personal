@@ -1,6 +1,7 @@
 package com.allan.lin.zhou.scheduler;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -19,6 +20,10 @@ import static androidx.core.content.ContextCompat.getSystemService;
 public class Utilities {
 
     public static int picReminders = 0;
+
+    // Profile Image
+    public static Bitmap profileImage = null;
+    public static Boolean isLoggedIn = false;
 
     // Freezes the app's thread for a specified amount of time
     public static void wait(int length) {

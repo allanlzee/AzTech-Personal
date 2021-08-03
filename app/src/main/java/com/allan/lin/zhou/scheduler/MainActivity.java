@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.camera.CameraView;
@@ -22,6 +23,8 @@ import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.ui.login.Login;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import static com.allan.lin.zhou.scheduler.Utilities.profileImage;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +60,11 @@ public class MainActivity extends AppCompatActivity
 
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
+
+        if (Utilities.isLoggedIn && Utilities.profileImage != null) {
+            ImageView profile = findViewById(R.id.profilePicture);
+            profile.setImageBitmap(Utilities.profileImage);
+        }
 
         /*
         // CardViews

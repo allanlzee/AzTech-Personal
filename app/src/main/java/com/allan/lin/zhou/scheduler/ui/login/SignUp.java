@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.MainActivity;
 import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.SignUpActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -116,6 +117,7 @@ public class SignUp extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    Utilities.isLoggedIn = true;
                 })
                 .addOnFailureListener(exception -> {
                     loadingProgressBar(false);
@@ -135,6 +137,7 @@ public class SignUp extends AppCompatActivity {
                             binding.profilePicture.setImageBitmap(bitmap);
                             binding.addProfileImage.setVisibility(View.GONE);
                             encodedImage = encodeImage(bitmap);
+                            Utilities.profileImage = bitmap;
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }

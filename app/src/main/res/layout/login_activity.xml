@@ -15,11 +15,10 @@
         android:id="@+id/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        />
+        android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/welcome"
@@ -31,8 +30,7 @@
         android:text="Welcome!"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/loginContinue"
@@ -43,68 +41,64 @@
         android:text="@string/login_to_continue"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="40dp"
         android:layout_below="@id/loginContinue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/emailText"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionNext"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/input_background"
-        android:textColor="@color/black"
-        android:textSize="18sp"
         android:hint="@string/passwordText"
-        android:textColorHint="@color/hintText"
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintText"
+        android:textSize="18sp" />
 
     <FrameLayout
         android:id="@+id/signInFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
+        android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/password">
+        android:animateLayoutChanges="true">
 
         <Button
             android:id="@+id/signInButton"
             android:layout_width="300dp"
             android:layout_height="55dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:background="@drawable/login_button_background"
             android:text="@string/sign_in"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -121,12 +115,12 @@
         android:id="@+id/newAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/signInFrame"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/create_new_account"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_below="@id/signInFrame"
-        android:layout_centerHorizontal="true"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

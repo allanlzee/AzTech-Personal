@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.MainActivity;
 import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.LoginActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -94,6 +95,7 @@ public class Login extends AppCompatActivity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                        Utilities.isLoggedIn = true;
                     } else {
                         loadingProgressBar(false);
                         showToast("Unable to Login!");
