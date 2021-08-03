@@ -50,7 +50,8 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, SignUp.class));
             }
         });
-        
+
+        // Signs user in when button is clicked
         binding.signInButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -101,6 +102,7 @@ public class Login extends AppCompatActivity {
                 .addOnFailureListener(exception -> showToast(exception.getMessage()));
     }
 
+    // Changes button view and progress bar based on login status
     private void loadingProgressBar(Boolean isLoading) {
         if (isLoading) {
             binding.signInButton.setVisibility(View.INVISIBLE);
@@ -111,6 +113,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    // Testing Function for Firebase Firestore Database
     private void addDataToFirestore() {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> data = new HashMap<>();
@@ -126,6 +129,7 @@ public class Login extends AppCompatActivity {
                 });
     }
 
+    // Checks if all necessary login information is in a valid format
     private Boolean isValidLogin() {
         if (binding.email.getText().toString().trim().isEmpty()) {
             showToast("Enter Email!");
@@ -141,6 +145,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    // Utility function for Toast messages
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
