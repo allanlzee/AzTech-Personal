@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         profilePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Login.class));
             }
         });
@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_logout:
+                logout(findViewById(R.id.navigation_view));
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
                 break;
 
@@ -255,7 +256,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void logout(View view) {
-        Snackbar.make(view, "Logout?", Snackbar.LENGTH_SHORT)
+        Snackbar.make(view, "Logout?", Snackbar.LENGTH_LONG)
                 .setAction("OK", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
