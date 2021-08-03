@@ -9,7 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,12 +20,21 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.camera.CameraView;
 import com.allan.lin.zhou.scheduler.communication.Social;
+import com.allan.lin.zhou.scheduler.databinding.ActivityMainBinding;
 import com.allan.lin.zhou.scheduler.mind.Mindfulness;
 import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
 import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.ui.login.Login;
+import com.allan.lin.zhou.scheduler.ui.login.Preferences;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.HashMap;
 
 import static com.allan.lin.zhou.scheduler.Utilities.profileImage;
 
@@ -32,6 +44,9 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
+    private ActivityMainBinding binding;
+    private Preferences preferenceManager;
 
     /*
     CardView schedule;
@@ -46,8 +61,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        preferenceManager = new Preferences(getApplicationContext());
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
@@ -61,70 +81,31 @@ public class MainActivity extends AppCompatActivity
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
 
-        if (Utilities.isLoggedIn && Utilities.profileImage != null) {
+        /* if (Utilities.isLoggedIn && Utilities.profileImage != null) {
             ImageView profile = findViewById(R.id.profilePicture);
             profile.setImageBitmap(Utilities.profileImage);
-        }
+        } */
 
-        /*
-        // CardViews
-        schedule = findViewById(R.id.schedule_card);
-        reminders = findViewById(R.id.reminders_card);
-        mindfulness = findViewById(R.id.mindfulness_card);
-        homework = findViewById(R.id.homework_card);
-        extracurriculars = findViewById(R.id.extracurriculars_card);
-        inspire = findViewById(R.id.inspire_card);
-
-        // Bring to Activity
-        schedule.setOnClickListener(new View.OnClickListener() {
+        ImageView profilePicture = findViewById(R.id.profilePicture);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Schedule.class));
+                startActivity(new Intent(MainActivity.this, Login.class));
             }
         });
 
-        reminders.setOnClickListener(new View.OnClickListener() {
+        loadUserData();
+        getToken();
+
+        // Logout
+        binding.logoutButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Reminders.class));
+            public void onClick(View view) {
+                logout(view);
             }
         });
-
-        mindfulness.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Mindfulness.class));
-            }
-        });
-
-        homework.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Homework.class));
-            }
-        });
-
-        extracurriculars.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Extracurriculars.class));
-            }
-        });
-
-        inspire.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Inspire.class));
-            }
-        }); */
-
-
     }
 
     @Override
@@ -179,12 +160,6 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
                 break;
 
-            /* case R.id.nav_login:
-                intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_LONG).show();
-                break; */
-
             case R.id.nav_logout:
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
                 break;
@@ -232,128 +207,62 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
-    
-    protected void logout(View view) {
-        Snackbar.make(view, "Logout?", Snackbar.LENGTH_INDEFINITE)
+
+    private void loadUserData() {
+        String greet = "Welcome " + preferenceManager.getString(Constants.KEY_NAME) + "!";
+        binding.textName.setText(greet);
+        byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        binding.profilePicture.setImageBitmap(bitmap);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateToken(String token) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference =
+                database.collection(Constants.KEY_COLLECTION_USERS).document(
+                        preferenceManager.getString(Constants.KEY_USER_ID)
+                );
+
+        documentReference.update(Constants.KEY_FCM_TOKEN, token)
+                .addOnSuccessListener(unused -> showToast("Token Updated!"))
+                .addOnFailureListener(exception -> showToast(exception.getMessage()));
+    }
+
+    private void getToken() {
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(this::updateToken);
+    }
+
+    private void logoutDatabase() {
+        showToast("Logging Out...");
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference =
+                database.collection(Constants.KEY_COLLECTION_USERS).document(
+                        preferenceManager.getString(Constants.KEY_USER_ID)
+                );
+        HashMap<String, Object> logoutUpdate = new HashMap<>();
+        logoutUpdate.put(Constants.KEY_FCM_TOKEN, FieldValue.delete());
+        documentReference.update(logoutUpdate)
+                .addOnSuccessListener(unused -> {
+                    preferenceManager.clear();
+                    showToast("Logout Successful!");
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                })
+                .addOnFailureListener(exception -> showToast("Unable to Logout"));
+    }
+
+    private void logout(View view) {
+        Snackbar.make(view, "Logout?", Snackbar.LENGTH_SHORT)
                 .setAction("OK", new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
+                    public void onClick(View v) {
+                        logoutDatabase();
                     }
                 }).setActionTextColor(getResources().getColor(R.color.home_action))
                 .setTextColor(getResources().getColor(R.color.home_snack))
                 .show();
     }
 }
-
-/* <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.login.Login">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:background="@drawable/login_gradient"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Welcome!"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/login_to_continue"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="350dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/input_background"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:hint="@string/emailText"
-                android:textColorHint="@color/hintText"
-                android:imeOptions="actionNext"
-                android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="350dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/input_background"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:hint="@string/passwordText"
-                android:textColorHint="@color/hintText"
-                android:imeOptions="actionDone"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/signInButton"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="25dp"
-                android:text="@string/sign_in"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textAlignment="center"
-                app:cornerRadius="40dp" />
-
-            <TextView
-                android:id="@+id/newAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/create_new_account"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</RelativeLayout> */
