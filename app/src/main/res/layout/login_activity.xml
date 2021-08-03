@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Welcome!"
+        android:layout_marginTop="30dp"
+        android:text="@string/welcome_greeting"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />

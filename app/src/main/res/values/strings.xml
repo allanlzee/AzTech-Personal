@@ -108,6 +108,7 @@
     <string name="login_to_existing_account">Login to Existing Account</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="add_profile_image">Add Profile Image</string>
+    <string name="welcome_greeting">Welcome!</string>
 
 
 </resources>
