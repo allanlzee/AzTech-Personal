@@ -106,6 +106,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="name">Name</string>
     <string name="login_to_existing_account">Login to Existing Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="add_profile_image">Add Profile Image</string>
 
 
 </resources>
