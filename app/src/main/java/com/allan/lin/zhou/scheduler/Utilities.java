@@ -34,6 +34,5 @@ public class Utilities {
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
         ScheduledFuture scheduler = executorService.scheduleAtFixedRate(task, 1000, 2500, TimeUnit.MILLISECONDS);
-
     }
 }
