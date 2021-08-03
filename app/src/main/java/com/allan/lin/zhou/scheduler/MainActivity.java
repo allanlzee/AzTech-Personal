@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadUserData() {
-        String greet = "Welcome " + preferenceManager.getString(Constants.KEY_NAME) + "!";
+        String greet = preferenceManager.getString(Constants.KEY_NAME);
         binding.textName.setText(greet);
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
