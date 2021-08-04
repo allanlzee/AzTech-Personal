@@ -11,6 +11,7 @@
         layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
@@ -21,83 +22,91 @@
             android:id="@+id/textPreferredName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="@string/preferred_name"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="40dp"
             android:layout_below="@+id/textPreferredName"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/name"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16sp"
+            android:inputType="textPersonName"
+            />
 
         <TextView
             android:id="@+id/textEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextName"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/primary_email"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="40dp"
             android:layout_below="@+id/textEmail"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/email"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16sp"
+            android:inputType="textEmailAddress"/>
 
         <TextView
             android:id="@+id/textProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextEmail"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/profile_image"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/profilePicture"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/textProfile"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_round"
-            app:riv_oval="true"
-            android:layout_marginStart="10dp"/>
+            app:riv_oval="true" />
 
+        <!--
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/profilePicture2"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/textProfile"
-            android:layout_toEndOf="@+id/profilePicture"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/profilePicture"
             android:scaleType="centerCrop"
             android:src="@drawable/wallpaper21"
             app:riv_oval="true" />
@@ -107,8 +116,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/textProfile"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/profilePicture2"
             android:scaleType="centerCrop"
             android:src="@drawable/wallpaper23"
@@ -119,66 +128,85 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@+id/textProfile"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/profilePicture3"
             android:scaleType="centerCrop"
             android:src="@drawable/wallpaper25"
-            app:riv_oval="true" />
+            app:riv_oval="true" /> -->
 
         <TextView
             android:id="@+id/textGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/profilePicture"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/custom_greeting"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/textEditGreeting"
+            android:id="@+id/editTextGreeting"
             android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="40dp"
             android:layout_below="@+id/textGreeting"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/greeting"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16sp"
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/textPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textEditGreeting"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/editTextGreeting"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/pw"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"/>
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/textEditPassword"
+            android:id="@+id/editTextPassword"
             android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="40dp"
             android:layout_below="@+id/textPassword"
+            android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/pw"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:layout_marginStart="10dp"/>
+            android:textSize="16sp"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="320dp"
+            android:layout_height="55dp"
+            android:layout_below="@+id/editTextPassword"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/login_button_background"
+            android:text="@string/save"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>

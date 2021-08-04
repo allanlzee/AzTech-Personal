@@ -120,6 +120,7 @@
     <string name="custom_greeting">Custom Greeting</string>
     <string name="greeting">Greeting</string>
     <string name="pw">Password</string>
+    <string name="save_button">Save</string>
 
 
 </resources>
