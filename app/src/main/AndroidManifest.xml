@@ -26,17 +26,19 @@
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".PersonalAccount"
+            android:label="Edit Profile" />
+        <activity
             android:name=".ui.login.SignUp"
-            android:label="Sign Up"/>
+            android:label="Sign Up" />
         <activity
             android:name=".ui.login.Login"
             android:label="AzTech">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".communication.Social"
@@ -110,9 +112,7 @@
             android:label="@string/nav_reminder" />
         <activity
             android:name=".MainActivity"
-            android:label="Scheduler">
-
-        </activity>
+            android:label="Scheduler" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -125,10 +125,9 @@
             android:name=".ui.login.firebase.MessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>

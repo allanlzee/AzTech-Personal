@@ -48,14 +48,6 @@ public class MainActivity extends AppCompatActivity
     private ActivityMainBinding binding;
     private Preferences preferenceManager;
 
-    /*
-    CardView schedule;
-    CardView reminders;
-    CardView mindfulness;
-    CardView homework;
-    CardView extracurriculars;
-    CardView inspire; */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,6 +155,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_logout:
                 logout(findViewById(R.id.navigation_view));
                 Toast.makeText(MainActivity.this, "Logged Out!", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.nav_account:
+                intent = new Intent(MainActivity.this, PersonalAccount.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Account Settings", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.nav_homework:

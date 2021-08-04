@@ -32,4 +32,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="Profile Customizations">
+
+        <EditTextPreference
+            app:key="name"
+            app:title="Name"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

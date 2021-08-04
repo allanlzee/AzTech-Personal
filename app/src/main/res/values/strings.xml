@@ -109,6 +109,17 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="add_profile_image">Add Profile Image</string>
     <string name="welcome_greeting">Welcome!</string>
+    <string name="title_activity_personal_account">PersonalAccount</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="preferred_name">Preferred Name</string>
+    <string name="primary_email">Primary Email</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="custom_greeting">Custom Greeting</string>
+    <string name="greeting">Greeting</string>
+    <string name="pw">Password</string>
 
 
 </resources>
