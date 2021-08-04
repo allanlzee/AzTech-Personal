@@ -25,15 +25,6 @@ public class Utilities {
     public static Bitmap profileImage = null;
     public static Boolean isLoggedIn = false;
 
-    // Freezes the app's thread for a specified amount of time
-    public static void wait(int length) {
-        try {
-            Thread.sleep(length);
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
     public static void scheduler(Activity activity) {
         Runnable task = ()->Toast.makeText(activity, "Toast Message", Toast.LENGTH_SHORT).show();
 
