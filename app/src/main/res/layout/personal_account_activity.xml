@@ -39,12 +39,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/name"
+            android:inputType="textPersonName"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:textSize="16sp"
-            android:inputType="textPersonName"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textEmail"
@@ -69,11 +68,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:textSize="16sp"
-            android:inputType="textEmailAddress"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textProfile"
@@ -158,11 +157,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/greeting"
+            android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:textSize="16sp"
-            android:inputType="text"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textPassword"
@@ -187,11 +186,11 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/input_background"
             android:hint="@string/pw"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hintText"
-            android:textSize="16sp"
-            android:inputType="textPassword"/>
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/saveButton"
