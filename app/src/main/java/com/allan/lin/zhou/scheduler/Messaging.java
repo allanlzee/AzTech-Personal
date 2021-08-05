@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-
 import com.allan.lin.zhou.scheduler.databinding.MessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.UsersActivity;
 
