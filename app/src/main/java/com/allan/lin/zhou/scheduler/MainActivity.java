@@ -36,8 +36,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
-import static com.allan.lin.zhou.scheduler.Utilities.profileImage;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -72,11 +70,6 @@ public class MainActivity extends AppCompatActivity
 
         // Make the Menu Items Clickable
         navigationView.setNavigationItemSelectedListener(this);
-
-        /* if (Utilities.isLoggedIn && Utilities.profileImage != null) {
-            ImageView profile = findViewById(R.id.profilePicture);
-            profile.setImageBitmap(Utilities.profileImage);
-        } */
 
         ImageView profilePicture = findViewById(R.id.profilePicture);
         profilePicture.setOnClickListener(new View.OnClickListener() {
@@ -182,9 +175,9 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_email:
-                intent = new Intent(MainActivity.this, Email.class);
+                intent = new Intent(MainActivity.this, Messaging.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Email", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Messaging", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.nav_camera:
@@ -227,7 +220,6 @@ public class MainActivity extends AppCompatActivity
                 );
 
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
-                .addOnSuccessListener(unused -> showToast("Token Updated!"))
                 .addOnFailureListener(exception -> showToast(exception.getMessage()));
     }
 

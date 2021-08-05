@@ -165,10 +165,10 @@ public class SignUp extends AppCompatActivity {
             showToast("Enter Name");
             return false;
         } else if (binding.email.getText().toString().trim().isEmpty()) {
-            showToast("Enter Email");
+            showToast("Enter Messaging");
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()) {
-            showToast("Enter Valid Email");
+            showToast("Enter Valid Messaging");
             return false;
         } else if (binding.password.getText().toString().trim().isEmpty()) {
             showToast("Enter Password");

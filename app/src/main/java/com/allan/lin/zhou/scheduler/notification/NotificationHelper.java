@@ -11,7 +11,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-import com.allan.lin.zhou.scheduler.Email;
+import com.allan.lin.zhou.scheduler.Messaging;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.mind.Mindfulness;
 import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
@@ -21,7 +21,7 @@ public class NotificationHelper extends ContextWrapper {
 
     public static final String reminderID = "Reminders";
     public static final String reminderName = "RemindersChannel";
-    public static final String emailID = "Email";
+    public static final String emailID = "Messaging";
     public static final String emailName = "EmailChannel";
     public static final String mindfulnessID = "Mindfulness";
     public static final String mindfulnessName = "MindfulnessChannel";
@@ -37,7 +37,7 @@ public class NotificationHelper extends ContextWrapper {
     // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     PendingIntent reminderPendingIntent = PendingIntent.getActivity(this, 0, reminderIntent, 0);
 
-    Intent emailIntent = new Intent(this, Email.class);
+    Intent emailIntent = new Intent(this, Messaging.class);
     PendingIntent emailPendingIntent = PendingIntent.getActivity(this, 1, emailIntent, 0);
 
     Intent mindfulnessIntent = new Intent(this, Mindfulness.class);
@@ -91,7 +91,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getEmailNotification(String name) {
-        String notification = "Email: " + name;
+        String notification = "Messaging: " + name;
         return new NotificationCompat.Builder(getApplicationContext(), emailID)
                 .setContentTitle("AzTech Scheduler")
                 .setContentText(notification)

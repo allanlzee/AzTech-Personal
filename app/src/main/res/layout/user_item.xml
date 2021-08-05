@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/wallpaper25"
+        android:scaleType="centerCrop"
+        app:riv_oval="true" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/profilePicture"
+        android:layout_marginStart="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Username"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/profilePicture"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="User Email"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

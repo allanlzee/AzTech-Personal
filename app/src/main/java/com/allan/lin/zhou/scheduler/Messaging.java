@@ -3,25 +3,28 @@ package com.allan.lin.zhou.scheduler;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.allan.lin.zhou.scheduler.databinding.EmailActivityBinding;
+
+import com.allan.lin.zhou.scheduler.databinding.MessagingActivityBinding;
+import com.allan.lin.zhou.scheduler.ui.login.UsersActivity;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
-public class Email extends AppCompatActivity {
+public class Messaging extends AppCompatActivity {
 
-    private EmailActivityBinding binding;
+    private MessagingActivityBinding binding;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.email_activity);
+        setContentView(R.layout.messaging_activity);
 
-        binding = EmailActivityBinding.inflate(getLayoutInflater());
+        binding = MessagingActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         toolbar = findViewById(R.id.toolbar);
@@ -33,15 +36,15 @@ public class Email extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                backToHome(view, Email.this);
+                backToHome(view, Messaging.this);
             }
         });
 
-        binding.notification.setOnClickListener(new View.OnClickListener() {
+        binding.newChatButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), UsersActivity.class));
             }
         });
     }
