@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/profilePicture"
         android:ellipsize="end"

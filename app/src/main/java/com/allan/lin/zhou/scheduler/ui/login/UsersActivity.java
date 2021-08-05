@@ -1,12 +1,16 @@
 package com.allan.lin.zhou.scheduler.ui.login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
@@ -16,6 +20,8 @@ import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +51,8 @@ public class UsersActivity extends AppCompatActivity {
 
         getUserList();
 
+        // Add Clicking Functionality to all RecyclerView Items
+
     }
 
     private void loadingProgressBar(Boolean isLoading) {
@@ -65,7 +73,6 @@ public class UsersActivity extends AppCompatActivity {
     }
 
     // List of Users using RecyclerView
-    // TODO: find recycler view bug
     private void getUserList() {
         loadingProgressBar(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
@@ -118,4 +125,13 @@ public class UsersActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // Recycler View Item Clicking
+
+    public void onClick(int position) {
+        FirebaseUser user = users.get(position);
+        Toast.makeText(this, user.username, Toast.LENGTH_SHORT).show();
+    }
+
+    // **************************************************** //
 }

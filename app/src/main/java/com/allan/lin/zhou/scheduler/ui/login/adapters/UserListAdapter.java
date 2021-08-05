@@ -1,6 +1,5 @@
 package com.allan.lin.zhou.scheduler.ui.login.adapters;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -11,15 +10,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.UserItemBinding;
-import com.allan.lin.zhou.scheduler.schedule.Adapter;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
-import com.google.firebase.firestore.auth.User;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserListViewHolder> {
@@ -75,5 +67,6 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserLi
         return users.size();
     }
     // **************************************************************************** //
+
 
 }
