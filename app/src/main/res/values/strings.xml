@@ -122,6 +122,7 @@
     <string name="pw">Password</string>
     <string name="save_button">Save</string>
     <string name="messages">Messages</string>
+    <string name="enter_message">Enter Message</string>
 
 
 </resources>
