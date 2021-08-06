@@ -64,7 +64,7 @@ public class TextMessaging extends AppCompatActivity {
             }
         });
 
-        // listenMessages();
+        listenMessages();
     }
 
     // Loads User Data into the Text Message Layout
