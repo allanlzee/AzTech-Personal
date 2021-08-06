@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.allan.lin.zhou.scheduler.databinding.MessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.UsersActivity;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 

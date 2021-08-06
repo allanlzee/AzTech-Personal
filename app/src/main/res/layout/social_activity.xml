@@ -55,7 +55,9 @@
             android:textColor="@color/white"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:padding="12dp"
+            android:padding="10dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:background="@drawable/textbar"
             android:textColorHint="@color/white"
             />

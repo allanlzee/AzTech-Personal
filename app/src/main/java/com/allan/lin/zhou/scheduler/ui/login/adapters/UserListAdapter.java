@@ -12,12 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.allan.lin.zhou.scheduler.databinding.UserItemBinding;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.UserListener;
+
 import java.util.List;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserListViewHolder> {
 
     // User List
     private final List<FirebaseUser> users;
+
+    // Custom User Listener
+    private final UserListener userListener;
+
+    public UserListAdapter(List<FirebaseUser> users, UserListener userListener) {
+        this.users = users;
+        this.userListener = userListener;
+    }
 
     // Object Class for View Holders (Recycler View)
     class UserListViewHolder extends RecyclerView.ViewHolder {
@@ -33,11 +43,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserLi
             binding.username.setText(user.username);
             binding.userEmail.setText(user.email);
             binding.profilePicture.setImageBitmap(getProfilePicture(user.image));
-        }
-    }
 
-    public UserListAdapter(List<FirebaseUser> users) {
-        this.users = users;
+            // Lambda to make the recycler view items clickable
+            binding.getRoot().setOnClickListener(view -> userListener.onUserClicked(user));
+        }
     }
 
     private Bitmap getProfilePicture(String encodedImage) {

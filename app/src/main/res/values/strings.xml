@@ -123,6 +123,9 @@
     <string name="save_button">Save</string>
     <string name="messages">Messages</string>
     <string name="enter_message">Enter Message</string>
+    <string name="bot_message">Bot Message</string>
+    <string name="user_message">User Message</string>
+    <string name="date_time">Date Time</string>
 
 
 </resources>

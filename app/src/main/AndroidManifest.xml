@@ -27,8 +27,9 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.login.text.message.Chats"
-            android:label="Text Messages"/>
+            android:name=".ui.login.text.message.TextMessaging"
+            android:label="Text Messages"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.login.UsersActivity"
             android:label="Select User" />

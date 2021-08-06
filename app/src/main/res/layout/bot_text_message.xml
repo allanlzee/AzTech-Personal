@@ -6,13 +6,13 @@
     android:layout_gravity="start"
     android:layout_margin="5dp"
     android:elevation="8dp"
-    app:cardBackgroundColor="@color/bot_msg"
-    app:cardCornerRadius="8dp">
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/bot_message_background">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/botTextMessage"
-            android:text="Bot Message"
+            android:text="@string/bot_message"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:padding="4dp"

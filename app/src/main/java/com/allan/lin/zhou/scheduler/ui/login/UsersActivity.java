@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -18,6 +19,8 @@ import com.allan.lin.zhou.scheduler.databinding.UsersActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.UserListAdapter;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.UserListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -26,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersActivity extends AppCompatActivity {
+public class UsersActivity extends AppCompatActivity implements UserListener {
 
     private UsersActivityBinding binding;
     private Preferences preferenceManager;
@@ -90,6 +93,7 @@ public class UsersActivity extends AppCompatActivity {
                                 continue;
                             }
 
+                            // Instantiate a new Firebase User for the arraylist used in the recycler view
                             FirebaseUser user = new FirebaseUser();
                             user.username = queryDocumentSnapshot.getString(Constants.KEY_NAME);
                             user.email = queryDocumentSnapshot.getString(Constants.KEY_EMAIL);
@@ -99,13 +103,11 @@ public class UsersActivity extends AppCompatActivity {
                             users.add(user);
                         }
 
-                        Toast.makeText(UsersActivity.this, "Worked", Toast.LENGTH_LONG).show();
-
                         // Set up RecyclerView Adapter
                         if (users.size() > 0) {
                             LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                             binding.userRecyclerView.setLayoutManager(layoutManager);
-                            UserListAdapter userListAdapter = new UserListAdapter(users);
+                            UserListAdapter userListAdapter = new UserListAdapter(users, this);
                             binding.userRecyclerView.setAdapter(userListAdapter);
                             binding.userRecyclerView.setVisibility(View.VISIBLE);
                         } else {
@@ -128,10 +130,14 @@ public class UsersActivity extends AppCompatActivity {
 
     // Recycler View Item Clicking
 
-    public void onClick(int position) {
-        FirebaseUser user = users.get(position);
-        Toast.makeText(this, user.username, Toast.LENGTH_SHORT).show();
+    @Override
+    public void onUserClicked(FirebaseUser user) {
+        Intent intent = new Intent(getApplicationContext(), TextMessaging.class);
+        intent.putExtra(Constants.KEY_USER, user);
+        startActivity(intent);
+        finish();
     }
+
 
     // **************************************************** //
 }

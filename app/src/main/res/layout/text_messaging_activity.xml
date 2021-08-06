@@ -6,30 +6,44 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/wallpaper24"
-    tools:context=".ui.login.text.message.Chats">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+    tools:context=".ui.login.text.message.TextMessaging">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@+id/profilePicture"
         android:background="@drawable/text_message_background"
         android:layout_above="@+id/messageBox"
         android:layout_marginBottom="6dp"/>
+
+    <ImageView
+        android:id="@+id/navigateBack"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/back"
+        app:tint="@color/add_event"
+        android:layout_margin="10dp" />
 
     <TextView
         android:id="@+id/recipientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
         android:text="Recipient Name"
-        android:textSize="24sp"
-        android:layout_margin="15dp"
+        android:textSize="18sp"
+        android:layout_margin="12dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/textHistory"
@@ -55,18 +69,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:riv_oval="true"
-        android:scaleType="centerCrop"
-        />
-
     <RelativeLayout
         android:id="@+id/messageBox"
         android:layout_width="match_parent"
@@ -87,7 +89,8 @@
             android:textColor="@color/white"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:padding="12dp"
+            android:padding="8dp"
+            android:paddingStart="14dp"
             android:background="@drawable/textbar"
             android:textColorHint="@color/white"
             />
