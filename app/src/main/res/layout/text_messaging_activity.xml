@@ -12,31 +12,29 @@
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profilePicture"
-        android:background="@drawable/text_message_background"
         android:layout_above="@+id/messageBox"
+        android:layout_below="@+id/profilePicture"
         android:layout_marginBottom="6dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:background="@drawable/text_message_background" />
 
     <ImageView
         android:id="@+id/navigateBack"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:layout_margin="10dp"
         android:src="@drawable/back"
-        app:tint="@color/add_event"
-        android:layout_margin="10dp" />
+        app:tint="@color/add_event" />
 
     <TextView
         android:id="@+id/recipientName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recipient_name"
-        android:textSize="18sp"
-        android:layout_marginTop="14dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/recipient_name"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/profilePicture"
@@ -44,28 +42,25 @@
         android:layout_height="45dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher_round"
-        app:riv_oval="true"
         android:scaleType="centerCrop"
-        />
+        android:src="@mipmap/ic_launcher_round"
+        app:riv_oval="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/textMessagesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/recipientName"
         android:layout_above="@+id/messageBox"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/recipientName"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
-        android:textAlignment="viewEnd"
-        app:stackFromEnd="true"
+        android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
-        android:clipToPadding="false"
-
-        />
+        android:textAlignment="viewEnd"
+        app:stackFromEnd="true" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -78,8 +73,7 @@
         android:id="@+id/messageBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
         <EditText
             android:id="@+id/textMessageInput"
@@ -89,16 +83,15 @@
             android:layout_marginStart="5dp"
             android:layout_marginBottom="4dp"
             android:layout_toStartOf="@+id/sendButton"
+            android:background="@drawable/textbar"
             android:hint="@string/enter_message"
-            android:singleLine="true"
-            android:textColor="@color/white"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:padding="8dp"
             android:paddingStart="14dp"
-            android:background="@drawable/textbar"
-            android:textColorHint="@color/white"
-            />
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/sendButton"
