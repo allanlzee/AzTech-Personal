@@ -25,11 +25,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".ui.login.text.message.UserInformation"
+            android:label="Recipient Profile"/>
         <activity
             android:name=".ui.login.text.message.TextMessaging"
             android:label="Text Messages"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.login.UsersActivity"
             android:label="Select User" />

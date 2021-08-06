@@ -127,6 +127,7 @@
     <string name="user_message">User Message</string>
     <string name="date_time">Date Time</string>
     <string name="recipient_name">Recipient Name</string>
+    <string name="back_to_messaging">Back to Messaging</string>
 
 
 </resources>

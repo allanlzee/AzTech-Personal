@@ -203,11 +203,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadUserData() {
-        String greet = preferenceManager.getString(Constants.KEY_NAME);
-        binding.textName.setText(greet);
+        String name = preferenceManager.getString(Constants.KEY_NAME);
+        binding.textName.setText(name);
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.profilePicture.setImageBitmap(bitmap);
+
+        Utilities.username = preferenceManager.getString(Constants.KEY_NAME);
+        Utilities.email = preferenceManager.getString(Constants.KEY_EMAIL);
         Utilities.senderProfileImage = bitmap;
     }
 

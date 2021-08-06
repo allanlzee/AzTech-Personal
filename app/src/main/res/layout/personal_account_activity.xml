@@ -97,43 +97,6 @@
             android:src="@mipmap/ic_launcher_round"
             app:riv_oval="true" />
 
-        <!--
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/profilePicture2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/textProfile"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/profilePicture"
-            android:scaleType="centerCrop"
-            android:src="@drawable/wallpaper21"
-            app:riv_oval="true" />
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/profilePicture3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/textProfile"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/profilePicture2"
-            android:scaleType="centerCrop"
-            android:src="@drawable/wallpaper23"
-            app:riv_oval="true" />
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/profilePicture4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/textProfile"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/profilePicture3"
-            android:scaleType="centerCrop"
-            android:src="@drawable/wallpaper25"
-            app:riv_oval="true" /> -->
-
         <TextView
             android:id="@+id/textGreeting"
             android:layout_width="wrap_content"

@@ -3,6 +3,7 @@ package com.allan.lin.zhou.scheduler.ui.login.text.message;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -66,6 +67,14 @@ public class TextMessaging extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendMessage();
+            }
+        });
+
+        binding.profilePicture.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TextMessaging.this, UserInformation.class));
             }
         });
 
