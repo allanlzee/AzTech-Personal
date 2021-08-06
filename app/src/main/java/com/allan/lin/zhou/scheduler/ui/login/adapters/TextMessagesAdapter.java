@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.ReceivedTextMessageBinding;
 import com.allan.lin.zhou.scheduler.databinding.SentTextMessageBinding;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
@@ -51,7 +52,7 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == VIEW_TYPE_SENT) {
-            ((SentMessageViewHolder) holder).setData(textMessages.get(position));
+            ((SentMessageViewHolder) holder).setData(textMessages.get(position), Utilities.senderProfileImage);
         } else {
             ((ReceivedMessageViewHolder) holder).setData(textMessages.get(position), recipientProfilePicture);
         }
@@ -83,9 +84,10 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding = sentTextMessageBinding;
         }
 
-        void setData(ChatMessageObject chatMessage) {
+        void setData(ChatMessageObject chatMessage, Bitmap profilePicture) {
             binding.userTextMessage.setText(chatMessage.messageContent);
             binding.textDateTime.setText(chatMessage.messageDateTime);
+            binding.profilePicture.setImageBitmap(profilePicture);
         }
     }
 

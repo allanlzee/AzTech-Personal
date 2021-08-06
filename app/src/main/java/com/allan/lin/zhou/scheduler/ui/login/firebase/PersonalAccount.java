@@ -1,4 +1,4 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.ui.login.firebase;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -17,6 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.allan.lin.zhou.scheduler.MainActivity;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.PersonalAccountActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;

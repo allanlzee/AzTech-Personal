@@ -34,7 +34,7 @@
             android:name=".ui.login.UsersActivity"
             android:label="Select User" />
         <activity
-            android:name=".PersonalAccount"
+            android:name=".ui.login.firebase.PersonalAccount"
             android:label="Edit Profile" />
         <activity
             android:name=".ui.login.SignUp"

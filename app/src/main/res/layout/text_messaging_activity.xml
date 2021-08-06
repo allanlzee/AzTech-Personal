@@ -15,7 +15,9 @@
         android:layout_below="@+id/profilePicture"
         android:background="@drawable/text_message_background"
         android:layout_above="@+id/messageBox"
-        android:layout_marginBottom="6dp"/>
+        android:layout_marginBottom="6dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
 
     <ImageView
         android:id="@+id/navigateBack"

@@ -24,6 +24,7 @@ public class Utilities {
     // Profile Image
     public static Bitmap profileImage = null;
     public static Boolean isLoggedIn = false;
+    public static Bitmap senderProfileImage = null;
 
     public static void scheduler(Activity activity) {
         Runnable task = ()->Toast.makeText(activity, "Toast Message", Toast.LENGTH_SHORT).show();

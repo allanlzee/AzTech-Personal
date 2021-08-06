@@ -28,6 +28,7 @@ import com.allan.lin.zhou.scheduler.ui.login.Login;
 import com.allan.lin.zhou.scheduler.ui.login.Messaging;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.PersonalAccount;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
@@ -207,6 +208,7 @@ public class MainActivity extends AppCompatActivity
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.profilePicture.setImageBitmap(bitmap);
+        Utilities.senderProfileImage = bitmap;
     }
 
     private void showToast(String message) {
