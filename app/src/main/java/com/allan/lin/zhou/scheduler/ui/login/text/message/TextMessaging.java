@@ -1,12 +1,14 @@
 package com.allan.lin.zhou.scheduler.ui.login.text.message;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.TextMessagingActivityBinding;
@@ -80,6 +82,8 @@ public class TextMessaging extends AppCompatActivity {
     private void initializeViews() {
         preferenceManager = new Preferences(getApplicationContext());
         textMessages = new ArrayList<>();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        binding.textMessagesRecyclerView.setLayoutManager(layoutManager);
         textMessagesAdapter = new TextMessagesAdapter(textMessages, profilePicture, preferenceManager.getString(Constants.KEY_USER_ID));
         binding.textMessagesRecyclerView.setAdapter(textMessagesAdapter);
         database = FirebaseFirestore.getInstance();
@@ -107,7 +111,6 @@ public class TextMessaging extends AppCompatActivity {
         if (value != null) {
             int size = textMessages.size();
             for (DocumentChange documentChange : value.getDocumentChanges()) {
-
                 if (documentChange.getType() == DocumentChange.Type.ADDED) {
                     // Set variables of the ChatMessageObject to send messages to the recycler view
                     ChatMessageObject chatMessageObject = new ChatMessageObject();
@@ -147,7 +150,5 @@ public class TextMessaging extends AppCompatActivity {
                 .whereEqualTo(Constants.KEY_SENDER_ID, userRecipient.id)
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
                 .addSnapshotListener(eventListener);
-
-
     }
 }

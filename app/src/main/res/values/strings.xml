@@ -126,6 +126,7 @@
     <string name="bot_message">Bot Message</string>
     <string name="user_message">User Message</string>
     <string name="date_time">Date Time</string>
+    <string name="recipient_name">Recipient Name</string>
 
 
 </resources>
