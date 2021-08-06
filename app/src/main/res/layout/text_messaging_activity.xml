@@ -46,7 +46,7 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/textHistory"
+        android:id="@+id/textMessagesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/recipientName"
@@ -77,7 +77,7 @@
         >
 
         <EditText
-            android:id="@+id/textEdit"
+            android:id="@+id/textMessageInput"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
