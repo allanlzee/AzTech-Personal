@@ -17,7 +17,6 @@ import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.RecentMessageListener;
-import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.UserListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
