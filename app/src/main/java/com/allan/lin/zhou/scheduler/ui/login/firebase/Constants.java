@@ -16,4 +16,12 @@ public class Constants {
     public static final String KEY_RECEIVER_ID = "receiverID";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_DATETIME = "datetime";
+
+    // Constants for Recent Conversations
+    public static final String KEY_COLLECTION_CONVERSATIONS = "conversations";
+    public static final String KEY_SENDER_NAME = "senderName";
+    public static final String KEY_SENDER_PROFILE_IMAGE = "senderProfileImage";
+    public static final String KEY_RECEIVER_NAME = "receiverName";
+    public static final String KEY_RECEIVER_PROFILE_IMAGE = "receiverProfileImage";
+    public static final String KEY_LAST_MESSAGE = "lastMessage";
 }

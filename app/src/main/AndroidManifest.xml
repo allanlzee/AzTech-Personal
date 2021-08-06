@@ -71,10 +71,10 @@
         <activity android:name=".EmailNotification">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Messaging" />
+                android:value=".ui.login.Messaging" />
         </activity>
         <activity
-            android:name=".Messaging"
+            android:name=".ui.login.Messaging"
             android:label="Messages" />
         <activity
             android:name=".mind.Music"

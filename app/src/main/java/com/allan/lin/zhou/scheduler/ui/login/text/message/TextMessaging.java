@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.TextMessagingActivityBinding;
@@ -16,7 +15,10 @@ import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.TextMessagesAdapter;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -37,6 +39,7 @@ public class TextMessaging extends AppCompatActivity {
     private Preferences preferenceManager;
     private FirebaseFirestore database;
     private Bitmap profilePicture;
+    private String conversionID = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class TextMessaging extends AppCompatActivity {
         listenMessages();
     }
 
+    // *************************** Initialization *************************** //
     // Loads User Data into the Text Message Layout
     private void loadRecipientDetails() {
         userRecipient = (FirebaseUser) getIntent().getSerializableExtra(Constants.KEY_USER);
@@ -89,6 +93,10 @@ public class TextMessaging extends AppCompatActivity {
         database = FirebaseFirestore.getInstance();
     }
 
+    // *************************** Initialization *************************** //
+
+    // *************************** Message Sending *************************** //
+
     private void sendMessage() {
         HashMap<String, Object> message = new HashMap<>();
         message.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
@@ -96,12 +104,32 @@ public class TextMessaging extends AppCompatActivity {
         message.put(Constants.KEY_MESSAGE, binding.textMessageInput.getText().toString());
         message.put(Constants.KEY_DATETIME, new Date());
         database.collection(Constants.KEY_COLLECTION_CHAT).add(message);
+
+        if (conversionID != null) {
+            updateConversion(binding.textMessageInput.getText().toString());
+        } else { // New Message Conversion
+            HashMap<String, Object> conversion = new HashMap<>();
+            conversion.put(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
+            conversion.put(Constants.KEY_SENDER_NAME, preferenceManager.getString(Constants.KEY_NAME));
+            conversion.put(Constants.KEY_SENDER_PROFILE_IMAGE, preferenceManager.getString(Constants.KEY_IMAGE));
+            conversion.put(Constants.KEY_RECEIVER_ID, userRecipient.id);
+            conversion.put(Constants.KEY_RECEIVER_NAME, userRecipient.username);
+            conversion.put(Constants.KEY_RECEIVER_PROFILE_IMAGE, userRecipient.image);
+            conversion.put(Constants.KEY_LAST_MESSAGE, binding.textMessageInput.getText().toString());
+            conversion.put(Constants.KEY_DATETIME, new Date());
+            addConversion(conversion);
+        }
+
         binding.textMessageInput.setText(null);
     }
 
     private String getDateTime(Date date) {
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
+
+    // *************************** Message Sending *************************** //
+
+    // *************************** Message Recycler View *************************** //
 
     private final EventListener<QuerySnapshot> eventListener = (value, error) -> {
         if (error != null) {
@@ -138,7 +166,56 @@ public class TextMessaging extends AppCompatActivity {
             binding.textMessagesRecyclerView.setVisibility(View.VISIBLE);
         }
         binding.progressBar.setVisibility(View.GONE);
+
+        // Check for Conversions
+        if (conversionID == null) {
+            checkForConversion();
+        }
     };
+
+    // *************************** Message Recycler View *************************** //
+
+    // *************************** Conversion *************************** //
+
+    // Uses Firebase to get the most recent user message
+    private final OnCompleteListener<QuerySnapshot> conversionOnCompleteListener = task -> {
+        if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
+            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+            conversionID = documentSnapshot.getId();
+        }
+    };
+
+    // Checks for message conversion in Firebase
+    private void checkForConversionRemotely(String senderID, String receiverID) {
+        database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
+                .whereEqualTo(Constants.KEY_SENDER_ID, senderID)
+                .whereEqualTo(Constants.KEY_RECEIVER_ID, receiverID)
+                .get()
+                .addOnCompleteListener(conversionOnCompleteListener);
+    }
+
+    private void checkForConversion() {
+        if (textMessages.size() != 0) {
+            // Sender -> Recipient
+            checkForConversionRemotely(preferenceManager.getString(Constants.KEY_USER_ID), userRecipient.id);
+            // Recipient -> Sender
+            checkForConversionRemotely(userRecipient.id, preferenceManager.getString(Constants.KEY_USER_ID));
+        }
+    }
+
+    // Send the message conversion to Firebase Messaging
+    private void addConversion(HashMap<String, Object> conversion) {
+        database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
+                .add(conversion)
+                .addOnSuccessListener(documentReference -> conversionID = documentReference.getId());
+    }
+
+    private void updateConversion(String message) {
+        DocumentReference documentReference = database.collection(Constants.KEY_COLLECTION_CONVERSATIONS).document(conversionID);
+        documentReference.update(Constants.KEY_LAST_MESSAGE, message, Constants.KEY_DATETIME, new Date());
+    }
+
+    // *************************** Conversion *************************** //
 
     private void listenMessages() {
         database.collection(Constants.KEY_COLLECTION_CHAT)

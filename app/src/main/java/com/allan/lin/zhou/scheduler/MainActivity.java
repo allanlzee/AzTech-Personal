@@ -25,6 +25,7 @@ import com.allan.lin.zhou.scheduler.mind.Mindfulness;
 import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
 import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.ui.login.Login;
+import com.allan.lin.zhou.scheduler.ui.login.Messaging;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.google.android.material.navigation.NavigationView;

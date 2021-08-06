@@ -11,7 +11,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
-import com.allan.lin.zhou.scheduler.Messaging;
+import com.allan.lin.zhou.scheduler.ui.login.Messaging;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.mind.Mindfulness;
 import com.allan.lin.zhou.scheduler.reminder.list.Reminders;

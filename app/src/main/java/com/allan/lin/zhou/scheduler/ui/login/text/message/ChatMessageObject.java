@@ -6,4 +6,6 @@ public class ChatMessageObject {
     public String senderID, receiverID, messageContent, messageDateTime;
 
     public Date dateTimeObject;
+
+    public String conversionId, conversionUsername, conversionProfileImage;
 }
