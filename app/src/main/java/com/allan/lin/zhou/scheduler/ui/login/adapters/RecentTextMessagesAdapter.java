@@ -4,13 +4,16 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.allan.lin.zhou.scheduler.databinding.RecentUserMessageBinding;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.RecentMessageListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,9 +23,11 @@ public class RecentTextMessagesAdapter extends RecyclerView.Adapter<RecentTextMe
 
     // List to Store Messages for Recycler View
     private final ArrayList<ChatMessageObject> textMessages;
+    private final RecentMessageListener recentMessageListener;
 
-    public RecentTextMessagesAdapter(ArrayList<ChatMessageObject> textMessages) {
+    public RecentTextMessagesAdapter(ArrayList<ChatMessageObject> textMessages, RecentMessageListener recentMessageListener) {
         this.textMessages = textMessages;
+        this.recentMessageListener = recentMessageListener;
     }
 
     private Bitmap getProfilePicture(String encodedImage) {
@@ -68,6 +73,16 @@ public class RecentTextMessagesAdapter extends RecyclerView.Adapter<RecentTextMe
             binding.profilePicture.setImageBitmap(getProfilePicture(chatMessageObject.conversionProfileImage));
             binding.username.setText(chatMessageObject.conversionUsername);
             binding.recentTextMessage.setText(chatMessageObject.messageContent);
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FirebaseUser firebaseUser = new FirebaseUser();
+                    firebaseUser.id = chatMessageObject.conversionId;
+                    firebaseUser.username = chatMessageObject.conversionUsername;
+                    firebaseUser.image = chatMessageObject.conversionProfileImage;
+                    recentMessageListener.onRecentMessageClicked(firebaseUser);
+                }
+            });
         }
     }
 }

@@ -13,17 +13,22 @@ import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.RecentTextMessagesAdapter;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.RecentMessageListener;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.UserListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
-public class Messaging extends AppCompatActivity {
+public class Messaging extends AppCompatActivity implements RecentMessageListener {
 
     private MessagingActivityBinding binding;
     private Toolbar toolbar;
@@ -50,6 +55,8 @@ public class Messaging extends AppCompatActivity {
 
         // Buttons, Backend Database, Recycler View Adapters and Layout Managers
         initialize();
+
+        listenRecentConversations();
     }
 
     @Override
@@ -86,7 +93,7 @@ public class Messaging extends AppCompatActivity {
         binding.userRecentRecyclerView.setLayoutManager(layoutManager);
 
         // Set Recycler View Adapter
-        textMessagesAdapter = new RecentTextMessagesAdapter(textMessages);
+        textMessagesAdapter = new RecentTextMessagesAdapter(textMessages, this);
         binding.userRecentRecyclerView.setAdapter(textMessagesAdapter);
 
         // Initialize Firebase Database
@@ -126,9 +133,41 @@ public class Messaging extends AppCompatActivity {
                     for (ChatMessageObject chatMessageObject : textMessages) {
                         String senderID = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
                         String receiverID = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
+
+                        if (chatMessageObject.senderID.equals(senderID) && chatMessageObject.receiverID.equals(receiverID)) {
+                            chatMessageObject.messageContent = documentChange.getDocument().getString(Constants.KEY_LAST_MESSAGE);
+                            chatMessageObject.dateTimeObject = documentChange.getDocument().getDate(Constants.KEY_DATETIME);
+                            break;
+                        }
                     }
                 }
             }
+
+            // Sort the messages based on time
+            Collections.sort(textMessages, (msg1, msg2) -> msg2.dateTimeObject.compareTo(msg1.dateTimeObject));
+            textMessagesAdapter.notifyDataSetChanged();
+            binding.userRecentRecyclerView.smoothScrollToPosition(0);
+            binding.userRecentRecyclerView.setVisibility(View.VISIBLE);
+            binding.progressBar.setVisibility(View.GONE);
         }
     };
+
+    private void listenRecentConversations() {
+        database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
+                .whereEqualTo(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
+                .addSnapshotListener(eventListener);
+
+        database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
+                .whereEqualTo(Constants.KEY_RECEIVER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
+                .addSnapshotListener(eventListener);
+    }
+
+    // Inherited RecentMessageListener function
+    // Brings user directly to the message activity
+    @Override
+    public void onRecentMessageClicked(FirebaseUser user) {
+        Intent intent = new Intent(getApplicationContext(), TextMessaging.class);
+        intent.putExtra(Constants.KEY_USER, user);
+        startActivity(intent);
+    }
 }

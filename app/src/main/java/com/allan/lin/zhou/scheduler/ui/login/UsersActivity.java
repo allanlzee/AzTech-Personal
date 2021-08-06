@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.UsersActivityBinding;
@@ -53,9 +50,6 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
         preferenceManager = new Preferences(getApplicationContext());
 
         getUserList();
-
-        // Add Clicking Functionality to all RecyclerView Items
-
     }
 
     private void loadingProgressBar(Boolean isLoading) {
