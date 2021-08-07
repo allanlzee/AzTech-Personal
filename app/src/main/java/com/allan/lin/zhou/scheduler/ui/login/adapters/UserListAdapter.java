@@ -76,6 +76,4 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserLi
         return users.size();
     }
     // **************************************************************************** //
-
-
 }

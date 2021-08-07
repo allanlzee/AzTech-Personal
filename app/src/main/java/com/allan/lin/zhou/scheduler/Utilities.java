@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
+import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -27,7 +29,9 @@ public class Utilities {
 
     public static Bitmap senderProfileImage = null;
     public static String username = null;
-    public static String email = null;
+    public static String recipientEmail = null;
+
+    public static FirebaseUser textMessageRecipient = null;
 
     public static void scheduler(Activity activity) {
         Runnable task = ()->Toast.makeText(activity, "Toast Message", Toast.LENGTH_SHORT).show();

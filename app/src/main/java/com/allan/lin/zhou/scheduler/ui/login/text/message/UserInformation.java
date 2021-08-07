@@ -24,11 +24,6 @@ public class UserInformation extends AppCompatActivity {
     private UserInformationActivityBinding binding;
     private Toolbar toolbar;
 
-    private FirebaseUser userRecipient;
-    private Preferences preferenceManager;
-    private FirebaseFirestore database;
-    private Bitmap profilePicture;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +58,10 @@ public class UserInformation extends AppCompatActivity {
     }
 
     private void loadUserDetails() {
-        binding.editTextName.setText(Utilities.username);
-        binding.editTextEmail.setText(Utilities.email);
-        binding.profilePicture.setImageBitmap(Utilities.senderProfileImage);
+        binding.editTextName.setText(Utilities.textMessageRecipient.username);
+        binding.editTextEmail.setText(Utilities.recipientEmail);
+        byte[] bytes = Base64.decode(Utilities.textMessageRecipient.image, Base64.DEFAULT);
+        Bitmap decodedBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        binding.profilePicture.setImageBitmap(decodedBitmap);
     }
 }

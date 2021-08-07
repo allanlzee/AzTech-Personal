@@ -37,6 +37,9 @@ public class Messaging extends AppCompatActivity implements RecentMessageListene
     private FirebaseFirestore database;
     private Preferences preferenceManager;
 
+    private String senderEmail = null;
+    private String recipientEmail = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,7 +3,7 @@ package com.allan.lin.zhou.scheduler.ui.login.text.message;
 import java.util.Date;
 
 public class ChatMessageObject {
-    public String senderID, receiverID, messageContent, messageDateTime;
+    public String senderID, receiverID, messageContent, messageDateTime, recipientEmail;
 
     public Date dateTimeObject;
 

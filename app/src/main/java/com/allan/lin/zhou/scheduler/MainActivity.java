@@ -210,7 +210,6 @@ public class MainActivity extends AppCompatActivity
         binding.profilePicture.setImageBitmap(bitmap);
 
         Utilities.username = preferenceManager.getString(Constants.KEY_NAME);
-        Utilities.email = preferenceManager.getString(Constants.KEY_EMAIL);
         Utilities.senderProfileImage = bitmap;
     }
 

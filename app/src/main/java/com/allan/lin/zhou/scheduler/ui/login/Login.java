@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,7 +62,7 @@ public class Login extends AppCompatActivity {
                 // addDataToFirestore();
                 if (isValidLogin()) {
                     signIn();
-                    Utilities.email = binding.email.getText().toString();
+                    Utilities.recipientEmail = binding.email.getText().toString();
                 }
             }
         });
@@ -97,6 +100,11 @@ public class Login extends AppCompatActivity {
                         startActivity(intent);
                         Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         Utilities.isLoggedIn = true;
+
+                        byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        Utilities.profileImage = bitmap;
+
                     } else {
                         loadingProgressBar(false);
                         showToast("Unable to Login!");

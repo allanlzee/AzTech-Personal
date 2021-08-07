@@ -37,6 +37,7 @@
         android:layout_toEndOf="@+id/profilePicture"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="User Email"
-        android:textColor="@color/white" />
+        android:text="Recent Message"
+        android:textColor="@color/calendar_gray" />
+
 </RelativeLayout>

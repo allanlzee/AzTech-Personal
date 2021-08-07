@@ -65,7 +65,7 @@ public class RecentTextMessagesAdapter extends RecyclerView.Adapter<RecentTextMe
         // Constructor
         ConversionViewHolder(RecentUserMessageBinding recentUserMessageBinding) {
             super(recentUserMessageBinding.getRoot());
-            binding =  recentUserMessageBinding;
+            binding = recentUserMessageBinding;
         }
 
         // Set Profile Picture and TextViews for User
@@ -73,6 +73,7 @@ public class RecentTextMessagesAdapter extends RecyclerView.Adapter<RecentTextMe
             binding.profilePicture.setImageBitmap(getProfilePicture(chatMessageObject.conversionProfileImage));
             binding.username.setText(chatMessageObject.conversionUsername);
             binding.recentTextMessage.setText(chatMessageObject.messageContent);
+
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

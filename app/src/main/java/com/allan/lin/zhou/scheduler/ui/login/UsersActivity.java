@@ -1,10 +1,8 @@
 package com.allan.lin.zhou.scheduler.ui.login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -131,7 +129,6 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
         startActivity(intent);
         finish();
     }
-
 
     // **************************************************** //
 }

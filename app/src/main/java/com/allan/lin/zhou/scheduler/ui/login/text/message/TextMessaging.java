@@ -9,8 +9,10 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.TextMessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.TextMessagesAdapter;
@@ -85,7 +87,11 @@ public class TextMessaging extends AppCompatActivity {
     // Loads User Data into the Text Message Layout
     private void loadRecipientDetails() {
         userRecipient = (FirebaseUser) getIntent().getSerializableExtra(Constants.KEY_USER);
+
+        Utilities.textMessageRecipient = userRecipient;
+
         binding.recipientName.setText(userRecipient.username);
+
         byte[] bytes = Base64.decode(userRecipient.image, Base64.DEFAULT);
         Bitmap decodedBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         profilePicture = decodedBitmap;
@@ -156,7 +162,7 @@ public class TextMessaging extends AppCompatActivity {
                     chatMessageObject.messageContent = documentChange.getDocument().getString(Constants.KEY_MESSAGE);
                     chatMessageObject.messageDateTime = getDateTime(documentChange.getDocument().getDate(Constants.KEY_DATETIME));
                     chatMessageObject.dateTimeObject = documentChange.getDocument().getDate(Constants.KEY_DATETIME);
-
+                    Utilities.recipientEmail = documentChange.getDocument().getString(Constants.KEY_EMAIL);
                     // Add to ArrayList for Recycler View
                     textMessages.add(chatMessageObject);
                 }
