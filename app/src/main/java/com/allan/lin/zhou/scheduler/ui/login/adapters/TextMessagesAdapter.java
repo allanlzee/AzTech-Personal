@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final ArrayList<ChatMessageObject> textMessages;
-    private final Bitmap recipientProfilePicture;
+    private Bitmap recipientProfilePicture;
     private final String senderID;
 
     // User ID (Recipient/Sender)
@@ -31,6 +31,10 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.textMessages = textMessages;
         this.recipientProfilePicture = recipientProfilePicture;
         this.senderID = senderID;
+    }
+
+    public void setRecipientProfilePicture(Bitmap bitmap) {
+        recipientProfilePicture = bitmap;
     }
 
     // ****************** Inherited Recycler View Methods ****************** //
@@ -103,7 +107,9 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         void setData(ChatMessageObject chatMessage, Bitmap profilePicture) {
             binding.userTextMessage.setText(chatMessage.messageContent);
             binding.textDateTime.setText(chatMessage.messageDateTime);
-            binding.profilePicture.setImageBitmap(profilePicture);
+            if (profilePicture != null) {
+                binding.profilePicture.setImageBitmap(profilePicture);
+            }
         }
     }
 }

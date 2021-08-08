@@ -109,10 +109,17 @@ public class TextMessaging extends BaseAvailability {
 
         binding.recipientName.setText(userRecipient.username);
 
-        byte[] bytes = Base64.decode(userRecipient.image, Base64.DEFAULT);
-        Bitmap decodedBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        profilePicture = decodedBitmap;
-        binding.profilePicture.setImageBitmap(decodedBitmap);
+        profilePicture = getProfilePicture(userRecipient.image);
+        binding.profilePicture.setImageBitmap(profilePicture);
+    }
+
+    private Bitmap getProfilePicture(String encodedImage) {
+        if (encodedImage != null) {
+            byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        } else {
+            return null;
+        }
     }
 
     private void initializeViews() {
@@ -307,6 +314,12 @@ public class TextMessaging extends BaseAvailability {
                 }
                 // Assign the Recipient a unique ID
                 userRecipient.fcmToken = value.getString(Constants.KEY_FCM_TOKEN);
+
+                if (userRecipient.image == null) {
+                    userRecipient.image = value.getString(Constants.KEY_IMAGE);
+                    textMessagesAdapter.setRecipientProfilePicture(getProfilePicture(userRecipient.image));
+                    textMessagesAdapter.notifyItemRangeChanged(0, textMessages.size());
+                }
             }
 
             if (isReceiverAvailable) {
