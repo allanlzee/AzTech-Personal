@@ -1,5 +1,7 @@
 package com.allan.lin.zhou.scheduler.ui.login.firebase;
 
+import java.util.HashMap;
+
 public class Constants {
     public static final String KEY_COLLECTION_USERS = "users";
     public static final String KEY_NAME = "name";
@@ -27,4 +29,29 @@ public class Constants {
 
     // User Availability
     public static final String KEY_AVAILABILITY = "availability";
+
+    // Notifications using Remote Messages
+    public static final String REMOTE_MSG_AUTHORIZATION = "Authorization";
+    public static final String REMOTE_MSG_CONTENT_TYPE = "Content-Type";
+    public static final String REMOTE_MSG_DATA = "data";
+    public static final String REMOTE_MSG_REGISTRATION_IDS = "registration_ids";
+
+    // Server ID: AAAA2s2Uhxw:APA91bFSgOgSA44p9J0dsO87iA_PA6WhCX10IAbz7BCCZ-6dWQp9HeMbP6-o_dGlKOPEEW1QjB_GA7lDvx_QMOMJ-KqGm69Q-QehLB4LSxRqTuR5Ir_PKhL8GdKYiiyQ0-wXm9iHxOTO
+
+    public static HashMap<String, String> remoteMsgHeaders = null;
+    public static HashMap<String, String> getRemoteMsgHeaders() {
+        if (remoteMsgHeaders == null) {
+            remoteMsgHeaders = new HashMap<>();
+            remoteMsgHeaders.put(
+                    REMOTE_MSG_AUTHORIZATION,
+                    "key=AAAA2s2Uhxw:APA91bFSgOgSA44p9J0dsO87iA_PA6WhCX10IAbz7BCCZ-6dWQp9HeMbP6-o_dGlKOPEEW1QjB_GA7lDvx_QMOMJ-KqGm69Q-QehLB4LSxRqTuR5Ir_PKhL8GdKYiiyQ0-wXm9iHxOTO"
+            );
+            remoteMsgHeaders.put(
+                    REMOTE_MSG_CONTENT_TYPE,
+                    "application/json"
+            );
+        }
+
+        return remoteMsgHeaders;
+    }
 }

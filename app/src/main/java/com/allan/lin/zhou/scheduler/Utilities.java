@@ -39,4 +39,12 @@ public class Utilities {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
         ScheduledFuture scheduler = executorService.scheduleAtFixedRate(task, 1000, 2500, TimeUnit.MILLISECONDS);
     }
+
+    public static void showLongToast(String msg, Activity activity) {
+        Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
+    }
+
+    public static void showShortToast(String msg, Activity activity) {
+        Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
+    }
 }
