@@ -1,6 +1,5 @@
 package com.allan.lin.zhou.scheduler.ui.login.text.message;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -9,13 +8,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.TextMessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.TextMessagesAdapter;
+import com.allan.lin.zhou.scheduler.ui.login.availability.BaseAvailability;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,8 +31,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
-public class TextMessaging extends AppCompatActivity {
+public class TextMessaging extends BaseAvailability {
 
     private TextMessagingActivityBinding binding;
     private FirebaseUser userRecipient;
@@ -43,6 +43,9 @@ public class TextMessaging extends AppCompatActivity {
     private FirebaseFirestore database;
     private Bitmap profilePicture;
     private String conversionID = null;
+
+    // Retrofit API Boolean
+    private Boolean isReceiverAvailable = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,6 +235,8 @@ public class TextMessaging extends AppCompatActivity {
 
     // *************************** Conversion *************************** //
 
+    // *************************** Listeners for API and Messages *************************** //
+
     private void listenMessages() {
         database.collection(Constants.KEY_COLLECTION_CHAT)
                 .whereEqualTo(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
@@ -243,4 +248,40 @@ public class TextMessaging extends AppCompatActivity {
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
                 .addSnapshotListener(eventListener);
     }
+
+    private void listenAvailableReceiver() {
+        database.collection(Constants.KEY_COLLECTION_USERS).document(
+                userRecipient.id
+        ).addSnapshotListener(TextMessaging.this, (value, error) -> {
+            if (error != null) return;
+
+            if (value != null) {
+                if (value.getLong(Constants.KEY_AVAILABILITY) != null) {
+                    int availability = Objects.requireNonNull(
+                            value.getLong(Constants.KEY_AVAILABILITY)
+                    ).intValue();
+
+                    if (availability == 1) {
+                        isReceiverAvailable = true;
+                    } else {
+                        isReceiverAvailable = false;
+                    }
+                }
+            }
+
+            if (isReceiverAvailable) {
+                binding.onlineStatus.setVisibility(View.VISIBLE);
+            } else {
+                binding.onlineStatus.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listenAvailableReceiver();
+    }
+
+    // *************************** Listeners for API and Messages *************************** //
 }

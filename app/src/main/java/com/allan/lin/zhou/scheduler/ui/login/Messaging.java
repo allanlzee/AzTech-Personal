@@ -1,6 +1,5 @@
 package com.allan.lin.zhou.scheduler.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -12,6 +11,7 @@ import android.view.View;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.MessagingActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.RecentTextMessagesAdapter;
+import com.allan.lin.zhou.scheduler.ui.login.availability.BaseAvailability;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
@@ -27,7 +27,7 @@ import java.util.Collections;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
-public class Messaging extends AppCompatActivity implements RecentMessageListener {
+public class Messaging extends BaseAvailability implements RecentMessageListener {
 
     private MessagingActivityBinding binding;
     private Toolbar toolbar;

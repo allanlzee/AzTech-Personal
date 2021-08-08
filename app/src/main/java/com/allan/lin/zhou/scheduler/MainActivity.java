@@ -41,6 +41,9 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    // Online Status
+    private DocumentReference documentReference;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -60,6 +63,13 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         preferenceManager = new Preferences(getApplicationContext());
+
+        // Checks if user is online
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
+        // Retrieves user IDs from the Users section in Firebase
+        documentReference = database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(preferenceManager.getString(Constants.KEY_USER_ID));
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
@@ -260,5 +270,21 @@ public class MainActivity extends AppCompatActivity
                 }).setActionTextColor(getResources().getColor(R.color.home_action))
                 .setTextColor(getResources().getColor(R.color.home_snack))
                 .show();
+    }
+
+    // If user closes activity, they will go offline
+    @Override
+    protected void onPause() {
+        super.onPause();
+        documentReference.update(Constants.KEY_AVAILABILITY, 0);
+        binding.onlineStatus.setVisibility(View.INVISIBLE);
+    }
+
+    // If user is on the app, they will be online
+    @Override
+    protected void onResume() {
+        super.onResume();
+        documentReference.update(Constants.KEY_AVAILABILITY, 1);
+        binding.onlineStatus.setVisibility(View.VISIBLE);
     }
 }

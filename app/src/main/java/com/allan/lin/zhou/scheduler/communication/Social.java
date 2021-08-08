@@ -20,6 +20,7 @@ import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.reminder.list.Reminders;
 import com.allan.lin.zhou.scheduler.schedule.Schedule;
 import com.allan.lin.zhou.scheduler.databinding.SocialActivityBinding;
+import com.allan.lin.zhou.scheduler.ui.login.availability.BaseAvailability;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +32,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Social extends AppCompatActivity {
+public class Social extends BaseAvailability {
 
     private Toolbar toolbar;
     private SocialActivityBinding binding;

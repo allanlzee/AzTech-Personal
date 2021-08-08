@@ -12,6 +12,7 @@ import android.view.View;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.UsersActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.adapters.UserListAdapter;
+import com.allan.lin.zhou.scheduler.ui.login.availability.BaseAvailability;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersActivity extends AppCompatActivity implements UserListener {
+public class UsersActivity extends BaseAvailability implements UserListener {
 
     private UsersActivityBinding binding;
     private Preferences preferenceManager;
