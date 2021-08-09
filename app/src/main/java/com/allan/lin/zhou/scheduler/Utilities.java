@@ -30,6 +30,7 @@ public class Utilities {
     public static Bitmap senderProfileImage = null;
     public static String username = null;
     public static String recipientEmail = null;
+    public static String receiverEmail = null;
 
     public static FirebaseUser textMessageRecipient = null;
 

@@ -88,6 +88,14 @@ public class Messaging extends BaseAvailability implements RecentMessageListener
             }
         });
 
+        binding.settingsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         textMessages = new ArrayList<>();
 
         // Set Linear Layout Manager

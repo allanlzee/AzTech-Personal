@@ -59,7 +59,7 @@ public class UserInformation extends AppCompatActivity {
 
     private void loadUserDetails() {
         binding.editTextName.setText(Utilities.textMessageRecipient.username);
-        binding.editTextEmail.setText(Utilities.recipientEmail);
+        binding.editTextEmail.setText(Utilities.receiverEmail);
         byte[] bytes = Base64.decode(Utilities.textMessageRecipient.image, Base64.DEFAULT);
         Bitmap decodedBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.profilePicture.setImageBitmap(decodedBitmap);
