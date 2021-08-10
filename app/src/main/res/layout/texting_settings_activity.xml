@@ -17,21 +17,247 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
-        android:text="Color Theme"
+        android:text="@string/background_color_theme"
         android:layout_below="@id/toolbar"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/colorThemeWhite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
         app:riv_oval="true"
         android:scaleType="centerCrop"
         android:layout_below="@+id/textColorTheme"
+        android:src="@color/white" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorThemeRed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeWhite"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textColorTheme"
+        android:src="@color/card1"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorThemeOrange"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeRed"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textColorTheme"
+        android:src="@color/button"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorThemeGreen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeOrange"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textColorTheme"
+        android:src="@color/home_action"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorThemeBlue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeGreen"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textColorTheme"
+        android:src="@color/light_blue_A400"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorThemePurple"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeBlue"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textColorTheme"
+        android:src="@color/card6"/>
+
+    <TextView
+        android:id="@+id/textMessageColorTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/sent_message_theme"
+        android:layout_below="@id/colorThemeWhite"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemeWhite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
         android:src="@color/white"/>
 
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemeRed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorMessageThemeWhite"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
+        android:src="@color/card1"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemeOrange"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorThemeRed"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
+        android:src="@color/button"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemeGreen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorMessageThemeOrange"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
+        android:src="@color/home_action"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemeBlue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorMessageThemeGreen"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
+        android:src="@color/light_blue_A400" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorMessageThemePurple"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorMessageThemeBlue"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textMessageColorTheme"
+        android:src="@color/card6"/>
+
+    <TextView
+        android:id="@+id/textReceivedColorTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/received_message_theme"
+        android:layout_below="@id/colorMessageThemeWhite"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemeWhite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/white"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemeRed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorReceivedThemeWhite"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/card1"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemeOrange"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorReceivedThemeRed"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/button"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemeGreen"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorReceivedThemeOrange"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/home_action" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemeBlue"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorReceivedThemeGreen"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/light_blue_A400"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/colorReceivedThemePurple"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/colorReceivedThemeBlue"
+        app:riv_oval="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/textReceivedColorTheme"
+        android:src="@color/card6"/>
 
 </RelativeLayout>

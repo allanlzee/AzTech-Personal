@@ -34,6 +34,10 @@ public class Utilities {
 
     public static FirebaseUser textMessageRecipient = null;
 
+    public static String backgroundTheme = null;
+    public static String messageTheme = null;
+    public static String receivedTheme = null;
+
     public static void scheduler(Activity activity) {
         Runnable task = ()->Toast.makeText(activity, "Toast Message", Toast.LENGTH_SHORT).show();
 

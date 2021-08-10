@@ -16,6 +16,7 @@ import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.ChatMessageObject;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.TextMessaging;
+import com.allan.lin.zhou.scheduler.ui.login.text.message.TextingSettings;
 import com.allan.lin.zhou.scheduler.ui.login.text.message.listeners.RecentMessageListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -92,7 +93,7 @@ public class Messaging extends BaseAvailability implements RecentMessageListener
 
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getApplicationContext(), TextingSettings.class));
             }
         });
 

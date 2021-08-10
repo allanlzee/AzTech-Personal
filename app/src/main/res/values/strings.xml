@@ -128,6 +128,10 @@
     <string name="date_time">Date Time</string>
     <string name="recipient_name">Recipient Name</string>
     <string name="back_to_messaging">Back to Messaging</string>
+    <string name="background_color_theme">Background Color Theme</string>
+    <string name="message_color_theme">Message Color Theme</string>
+    <string name="received_message_theme">Received Message Theme</string>
+    <string name="sent_message_theme">Sent Message Theme</string>
 
 
 </resources>
