@@ -123,6 +123,7 @@ public class TextMessaging extends BaseAvailability {
     }
 
     private void initializeViews() {
+        chooseBackgroundTheme(Utilities.backgroundTheme);
         preferenceManager = new Preferences(getApplicationContext());
         textMessages = new ArrayList<>();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -378,4 +379,27 @@ public class TextMessaging extends BaseAvailability {
     }
 
     // *************************** Listeners for API and Messages *************************** //
+
+    private void chooseBackgroundTheme(String color) {
+        switch (color) {
+            case "Red":
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.card1));
+                break;
+            case "Orange":
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.button));
+                break;
+            case "Green":
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.home_action));
+                break;
+            case "Blue":
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.light_blue_A400));
+                break;
+            case "Purple":
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.card6));
+                break;
+            default:
+                binding.backgroundView.setBackgroundColor(getResources().getColor(R.color.white));
+                break;
+        }
+    }
 }

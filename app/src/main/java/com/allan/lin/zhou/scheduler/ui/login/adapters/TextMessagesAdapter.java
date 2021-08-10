@@ -1,12 +1,15 @@
 package com.allan.lin.zhou.scheduler.ui.login.adapters;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.ReceivedTextMessageBinding;
 import com.allan.lin.zhou.scheduler.databinding.SentTextMessageBinding;
@@ -92,6 +95,30 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.userTextMessage.setText(chatMessage.messageContent);
             binding.textDateTime.setText(chatMessage.messageDateTime);
             binding.profilePicture.setImageBitmap(profilePicture);
+            chooseBackgroundTheme(Utilities.backgroundTheme);
+        }
+
+        private void chooseBackgroundTheme(String color) {
+            switch (color) {
+                case "Red":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ff0000"));
+                    break;
+                case "Orange":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ffa500"));
+                    break;
+                case "Green":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#00ff00"));
+                    break;
+                case "Blue":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    break;
+                case "Purple":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    break;
+                default:
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+                    break;
+            }
         }
     }
 

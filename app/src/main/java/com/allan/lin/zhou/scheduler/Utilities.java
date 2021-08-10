@@ -34,7 +34,7 @@ public class Utilities {
 
     public static FirebaseUser textMessageRecipient = null;
 
-    public static String backgroundTheme = null;
+    public static String backgroundTheme = "White";
     public static String messageTheme = null;
     public static String receivedTheme = null;
 
