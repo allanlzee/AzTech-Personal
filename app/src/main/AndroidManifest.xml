@@ -100,13 +100,13 @@
             android:name=".schedule.Calendar"
             android:label="Calendar" />
         <activity
-            android:name=".Inspire"
+            android:name=".school.Inspire"
             android:label="@string/inspire" />
         <activity
-            android:name=".Extracurriculars"
+            android:name=".school.Extracurriculars"
             android:label="@string/nav_extracurriculars" />
         <activity
-            android:name=".Homework"
+            android:name=".school.Homework"
             android:label="@string/nav_homework" />
         <activity
             android:name=".Settings"

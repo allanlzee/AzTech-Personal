@@ -1,7 +1,6 @@
 package com.allan.lin.zhou.scheduler.communication;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -12,8 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.camera.CameraView;
-import com.allan.lin.zhou.scheduler.Homework;
-import com.allan.lin.zhou.scheduler.Inspire;
+import com.allan.lin.zhou.scheduler.school.Homework;
+import com.allan.lin.zhou.scheduler.school.Inspire;
 import com.allan.lin.zhou.scheduler.MainActivity;
 import com.allan.lin.zhou.scheduler.mind.Mindfulness;
 import com.allan.lin.zhou.scheduler.R;

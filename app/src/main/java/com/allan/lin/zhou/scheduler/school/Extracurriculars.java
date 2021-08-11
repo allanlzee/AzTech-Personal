@@ -1,31 +1,30 @@
-package com.allan.lin.zhou.scheduler;
+package com.allan.lin.zhou.scheduler.school;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.allan.lin.zhou.scheduler.databinding.HomeworkActivityBinding;
-import com.google.android.material.snackbar.Snackbar;
+import com.allan.lin.zhou.scheduler.R;
+import com.allan.lin.zhou.scheduler.databinding.ExtracurricularsActivityBinding;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
-public class Homework extends AppCompatActivity {
+public class Extracurriculars extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private HomeworkActivityBinding binding;
+    private ExtracurricularsActivityBinding binding;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homework_activity);
+        setContentView(R.layout.extracurriculars_activity);
 
-        binding = HomeworkActivityBinding.inflate(getLayoutInflater());
+        binding = ExtracurricularsActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         toolbar = findViewById(R.id.toolbar);
@@ -37,7 +36,7 @@ public class Homework extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                backToHome(view, Homework.this);
+                backToHome(view, Extracurriculars.this);
             }
         });
     }
