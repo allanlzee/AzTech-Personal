@@ -22,11 +22,15 @@ import com.allan.lin.zhou.scheduler.CalendarUtilities;
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.notification.TimePicker;
 import com.allan.lin.zhou.scheduler.databinding.ReminderEditActivityBinding;
+import com.allan.lin.zhou.scheduler.ui.login.Preferences;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
@@ -44,6 +48,10 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
 
     private Boolean onTimeClick = false;
 
+    private Preferences preferenceManager;
+
+    private String timeText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,8 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        preferenceManager = new Preferences(getApplicationContext());
 
         CalendarUtilities.notificationNames = new ArrayList<>();
         CalendarUtilities.notificationID = 0;
@@ -132,11 +142,28 @@ public class ReminderEdit extends AppCompatActivity implements TimePickerDialog.
         } else {
             Toast.makeText(this, "Enter Reminder Name", Toast.LENGTH_LONG).show();
         }
+
+        // Add to Firebase
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> user = new HashMap<>();
+        user.put(Constants.KEY_NAME, preferenceManager.getString(Constants.KEY_NAME));
+        user.put(Constants.KEY_EMAIL, preferenceManager.getString(Constants.KEY_EMAIL));
+        user.put(Constants.KEY_REMINDER, reminderName);
+        user.put(Constants.KEY_REMINDER_TIME, timeText);
+
+        database.collection(Constants.KEY_REMINDER_COLLECTION)
+                .add(user)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(getApplicationContext(), "Reminder Added", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(exception -> {
+                    Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 
     private void updateTimeText(Calendar calendar) {
         // Update Textview for Alarm Notification
-        String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+        timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
 
         alarmTextView.setText(timeText);
         alarmTextView.setTextColor(getResources().getColor(R.color.white));

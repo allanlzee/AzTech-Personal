@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.allan.lin.zhou.scheduler.CalendarUtilities;
 import com.allan.lin.zhou.scheduler.R;
-import com.allan.lin.zhou.scheduler.ViewHolder;
 
 import org.jetbrains.annotations.NotNull;
 

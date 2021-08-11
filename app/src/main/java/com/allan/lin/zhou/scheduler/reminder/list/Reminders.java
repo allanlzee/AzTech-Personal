@@ -16,12 +16,18 @@ import android.widget.Toast;
 
 import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.databinding.RemindersActivityBinding;
+import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 
 import static com.allan.lin.zhou.scheduler.Navigation.backToHome;
 
@@ -75,14 +81,6 @@ public class Reminders extends AppCompatActivity {
                 removeReminders(view);
             }
         });
-
-        /* binding.sortReminders.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                sortReminders();
-            }
-        }); */
     }
 
     @Override
@@ -116,6 +114,21 @@ public class Reminders extends AppCompatActivity {
                                 daily.remove(position);
                                 Reminder.allReminders.remove(position);
                                 Toast.makeText(Reminders.this, "Reminder Removed", Toast.LENGTH_SHORT).show();
+
+                                /*
+                                // Remove from Firebase
+                                FirebaseFirestore database = FirebaseFirestore.getInstance();
+                                CollectionReference collectionReference = database.collection(Constants.KEY_REMINDER_COLLECTION);
+
+                                // Find a way to remove reminder based on ID, since this method does not access the database using DocumentReference
+
+                                HashMap<String, Object> deleteReminder = new HashMap<>();
+
+                                deleteReminder.put(Constants.KEY_EMAIL, FieldValue.delete());
+                                deleteReminder.put(Constants.KEY_NAME, FieldValue.delete());
+                                deleteReminder.put(Constants.KEY_REMINDER, FieldValue.delete());
+                                deleteReminder.put(Constants.KEY_REMINDER_TIME, FieldValue.delete()); */
+
                                 reminderAdapter.notifyDataSetChanged();
                             }
                         }).setActionTextColor(Reminders.this.getResources().getColor(R.color.home_action))

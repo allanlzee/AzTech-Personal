@@ -54,4 +54,9 @@ public class Constants {
 
         return remoteMsgHeaders;
     }
+
+    // Reminders
+    public static final String KEY_REMINDER = "reminder";
+    public static final String KEY_REMINDER_TIME = "reminder-time";
+    public static final String KEY_REMINDER_COLLECTION = "reminders";
 }
