@@ -1,6 +1,7 @@
 package com.allan.lin.zhou.scheduler.ui.login.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -96,27 +97,66 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.textDateTime.setText(chatMessage.messageDateTime);
             binding.profilePicture.setImageBitmap(profilePicture);
             chooseBackgroundTheme(Utilities.backgroundTheme);
+
+            if (Utilities.messageTheme != null) {
+                chooseSenderMessageTheme(Utilities.messageTheme);
+            }
         }
 
         private void chooseBackgroundTheme(String color) {
             switch (color) {
                 case "Red":
                     binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ff0000"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#ff0000"));
                     break;
                 case "Orange":
                     binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ffa500"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#ffa500"));
                     break;
                 case "Green":
                     binding.textMessageBackground.setBackgroundColor(Color.parseColor("#00ff00"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#00ff00"));
                     break;
                 case "Blue":
                     binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#FF00B0FF"));
                     break;
                 case "Purple":
                     binding.textMessageBackground.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#8a2be2"));
                     break;
                 default:
-                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FFFFFFFF"));
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#A9A9A9"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    break;
+            }
+        }
+
+        private void chooseSenderMessageTheme(String color) {
+            switch (color) {
+                case "Red":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#ff0000"));
+                    break;
+                case "Orange":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#ffa500"));
+                    break;
+                case "Green":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#00ff00"));
+                    break;
+                case "Blue":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    break;
+                case "Purple":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    break;
+                default:
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#FFFFFF"));
                     break;
             }
         }
@@ -136,6 +176,69 @@ public class TextMessagesAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             binding.textDateTime.setText(chatMessage.messageDateTime);
             if (profilePicture != null) {
                 binding.profilePicture.setImageBitmap(profilePicture);
+            }
+            chooseBackgroundTheme(Utilities.backgroundTheme);
+
+            if (Utilities.receivedTheme != null) {
+                chooseReceiverMessageTheme(Utilities.receivedTheme);
+            }
+        }
+
+        private void chooseBackgroundTheme(String color) {
+            switch (color) {
+                case "Red":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ff0000"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#ff0000"));
+                    break;
+                case "Orange":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#ffa500"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#ffa500"));
+                    break;
+                case "Green":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#00ff00"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#00ff00"));
+                    break;
+                case "Blue":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    break;
+                case "Purple":
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#FFFFFF"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    break;
+                default:
+                    binding.textMessageBackground.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.textDateTime.setTextColor(Color.parseColor("#A9A9A9"));
+                    binding.cardViewTextMsg.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    break;
+            }
+        }
+
+        private void chooseReceiverMessageTheme(String color) {
+            switch (color) {
+                case "Red":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#ff0000"));
+                    break;
+                case "Orange":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#ffa500"));
+                    break;
+                case "Green":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#00ff00"));
+                    break;
+                case "Blue":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#FF00B0FF"));
+                    break;
+                case "Purple":
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#8a2be2"));
+                    break;
+                default:
+                    binding.relativeViewTextMsg.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    break;
             }
         }
     }

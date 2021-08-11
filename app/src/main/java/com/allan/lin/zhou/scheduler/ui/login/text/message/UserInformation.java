@@ -2,6 +2,7 @@ package com.allan.lin.zhou.scheduler.ui.login.text.message;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,9 +16,13 @@ import com.allan.lin.zhou.scheduler.R;
 import com.allan.lin.zhou.scheduler.Utilities;
 import com.allan.lin.zhou.scheduler.databinding.UserInformationActivityBinding;
 import com.allan.lin.zhou.scheduler.ui.login.Preferences;
+import com.allan.lin.zhou.scheduler.ui.login.adapters.UserListAdapter;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.Constants;
 import com.allan.lin.zhou.scheduler.ui.login.firebase.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 public class UserInformation extends AppCompatActivity {
 
@@ -59,7 +64,40 @@ public class UserInformation extends AppCompatActivity {
 
     private void loadUserDetails() {
         binding.editTextName.setText(Utilities.textMessageRecipient.username);
-        binding.editTextEmail.setText(Utilities.receiverEmail);
+
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+
+                        // Use database to compile a user list (excluding the current user)
+                        for (QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                            if (queryDocumentSnapshot.getString(Constants.KEY_NAME).equals(Utilities.textMessageRecipient.username)) {
+                                binding.editTextEmail.setText(queryDocumentSnapshot.getString(Constants.KEY_EMAIL));
+
+                                /*
+                                try {
+                                    int onlineStatus = (Integer) queryDocumentSnapshot.get(Constants.KEY_AVAILABILITY);
+
+                                    String status;
+                                    if (onlineStatus == 1) {
+                                        status = "Status: Online";
+                                    } else {
+                                        status = "Status: Offline";
+                                    }
+                                    binding.onlineStatus.setText(status);
+                                } catch (NullPointerException e) {
+                                    e.printStackTrace();
+                                } */
+                                break;
+                            }
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No User Available", Toast.LENGTH_LONG).show();
+                    }
+                });
+
         byte[] bytes = Base64.decode(Utilities.textMessageRecipient.image, Base64.DEFAULT);
         Bitmap decodedBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         binding.profilePicture.setImageBitmap(decodedBitmap);

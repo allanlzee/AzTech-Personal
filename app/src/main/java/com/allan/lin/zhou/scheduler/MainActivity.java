@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-        documentReference.update(Constants.KEY_AVAILABILITY, 0);
+        documentReference.update(Constants.KEY_AVAILABILITY, 1);
         binding.onlineStatus.setVisibility(View.INVISIBLE);
     }
 
@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        documentReference.update(Constants.KEY_AVAILABILITY, 1);
+        documentReference.update(Constants.KEY_AVAILABILITY, 0);
         binding.onlineStatus.setVisibility(View.VISIBLE);
     }
 }

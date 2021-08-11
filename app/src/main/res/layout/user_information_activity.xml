@@ -98,6 +98,19 @@
                 android:src="@mipmap/ic_launcher_round"
                 app:riv_oval="true" />
 
+            <!--
+            <TextView
+                android:id="@+id/onlineStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/status_offline"
+                android:layout_below="@+id/profilePicture"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" /> -->
+
             <Button
                 android:id="@+id/backToMessaging"
                 android:layout_width="320dp"

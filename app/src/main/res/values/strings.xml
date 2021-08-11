@@ -132,6 +132,9 @@
     <string name="message_color_theme">Message Color Theme</string>
     <string name="received_message_theme">Received Message Theme</string>
     <string name="sent_message_theme">Sent Message Theme</string>
+    <string name="online_status">Online Status</string>
+    <string name="online_status_offline">Online Status: Offline</string>
+    <string name="status_offline">Status: Offline</string>
 
 
 </resources>

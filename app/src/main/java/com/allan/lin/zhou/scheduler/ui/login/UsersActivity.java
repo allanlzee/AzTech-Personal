@@ -68,6 +68,7 @@ public class UsersActivity extends BaseAvailability implements UserListener {
         binding.errorMessage.setText(error);
         binding.errorMessage.setVisibility(View.VISIBLE);
         binding.progressBar.setVisibility(View.INVISIBLE);
+        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
     }
 
     // List of Users using RecyclerView
